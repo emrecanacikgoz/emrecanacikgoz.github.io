@@ -11,4 +11,4 @@ arxiv: https://arxiv.org/abs/2211.01736
 slides: /pdfs/mrl-pres-new.pdf
 code: https://github.com/emrecanacikgoz/mrl2022
 ---
-This paper describes the winning systems in [MRL: The 1st Shared Task on Multilingual Clause-level Morphology](https://sigtyp.github.io/st2022-mrl.html) at the EMNLP 2022 Workshop. Our submission, which excelled in all three segments of the shared task — inflection, reinflection, and analysis — get the first prize in all categories at MRL'22.
+This paper describes the winning approaches in [MRL: The 1st Shared Task on Multilingual Clause-level Morphology](https://sigtyp.github.io/st2022-mrl.html). Our submission, which excelled in all three parts of the shared task — inflection, reinflection, and analysis — get the first prize in each category.
