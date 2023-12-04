@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Transformers on Multilingual Clause-Level Morphology"
+title:  <a href="https://arxiv.org/pdf/2211.01736.pdf">Transformers on Multilingual Clause-Level Morphology</a>
 date:   2022-12-07 22:21:59 +00:00
 image: mrl2022.png
 categories: "2022"
