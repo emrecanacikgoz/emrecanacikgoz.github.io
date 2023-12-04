@@ -6,7 +6,7 @@ image: mrl2022.png
 categories: "2022"
 author: "Emre Can Acikgoz"
 authors: "[Emre Can Acikgoz], Tilek Chubakov, Müge Kural, Gözde Gül Şahin, Deniz Yuret"
-venue: "EMNLP2022"
+venue: "EMNLP Workshop"
 arxiv: https://arxiv.org/abs/2211.01736
 slides: /pdfs/mrl-pres-new.pdf
 code: https://github.com/emrecanacikgoz/mrl2022
