@@ -1,0 +1,14 @@
+---
+layout: post
+title:  <a href="https://cyberiada.github.io/ViLMA/">ViLMA: A Zero-Shot Benchmark for Linguistic and Temporal Grounding in Video-Language Models</a>
+date:   2023-12-01 22:21:59 +00:00
+image: vilma.png
+categories: "2023"
+author: "Emre Can Acikgoz"
+authors: "Ilker Kesen, Andrea Pedrotti, Mustafa Dogan, Michele Cafagna, <strong>Emre Can Acikgoz</strong>, Letitia Parcalabescu, Iacer Calixto, Anette Frank, Albert Gatt, Aykut Erdem, Erkut Erdem"
+venue: "arXiv"
+arxiv: https://arxiv.org/abs/2311.07022
+website: https://cyberiada.github.io/ViLMA/
+code: https://github.com/ilkerkesen/ViLMA
+---
+ViLMA (Video Language Model Assessment) presents a comprehensive benchmark for Video-Language Models (VidLMs) to evaluate their capabilities in terms of five distinct tests: Counting, Situation Awareness, Change of State, Rare Actions, and Relations.
