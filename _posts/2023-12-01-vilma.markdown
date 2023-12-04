@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  <a href="https://cyberiada.github.io/ViLMA/">ViLMA A Zero-Shot Benchmark for Linguistic and Temporal Grounding in Video-Language Models</a>
+title:  <a href="https://cyberiada.github.io/ViLMA/"> ViLMA: A Zero-Shot Benchmark for Linguistic and Temporal Grounding in Video-Language Models</a>
 date:   2023-12-01 22:21:59 +00:00
 image: vilma.png
 categories: "2023"
