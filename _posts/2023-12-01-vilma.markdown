@@ -12,4 +12,4 @@ website: https://cyberiada.github.io/ViLMA/
 code: https://github.com/ilkerkesen/ViLMA
 ---
 <!-- ViLMA presents a comprehensive benchmark for Video-Language Models to evaluate their capabilities. It is introduced with an initial assessment that assesses a model's fundamental comprehension skills, which is then followed by a more advanced primary evaluation designed to gauge its specific temporal reasoning abilities. -->
-ViLMA presents a comprehensive benchmark for Video-Language Models, starting with a fundamental comprehension test and followed by a more advanced evaluation for temporal reasoning skills.
+ViLMA (Video Language Model Assessment) presents a comprehensive benchmark for Video-Language Models, starting with a fundamental comprehension test and followed by a more advanced evaluation for temporal reasoning skills.
