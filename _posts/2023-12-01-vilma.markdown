@@ -11,4 +11,5 @@ arxiv: https://arxiv.org/abs/2311.07022
 website: https://cyberiada.github.io/ViLMA/
 code: https://github.com/ilkerkesen/ViLMA
 ---
-ViLMA (Video Language Model Assessment) presents a comprehensive benchmark for Video-Language Models (VidLMs) to evaluate their capabilities. As an initial assessment it assesses a model's fundamental comprehension skills with a Proficiency Test, which is then followed by a more advanced primary evaluation designed to gauge its specific temporal reasoning abilities in terms of five distinct tests Counting, Situation Awareness, Change of State, Rare Actions, and Relations.
+VILMA 
+ViLMA (Video Language Model Assessment) presents a comprehensive benchmark for Video-Language Models (VidLMs) to evaluate their capabilities. It is introduced with an initial assessment that assesses a model's fundamental comprehension skills, which is then followed by a more advanced primary evaluation designed to gauge its specific temporal reasoning abilities.
