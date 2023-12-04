@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Transformers on Multilingual Clause-Level Morphology"
+title:  "[Transformers on Multilingual Clause-Level Morphology](https://arxiv.org/pdf/2211.01736.pdf)"
 date:   2022-12-07 22:21:59 +00:00
 image: mrl2022.png
 categories: "2022"
 author: "Emre Can Acikgoz"
-authors: "**Emre Can Acikgoz**, Tilek Chubakov, Müge Kural, Gözde Gül Şahin, Deniz Yuret"
+authors: "[Emre Can Acikgo], Tilek Chubakov, Müge Kural, Gözde Gül Şahin, Deniz Yuret"
 venue: "EMNLP2022"
 arxiv: https://arxiv.org/abs/2211.01736
 slides: /pdfs/mrl-pres-new.pdf
