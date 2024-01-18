@@ -3,7 +3,7 @@ layout: post
 title:  <a href="https://cyberiada.github.io/ViLMA/">ViLMA&#58 A Zero-Shot Benchmark for Linguistic and Temporal Grounding in Video-Language Models</a>
 date:   2023-12-01 22:21:59 +00:00
 image: vilma.png
-categories: "2023"
+categories: "2024"
 author: "Emre Can Acikgoz"
 authors: "Ilker Kesen, Andrea Pedrotti, Mustafa Dogan, Michele Cafagna, <strong>Emre Can Acikgoz</strong>, Letitia Parcalabescu, Iacer Calixto, Anette Frank, Albert Gatt, Aykut Erdem, Erkut Erdem"
 venue: "ICLR"
