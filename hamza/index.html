@@ -154,14 +154,17 @@
                 <div class="row is-full-width">
                     
                     <h2 class="title is-3"><span class="dvima">Method 2: Pretraining from Scratch</span></h2>
+                    
+                <span style="font-size: 125%">
+                    In our final approach for developing a Turkish base-LLM, we adopted the most straightforward method: training from scratch using Turkish-only datasets. We follow a similar framework as in GPT-2, with similarities in training procedures and architectural settings. However, we differed in our approach by utilizing a pretraining corpus nearly double the size of GPT-2. We release the Hamza LLM series, encompassing models from 124M to 1.3B parameters. Notably, Hamza-xl with 1.3B parameters marks the premier and most expansive open-source, scientifically vetted Turkish LLM that is trained on 300B tokens. All our pretraining code is openly accessible. <br> <br>
+                    
                     <br>
                     <br>
                     <img src="assets/images/hamza.png" class="interpolation-image"
                     alt="" style="display: block; margin-left: auto; margin-right: auto; width: 90%;"/>
                     <br>
                     <br>
-                <span style="font-size: 125%">
-                    In our final approach for developing a Turkish base-LLM, we adopted the most straightforward method: training from scratch using Turkish-only datasets. We follow a similar framework as in GPT-2, with similarities in training procedures and architectural settings. However, we differed in our approach by utilizing a pretraining corpus nearly double the size of GPT-2. We release the Hamza LLM series, encompassing models from 124M to 1.3B parameters. Notably, Hamza-xl with 1.3B parameters marks the premier and most expansive open-source, scientifically vetted Turkish LLM that is trained on 300B tokens. All our pretraining code is openly accessible. <br> <br>
+                    
                     <span style="font-weight: bold">Pretraining Data.</span> The construction of a robust LLM hinges on the aggregation and processing of high-quality text data. To develop Hamza, we used the Turkish split of CulturaX includes a meticulous process of data curation. It gathers a comprehensive dataset from open-sources mC4 and OSCAR. Our pretraining data contains 128 parquet files each 1.4GB, totaling almost 179.2GB. The compiled training dataset contains 129,486,207,634 (130B) training tokens. Further details the data gathering, structure, and preparation can be found in Culturax paper. <br>
                     <span style="font-weight: bold">Architecture.</span> To develop an inaugural Turkish base model, we followed prior works, establishing a solid model for Turkish language modeling akin to earlier studies on other languages. Our approach led to the creation of four variants of Hamza, following GPT-2: hamza-small (124M parameters), hamza-medium (354M parameters), hamza-large (772M parameters), and our largest model, hamza-xlarge (1.3B parameters). The architectural specifications of these models are given in the table above. <br>
                     <span style="font-weight: bold">Optimizer.</span> During our training, AdamW optimizer is used with hyper-parameters beta_1=0.9 and beta2=0.95. A cosine learning rate schedule is implemented, designed to reduce the learning rate to 10\% of its maximum value. Additionally, we applied a weight decay rate of 0.1 and limited the gradient norm to 1.0 to prevent overfitting. The training process includes 2,000 an initial warm-up steps. We used a learning rate 0f 0.0006 and batch size 491,520 in our smallest model hamza-small. We varied the learning rate and batch size according to the model size. <br>
