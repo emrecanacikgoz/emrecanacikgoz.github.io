@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bridging the Bosphorus | Advancing Turkish Large Language Models through Strategies for Low-Resource Language Adaptation and Benchmarking</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/academicons.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converted LaTeX to HTML</title>
+    <style>
+        .scriptsize { font-size: smaller; }
+    </style>
+</head>
+
+
+<section class="hero">
+<!--    <div class="hero-body">-->
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">Bridging the Bosphorus: Advancing Turkish Large Language Models through Strategies for Low-Resource Language Adaptation and Benchmarking</h1>
+<!--                    <h3 class="title is-4 conference-authors"><a target="_blank" href="https://arxiv.org/abs/2311.01378">Arxiv Preprint</a></h3>-->
+                    <div class="is-size-5 publication-authors">
+            <span class="author-block">
+                <a target="_blank" href="https://emrecanacikgoz.github.io/">Emre Can Acikgoz</a><sup>1,2</sup>,
+                <a target="_blank" href="">Mete Erdogan</a><sup>1,2</sup>,
+                <a target="_blank" href="https://www.denizyuret.com/">Deniz Yuret</a><sup>1,2</sup>
+            </span>
+                    </div>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>Koç University, KUIS AI Center, </span>
+                        <span class="author-block"><sup>2</sup>Koç University, Department of Computer Engineering </span>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <span class="author-block">
+                            <a href="mailto:eacikgoz17@ku.edu.tr">eacikgoz17@ku.edu.tr</a></span>,
+                            <a href="mailto:dyuret@ku.edu.tr">dyuret@ku.edu.tr</a>
+                      </div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <!-- TODO PDF Link. -->
+                            <span class="link-block">
+                <a target="_blank" href="https://github.com/emrecanacikgoz/turkish-llm"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+                            <!-- Code Link. -->
+                            <span class="link-block">
+                <a target="_blank" href="https://github.com/emrecanacikgoz/turkish-llm"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+                <a target="_blank" href="https://github.com/emrecanacikgoz/turkish-llm"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-robot"></i>
+                  </span>
+                  <span>Models</span>
+                </a>
+                <a target="_blank" href="https://github.com/emrecanacikgoz/turkish-llm"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-database"></i>
+                  </span>
+                  <span>Benchmark</span>
+                </a>
+              </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--    </div>-->
+</section>
+
+
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column">
+                <h2 class="title is-3">Abstract</h2>
+                <div class="content has-text-justified">
+                    <p style="font-size: 125%">
+                        Large Language Models (LLMs) are becoming crucial across various fields, emphasizing the urgency for high-quality models in underrepresented languages. This study explores the unique challenges faced by low-resource languages, such as data scarcity, model selection, evaluation, and computational limitations, with a special focus on Turkish. We conduct an in-depth analysis to evaluate the impact of training strategies, model choices, and data availability on the performance of LLMs designed for underrepresented languages. Our approach includes two methodologies: (i) adapting existing LLMs originally pretrained in English to understand Turkish, and (ii) developing a model from the ground up using Turkish pretraining data, both supplemented with supervised fine-tuning on a novel Turkish instruction-tuning dataset aimed at enhancing reasoning capabilities. The relative performance of these methods is evaluated through the creation of a new leaderboard for Turkish LLMs, featuring benchmarks that assess different reasoning and knowledge skills. Furthermore, we conducted experiments on data and model scaling, both during pretraining and fine-tuning, simultaneously emphasizing the capacity for knowledge transfer across languages and addressing the challenges of catastrophic forgetting encountered during fine-tuning on a different language. Our goal is to offer a detailed guide for advancing the LLM framework in low-resource linguistic contexts, thereby making natural language processing (NLP) benefits more globally accessible.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Model-->
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">Hamza LLMs</span></h2>
+                    <br>
+                    <br>
+                    <img src="assets/images/hamza.png" class="interpolation-image"
+                    alt="" style="display: block; margin-left: auto; margin-right: auto; width: 80%;"/>
+                    <br>
+                    <br>
+                    <span style="font-size: 125%">
+                <span style="font-weight: bold">Hamza Models.</span> We release the Hamza LLM series, encompassing models from 124M to 1.3B parameters. Notably, Hamza-xl with 1.3B parameters marks the premier and most expansive open-source, scientifically vetted Turkish LLM that is trained on 300B tokens. <br> <br>
+                <span style="font-weight: bold">Pretraining Data.</span> The construction of a robust LLM hinges on the aggregation and processing of high-quality text data. To develop Hamza, we used the Turkish split of CulturaX includes a meticulous process of data curation. It gathers a comprehensive dataset from open-sources mC4 and OSCAR. Our pretraining data contains 128 parquet files each 1.4GB, totaling almost 179.2GB. The compiled training dataset contains 129,486,207,634 (130B) training tokens. Further details the data gathering, structure, and preparation can be found in Culturax paper. <br> <br>
+                <span style="font-weight: bold">Architecture.</span> To develop an inaugural Turkish base model, we followed prior works, establishing a solid model for Turkish language modeling akin to earlier studies on other languages. Our approach led to the creation of four variants of Hamza, following GPT-2: hamza-small (124M parameters), hamza-medium (354M parameters), hamza-large (772M parameters), and our largest model, hamza-xlarge (1.3B parameters). The architectural specifications of these models are given in the table above. <br> <br>
+                <span style="font-weight: bold">Optimizer.</span> During our training, AdamW optimizer is used with hyper-parameters beta_1=0.9 and beta2=0.95. A cosine learning rate schedule is implemented, designed to reduce the learning rate to 10\% of its maximum value. Additionally, we applied a weight decay rate of 0.1 and limited the gradient norm to 1.0 to prevent overfitting. The training process includes 2,000 an initial warm-up steps. We used a learning rate 0f 0.0006 and batch size 491,520 in our smallest model hamza-small. We varied the learning rate and batch size according to the model size. <br> <br>
+                <span style="font-weight: bold">Training.</span> Our from-scratch Hamza models are built on the GPT-2 architecture and incorporate the flash-attention mechanism for efficient training. The hyperparameters of the model follow the scaling principles set by GPT-2, except for the largest variant, hamza-xlarge, which is inspired by a recent French-based CroissantLLM. All model versions were trained for 300 billion tokens, with a uniform batch size of 500,000 tokens. The learning rate was fine-tuned for each model variant. We standardized the context window across all models at 1024 tokens and did not employ any dropout techniques during their training process. All training sessions were conducted in half-precision (fp16) setting by utilizing both tensor and data parallelism across eight A100 GPUs each with 80GB of memory. <br> <br>
+            </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!--Experiments-->
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width" style="margin-top:-160px;">
+                    <h2 class="title is-3"><span
+                            class="dvima">Case Studies</span></h2>
+
+                    <p style="font-size: 125%">
+                        We investigate three main questions during experiments:
+                        <ul style="font-size: 125%; padding-left: 5%">
+                        <li><span style="font-weight: bold;">(i) Enhancing Non-English Models: Fine-Tuning vs. From-Scratch Training with English Data.</span> The analysis of Turkish language models, specifically comparing models trained from
+                            scratch, continued pretraining from GPT2-xl, and those adapted
+                            using Mistral 7B, shows insightful trends. Models
+                            adapted with Mistral 7B exhibit superior performance on Turkish question-answering tasks,
+                            compared to other methods. Moreover, starting from scratch surpasses the continued
+                            pretraining approach within the same model architecture, underscoring the significance
+                            of the base language model when undertaking continued pretraining. This is evidenced
+                            by the discrepancy in accuracy between models fine-tuned from Mistral versus those from
+                            GPT2. Therefore, applying continued pretraining to a robust base language model emerges
+                            as the most effective strategy for low-resource languages, considering both data scarcity
+                            and hardware constraints. </li>
+                            <br>
+                            <img src="assets/images/case1.png" class="interpolation-image"
+                            alt="" style="display: block; margin-left: auto; margin-right: auto; width: 80%;"/>
+                            <br>
+
+                        <li><span style="font-weight: bold;">(ii) Effect of Supervised Fine-Tuning: Assessing model performance post fine-tuning with the proposed IT Dataset.</span> Supervised Fine-Tuning (SFT) plays a crucial role in enhancing the reasoning capabilities of
+                            Large Language Models (LLMs), as highlighted in existing research.
+                            In this context, we introduced a novel Turkish IT Dataset, meticulously crafted from the
+                            ground up, inspired by the Alpaca. By fine-tuning
+                            our largest model Hamza-xlarge with this bespoke Turkish IT Dataset, we observed an
+                            improvement in model performance across downstream benchmarks. This
+                            improvement underscores the effectiveness of SFT when applied to our tailored IT dataset,
+                            bolstering our model’s reasoning proficiency slightly.
+                            8
+                            </li> 
+                            <br>
+                            <img src="assets/images/case2.png" class="interpolation-image"
+                            alt="" style="display: block; margin-left: auto; margin-right: auto; width: 80%;"/>
+                            <br>
+                        <li><span style="font-weight: bold;">(iii) Retention after Fine-Tuning: Will Models Forget English-Learned Skills in Another Language?.</span> Further pretraining of base English language models such as GPT-2 and
+                            Mistral results in a decrease in accuracy proportional to the number of samples used during
+                            continued pretraining on the English downstream tasks TruthfulQA and ARC, compared
+                            to their original base scores before fine-tuning on Turkish. This indicates catastrophic
+                            forgetting, where the models lose their prior knowledge upon being fine-tuned on a smaller
+                            language dataset, as evidenced by a decline in baseline accuracy compared to the versions
+                            not previously trained, even after applying techniques like LoRA training.</li>
+                            <br>
+                            <img src="assets/images/case3.png" class="interpolation-image"
+                            alt="" style="display: block; margin-left: auto; margin-right: auto; width: 80%;"/>
+                            <br>
+                    </ul>
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span
+                            class="dvima">Conclusion</span></h2>
+                    <div style="font-size: 125%;">
+                        <span style="font-size: 100%;">
+                            Our work advances the development of Turkish LLMs, presenting a new series of models both trained from scratch (Hamza) and also adapted from other base LLMs (Hamza<span class="scriptsize">Mistral</span>$ and Hamza<span class="scriptsize">GPT2-xl</span>), together with new Instruction Tuning dataset and a meticulously crafted Turkish LLM Leaderboard. In our analysis, we noted that the base LLMs exhibited catastrophic forgetting of their primary language knowledge during continued pretraining. Additionally, through the creation of a novel Turkish LLM evaluation benchmark, we have identified a significant performance gap between current Turkish LLMs and their English counterparts, underscoring the need for further improvements in Turkish language modeling. Our fully open-source work and detailed observations plays a pivotal role in the field of Turkish language modeling, providing insights on construction methodologies and offering a comparative framework for evaluating performance, thereby paving the way for future advancements.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="section" id="BibTeX">
+    <div class="container is-max-widescreen content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@article{li2023vision,
+  title     = {Bridging the Bosphorus: Advancing Turkish Large Language Models through Strategies for Low-Resource Language Adaptation and Benchmarking},
+  author    = {Acikgoz, Emre Can and Erdogan, Mete and Yuret, Deniz},
+  journal={arXiv preprint arXiv:2411.01378},
+  year={2024}
+}</code></pre>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="content has-text-centered">
+                    <p>
+                        Website template borrowed from <a
+                            href="https://vimalabs.github.io/">VIMA</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
