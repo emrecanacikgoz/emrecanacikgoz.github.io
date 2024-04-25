@@ -257,28 +257,6 @@
 -->
 
 
-
-<section class="hero">
-  <h2 class="title has-text-centered"></h2>
-  <div class="hero-body">
-      <div class="container is-max-desktop">
-          <div class="columns is-centered">
-              <div class="column is-four-fifths">
-                  <!-- Text with embedded image -->
-                  <div class="item">
-                      <!-- Image with float right -->
-                      <img src="static/images/fig2.png" style="float: right; margin-left: 20px; max-width: 100%; height: auto;" />
-                      <!-- Caption for image -->
-                      <ul>
-                        
-                      </ul>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
-
 <section class="hero">
   <div class="hero-body">
       <div class="container is-max-desktop">
@@ -307,7 +285,6 @@
               <div class="column has-text-centered">
                   <h2 class="title is-3">Datasets</h2>
                   <div class="content has-text-justified">
-                    <img src="static/images/fig2.png" style="float: right; margin-left: 20px; max-width: 100%; height: auto;" />
                     <ul style="list-style-type: none;">
                         <li><strong>Continued Pre-training Data.</strong> A key aspect of our methodology is the integration of specialized medical knowledge through an extensive pre-training corpus, assembled from three specialized datasets: Medical Guidelines, PMC-Patients, and PubMedQA-contexts. The Medical Guidelines dataset comprises clinical practice guidelines, is used for training Meditron models. The PMC-Patients dataset consists of patient summaries extracted from case reports within PubMed Central (PMC). Additionally, the PubMedQA-contexts dataset is constructed by extracting the context field of each sample in the training split of the benchmark PubMedQA. This extensive corpus, consisting of roughly 300M training tokens, forms the foundation of our models, ensuring their proficiency in navigating medical terminology and practices. We systematically assessed the impact of each dataset, both individually and in combination, to optimize our model's performance. <br>
                           <li><strong>General Instructions Data.</strong> This dataset aggregates more than 400K samples from nine different datasets, each derived from the instruction corpora of previous studies. By excluding data from the training or test splits of downstream QA benchmarks, we aim to minimize bias and improve the model's generalization capabilities across different reasoning tasks. A pre-processing protocol was employed to remove irrelevant noise such as superfluous words and web URLs, ensuring the data's quality and relevance.
