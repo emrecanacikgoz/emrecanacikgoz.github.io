@@ -181,10 +181,11 @@
   </div>
 </section>
 
-
+<!-- 
 <header style="text-align: center;">
   <img src="static/images/fig1.png" alt="ResultsTable" width="70%" >
 </header>
+-->
 
 
 <!-- Paper abstract -->
@@ -206,6 +207,32 @@
 </section>
 <!-- End paper abstract -->
 
+<!-- Hippo Series -->
+<section class="hero">
+  <div class="hero-body">
+      <div class="container is-max-desktop">
+          <div class="columns is-centered">
+              <div class="column has-text-centered">
+                  <h2 class="title is-3">Hippocrates</h2>
+                  <div class="content has-text-justified">
+                    <img src="static/images/hippo.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 80%;"/>
+                    <br>
+                    <p>Our release includes:</p>
+                        <ul style="list-style-type: disc; margin-left: 20px;">
+                            <li> Hippocrates, a comprehensive and open-source framework tailored for the medical domain. </li>
+                            <li> We provide openly available datasets and establish an intuitive benchmark using the LM-Evaluation-Harness tool. </li>
+                            <li> We also introduce Hippo-LLaMA and Hippo-Mistral , two 7B models demonstrating superior performance </li>
+                        </ul>
+                    <p> We argue that the development of a broad, varied collection of open models is crucial for deepening our knowledge of language models and enhancing their applicability across various domains.  Our work makes substantial contributions to the field by combining in-depth empirical research with a structured training methodology, offering invaluable insights and tools for future research not only in healthcare but in any area requiring domain-specific adaptation of LLMs. </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- End Hippo Series -->
+
+<!-- Hippocrates Framework -->
 <section class="hero">
   <div class="hero-body">
       <div class="container is-max-desktop">
@@ -217,7 +244,7 @@
                     <br>
                     <ul style="list-style-type: none;">
                       <li>In this work, we provide full access to our framework, from the data sources to the training configurations and the reproducible evaluation protocols. We conduct a detailed empirical analysis to identify the impact of various design elements on LLM performance, leading to a domain-adapted framework that demonstrates superior performance on multiple medical benchmarks. Based on these insights, we develop a step-by-step guide for the efficient training of medical-LLMs. Our research efforts yield two advanced 7B parameter models, Hippo-Mistral and Hippo-LLaMA. As shown in first figure, our models not only outperform existing 7B and 13B models by a significant margin but also deliver results on par with, and in some cases exceeding, those of 70B models. We argue that the development of a broad, varied collection of open models is crucial for deepening our knowledge of language models and enhancing their applicability across various domains.<br><br></li>
-                      <li>The first figure above shows the evolution of medical LLM performances on the MedQA dataset. Our 7B Hippo-Mistral and Hippo-LLaMA models achieve 50.8% and 59.9% 5-shot accuracy, respectively. Hippo-Mistral outperforms all existing open models, including even those with 70B parameters. <br><br></li>
+                      <li>The first figure above shows the evolution of medical LLM performances on the MedQA dataset. Our 7B Hippo-Mistral and Hippo-LLaMA models achieve 50.8% and 59.9% 5-shot accuracy, respectively. Hippo-Mistral outperforms all existing open models, including even those with 70B parameters.</li>
                     </ul> 
                   </div>
               </div>
@@ -225,8 +252,7 @@
       </div>
   </div>
 </section>
-
-
+<!-- End Hippocrates Framework -->
 
 
 <!-- Dataset -->
@@ -274,14 +300,17 @@
 </section>
 <!-- End Methodology -->
 
+<!-- Conclusion -->
 <section class="section" id="Conclusion">
   <div class="container is-max-desktop content">
       <h2 class="title">Conclusion</h2>
       <p>In this study, we have introduced Hippocrates, a comprehensive and open-source framework tailored for the medical domain, addressing a wide array of challenges faced by medical LLMs. We provide openly available datasets and establish an intuitive benchmark using the LM-Evaluation-Harness tool. We also introduce Hippo-M and Hippo-L , two 7B models demonstrating superior performance. Our work makes substantial contributions to the field by combining in-depth empirical research with a structured training methodology, offering invaluable insights and tools for future research not only in healthcare but in any area requiring domain-specific adaptation of LLMs</p>
   </div>
 </section>
+<!-- End Conclusion -->
 
 
+<!-- Limitations -->
 <section class="section" id="Limitations">
   <div class="container is-max-desktop content">
       <h2 class="title">Limitations and Safety</h2>
@@ -289,6 +318,7 @@
       <p><strong>Safety and Risks.</strong> Crucially, despite these advancements, it is important to highlight that these AI models need substantial improvements before they can be safely and effectively employed with real patients. They are not yet at a stage where they can provide medical advice or be utilized for commercial healthcare applications. This limitation highlights the need for ongoing, careful development and validation of AI systems to guarantee their reliability and safety in clinical settings. The path toward AI integration in patient care is still unfolding, and while it holds promise, it requires a methodical and thoroughly evaluated approach.</p>
   </div>
 </section>
+<!-- End Limitations -->
 
 
 <!--BibTex citation -->
