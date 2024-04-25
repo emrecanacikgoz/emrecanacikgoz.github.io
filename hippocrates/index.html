@@ -61,6 +61,7 @@
           margin: 3px; /* 外边距 */
       }
   </style>
+
     
 </head>
 <body>
@@ -81,6 +82,7 @@
                     vertical-align: middle;
                   }
                 </style>
+                
                 <img src="static/images/logo.png" class="logo" alt="Logo" />
                 Hippocrates:<br>An Open-Source Framework for Advancing<br>Large Language Models in Healthcare
             </h1>
@@ -306,7 +308,7 @@ End Hippocrates Framework -->
                     <img src="static/images/stages.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 95%;"/>
                     <br>
                     <ul style="list-style-type: none;">
-                        <li><strong>Hippo-<img src="static/images/meta.png" class="logo" alt="Logo" />.</strong> Our evaluation methodology for the LLaMA2 7B model covers successive training stages: Continued Pre-training (CP), Instruction Tuning (SFT), and Direct Preference Optimization (DPO). As listed in table above, the base model LLaMA2 7B initially achieves an average accuracy of 34.0 across benchmarks. The CP stage marginally increases accuracy to 34.4, indicating initial benefits from domain-focused continued pre-training. The subsequent introduction of SFT yields a substantial performance boost to an average accuracy of 50.3, demonstrating the critical role of customized instruction in enhancing the model’s capabilities in understanding and answering medical queries. Integrating CP with SFT further improves this performance to 53.0, highlighting the combined value of domain knowledge and specific instruction tuning. The final DPO stage slightly decreases the model's performance to 52.5, albeit with a slight increase in accuracy for MedMCQA and PubMedQA, illustrating DPO's refined impact on model preference alignment. This sequence delineates the incremental enhancements attributable to each training phase, with SFT marking a pivotal improvement. The composite model, LLaMA2 + CP + SFT, is thus designated as Hippo-LLaMA for its distinguished performance across our benchmarks.
+                        <li><strong>Hippo-<style>.logo1 {vertical-align: middle;}</style>l<img src="static/images/meta.png" class="logo1" alt="Logo" />.</strong> Our evaluation methodology for the LLaMA2 7B model covers successive training stages: Continued Pre-training (CP), Instruction Tuning (SFT), and Direct Preference Optimization (DPO). As listed in table above, the base model LLaMA2 7B initially achieves an average accuracy of 34.0 across benchmarks. The CP stage marginally increases accuracy to 34.4, indicating initial benefits from domain-focused continued pre-training. The subsequent introduction of SFT yields a substantial performance boost to an average accuracy of 50.3, demonstrating the critical role of customized instruction in enhancing the model’s capabilities in understanding and answering medical queries. Integrating CP with SFT further improves this performance to 53.0, highlighting the combined value of domain knowledge and specific instruction tuning. The final DPO stage slightly decreases the model's performance to 52.5, albeit with a slight increase in accuracy for MedMCQA and PubMedQA, illustrating DPO's refined impact on model preference alignment. This sequence delineates the incremental enhancements attributable to each training phase, with SFT marking a pivotal improvement. The composite model, LLaMA2 + CP + SFT, is thus designated as Hippo-LLaMA for its distinguished performance across our benchmarks.
                         <li><strong>Hippo-<img src="static/images/mistral.png" class="logo" alt="Logo" />.</strong> Following the approach for Hippo-LLaMA, the training evolution for the Mistral 7B model reveals gradual improvement in the model's proficiency in medical question-answering. Initial results from the baseline Mistral 7B model, as shown in the table, show an average benchmark accuracy of 39.3. Implementing CP slightly improves this to 41.0, reflecting the positive yet modest impact of domain-specific continued pre-training. The pivotal SFT stage significantly raises the performance, achieving an average accuracy of 61.6, emphasizing the critical role of customized instruction in enhancing the model's interpretative and response capabilities for medical inquiries. Interestingly, combining CP and SFT results in a slight reduction to 61.1, suggesting a complex interaction between domain pre-training and instruction tuning. The subsequent application of DPO slightly lowers the overall score to 59.6, similar to the pattern observed for Hippo-LaMMA, with targeted performance adjustment. Based on comprehensive analysis, Mistral 7b + SFT is selected to represent Hippo-Mistral, credited for its exceptional performance across all benchmarks.
                   </div>
               </div>
