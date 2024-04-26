@@ -3,7 +3,7 @@ layout: post
 title:  <a href="https://cyberiada.github.io/Hippocrates/">Hippocrates&#58 An Open-Source Framework for Advancing Large Language Models in Healthcare</a>
 date:   2025-04-26 12:01:59 +00:00
 image: hippo.png
-categories: "2025"
+categories: hippo
 author: "Emre Can Acikgoz"
 authors: "<strong>Emre Can Acikgoz</strong>, Osman Batur İnce, Rayene Bench, Arda Anıl Boz, Ilker Kesen, Aykut Erdem, Erkut Erdem"
 venue: "arXiv"
