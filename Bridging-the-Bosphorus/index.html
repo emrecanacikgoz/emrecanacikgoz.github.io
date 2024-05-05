@@ -233,18 +233,15 @@
                     <p style="font-size: 125%">
                         We investigate three main questions during experiments:
                         <ul style="font-size: 125%; padding-left: 5%">
+                            
+                        <li><span style="font-weight: bold;">(i) Enhancing Non-English Models: Fine-Tuning vs. From-Scratch Training. </span> 
+                            The analysis of Turkish language models, specifically comparing models trained from scratch, continued pretraining from GPT2-xl, and those adapted using Mistral 7B, shows insightful trends. According to table, the Mistral 7B adapted model exhibits superior performance on Turkish question-answering tasks, compared to other methods. Moreover, starting from scratch surpasses the continued pretraining approach within the same model architecture, underscoring the significance of the base language model when undertaking continued pretraining. This is evidenced by the discrepancy in accuracy between models fine-tuned from Mistral 7B versus those from GPT2. Therefore, applying continued pretraining to a robust base language model emerges as the most effective strategy for low-resource languages, considering both data scarcity and hardware constraints. </li>
                             <br>
                             <img src="assets/images/case1.png" class="interpolation-image"
                             alt="" style="display: block; margin-left: auto; margin-right: auto; width: 60%;"/>
                             <br>
-                        <li><span style="font-weight: bold;">(i) Enhancing Non-English Models: Fine-Tuning vs. From-Scratch Training. </span> 
-                            TThe analysis of Turkish language models, specifically comparing models trained from scratch, continued pretraining from GPT2-xl, and those adapted using Mistral 7B, shows insightful trends. According to table, the Mistral 7B adapted model exhibits superior performance on Turkish question-answering tasks, compared to other methods. Moreover, starting from scratch surpasses the continued pretraining approach within the same model architecture, underscoring the significance of the base language model when undertaking continued pretraining. This is evidenced by the discrepancy in accuracy between models fine-tuned from Mistral 7B versus those from GPT2. Therefore, applying continued pretraining to a robust base language model emerges as the most effective strategy for low-resource languages, considering both data scarcity and hardware constraints. </li>
-                            
                         
-                            <br>
-                            <img src="assets/images/case2.png" class="interpolation-image"
-                            alt="" style="display: block; margin-left: auto; margin-right: auto; width: 60%;"/>
-                            <br>
+                            
                         <li><span style="font-weight: bold;">(ii) Effect of Supervised Fine-Tuning: Assessing Model Performance with the Proposed IT Dataset.</span>
                             Supervised Fine-Tuning (SFT) plays a crucial role in enhancing the reasoning capabilities of LLMs, 
                             as highlighted in existing research. In this context, we introduced a novel Turkish 
@@ -254,14 +251,18 @@
                              This improvement underscores the effectiveness of SFT when applied to our tailored IT dataset, 
                              bolstering our model's reasoning proficiency slightly.
                             </li> 
-                            
                             <br>
-                            <img src="assets/images/case3.png" class="interpolation-image"
+                            <img src="assets/images/case2.png" class="interpolation-image"
                             alt="" style="display: block; margin-left: auto; margin-right: auto; width: 60%;"/>
                             <br>
+
+                            
                         <li><span style="font-weight: bold;">(iii) Retention after Fine-Tuning: Will Models Forget English-Learned Skills When Fine-Tuning on Another Language?</span>
                             According to table and plots, further pretraining of base English language models such as GPT2 and Mistral results in a decrease in accuracy proportional to the number of samples used during continued pretraining on the English downstream tasks TruthfulQA and ARC, compared to their original base scores before fine-tuning on Turkish. This indicates catastrophic forgetting, where the models lose their prior knowledge upon being fine-tuned on a smaller language dataset, as evidenced by a decline in baseline accuracy compared to the versions not previously trained, even after applying techniques like LoRA training. One further work for this could be including some English data along with Turkish in each batch during continued pretraining.</li>
-                            
+                            <br>
+                            <img src="assets/images/case3.png" class="interpolation-image"
+                            alt="" style="display: block; margin-left: auto; margin-right: auto; width: 80%;"/>
+                            <br>
                     </ul>
                     </p>
 
