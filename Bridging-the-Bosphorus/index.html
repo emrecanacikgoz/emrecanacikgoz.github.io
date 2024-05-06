@@ -132,7 +132,7 @@
                         <ul style="list-style-type: disc; margin-left: 20px;">
                             <li> <strong>Hamza LLMs.</strong> We release the Hamza LLM series: <a href="https://huggingface.co/emrecanacikgoz/hamza-small">Hamza-small</a>, <a href="https://huggingface.co/emrecanacikgoz/hamza-medium">Hamza-medium</a>, <a href="https://huggingface.co/emrecanacikgoz/hamza-large">Hamza-large</a>, and <a href="https://huggingface.co/emrecanacikgoz/hamza-xl">Hamza-xlarge</a>. Notably, Hamza-xlarge with 1.3B parameters marks the premier and most expansive open-source, scientifically vetted Turkish LLM that is trained on 300B tokens. We also introduce <a href="https://huggingface.co/emrecanacikgoz/hamza-mistral">Hamza<span class="scriptsize">Mistral</span></a> and <a href="https://huggingface.co/emrecanacikgoz/hamza-gpt2-xl">Hamza<span class="scriptsize">GPT2-xl</span></a>, adapted from Mistral 7B and GPT2-xl, respectively.</li>
                             <li> <strong>Fine-Tuning vs. From-Scratch Training.</strong> Our analysis explores two distinct methodologies for developing Turkish LLMs in resource and computational power-constrained environments: (i) extending pretrained models (Mistral-7b and GPT2-xl) with Turkish-only data (called as Hamza<span class="scriptsize">Mistral</span> and Hamza<span class="scriptsize">GPT2-xl</span>), and (ii) constructing a model from scratch, similar to the GPT2 approach. This paper thoroughly discusses the merits and drawbacks of these strategies. </li>
-                            <li> <strong>Turkish LLM Benchmarking.</strong> We've curated and validated Turkish evaluation datasets, <a href="https://huggingface.co/datasets/mukayese/truthful_qa-tr">TruthfulQA-TR</a> and <a href="https://huggingface.co/datasets/mukayese/arc-tr">ARC-TR</a>. These meticulously cleaned datasets are now available, alongside a leaderboard to stimulate ongoing advancements in Turkish LLMs. </li>
+                            <li> <strong>Turkish LLM Benchmarking.</strong> We have curated new Turkish evaluation datasets <a href="https://huggingface.co/datasets/mukayese/truthful_qa-tr">TruthfulQA-TR</a> and <a href="https://huggingface.co/datasets/mukayese/arc-tr">ARC-TR</a> by carefully validating each with multiple annotators, offering meticulously cleaned datasets, and launching a leaderboard to catalyze ongoing advancements in Turkish LLMs. </li>
                             <li> <strong>Open Source Community.</strong> Committing to open science principles, we make all source codes, model checkpoints, and datasets open-source and publicly accessible. </li>
                         </ul>
                         <p>By detailing the development of specialized datasets and methodologies, we offer a comprehensive guide for building LLMs for languages with limited resources. Additionally, our contributions substantially enrich the field by providing critical resources that will support future research in Turkish language processing and the broader area of Natural Language Processing (NLP) for under-resourced languages.</p>
@@ -304,6 +304,15 @@
 }</code></pre>
     </div>
 </section>
+
+
+<section class="section" id="Acknowledgements">
+    <div class="container is-max-desktop content">
+        <h2 class="title">Acknowledgements</h2>
+        This work is supported in part provided by the KUIS AI Center. The numerical calculations reported in this paper were fully/partially performed at TUBITAK ULAKBIM, High Performance and Grid Computing Center (TRUBA resources). Last but not least, we also acknowledge VSB – Technical University of Ostrava, IT4Innovations National Supercomputing Center, Czech Republic, for awarding this project access to the LUMI supercomputer, owned by the EuroHPC Joint Undertaking, hosted by CSC (Finland) and the LUMI consortium through the Ministry of Education, Youth and Sports of the Czech Republic through the e-INFRA CZ (grant ID: 90254)
+    </div>
+  </section>
+
 
 <footer class="footer">
     <div class="container">
