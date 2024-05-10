@@ -118,47 +118,27 @@
         </tr>
         </table>
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          {% for post in site.posts %}
-          {% for cat in post.categories %}
-          {% if cat == 'vilma' %}
-          <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <img src='images/vilma.png' width="160">
-            </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
-              <h3>{{post.title}}</h3>
-              <br>
-              {{post.authors}}
 
-              <br>
-              <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }}
-              <br>
-              {% if post.arxiv %}
-              <a href="{{post.arxiv}}">arxiv</a> /
-              {% endif %}
-              {% if post.video %}
-              <a href="{{post.video}}">video</a> /
-              {% endif %}
-              {% if post.code %}
-              <a href="{{post.code}}">code</a> /
-              {% endif %}
-              {% if post.poster %}
-              <a href="{{post.poster}}">poster</a> /
-              {% endif %}
-              {% if post.slides %}
-              <a href="{{post.slides}}">slides</a> 
-              {% endif %}
-              {% if post.website %}
-              <a href="{{post.website}}">website</a> 
-              {% endif %}
-              <p></p>
-              {{ post.excerpt }}
-            </td>
-          </tr>
-          {% endif %}
-          {% endfor %}
-          {% endfor %}
+        <table 
+        <tr>
+          <td style="padding:20px;width:25%;vertical-align:middle">
+            <img src="images/vilma.png" alt="vilma" width="160" height="120" style="border-style: none">
+          </td>
+          <td width="75%" valign="middle">
+            <a href="https://cyberiada.github.io/ViLMA/" id="vilma">
+              <span class="papertitle"><strong>ViLMA: A Zero-Shot Benchmark for Linguistic and Temporal Grounding in Video-Language Models</strong></span>
+            </a>
+            <br>
+            Ilker Kesen, Andrea Pedrotti, Mustafa Dogan, Michele Cafagna, <strong>Emre Can Acikgoz</strong>, Letitia Parcalabescu, Iacer Calixto, Anette Frank, Albert Gatt, Aykut Erdem, Erkut Erdem
+            <br>
+            <em>ICLR</em>, 2024
+            <br>
+            <a href="https://arxiv.org/abs/2311.07022">arxiv</a> 
+            / <a href=" https://cyberiada.github.io/ViLMA/">website</a> 
+            / <a href="https://github.com/ilkerkesen/ViLMA">code</a>
+            <p>ViLMA (Video Language Model Assessment) presents a comprehensive benchmark for Video-Language Models, starting with a fundamental comprehension test and followed by a more advanced evaluation for temporal reasoning skills.</p>
+          </td>
+        </tr>
         </table>
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
@@ -170,45 +150,28 @@
           </tr>
         </table>
         
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          {% for post in site.posts %}
-          {% for cat in post.categories %}
-          {% if cat == '2022' %}
-          <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <img src='images/mrl2022.png' width="160">
-            </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
-              <h3>{{post.title}}</h3>
-              <br>
-              {{post.authors}}
-
-              <br>
-              <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }}
-              <br>
-              {% if post.arxiv %}
-              <a href="{{post.arxiv}}">arxiv</a> /
-              {% endif %}
-              {% if post.video %}
-              <a href="{{post.video}}">video</a> /
-              {% endif %}
-              {% if post.code %}
-              <a href="{{post.code}}">code</a> /
-              {% endif %}
-              {% if post.poster %}
-              <a href="{{post.poster}}">poster</a> /
-              {% endif %}
-              {% if post.slides %}
-              <a href="{{post.slides}}">slides</a> 
-              {% endif %}
-              <p></p>
-              {{ post.excerpt }}
-            </td>
-          </tr>
-          {% endif %}
-          {% endfor %}
-          {% endfor %}
+        <table 
+        <tr>
+          <td style="padding:20px;width:25%;vertical-align:middle">
+            <img src="images/mrl2022.png" alt="mrl" width="160" height="120" style="border-style: none">
+          </td>
+          <td width="75%" valign="middle">
+            <a href="https://arxiv.org/pdf/2211.01736.pdf" id="vilma">
+              <span class="papertitle"><strong>Transformers on Multilingual Clause-Level Morphology</strong></span>
+            </a>
+            <br>
+            Ilker Kesen, Andrea Pedrotti, Mustafa Dogan, Michele Cafagna, <strong>Emre Can Acikgoz</strong>, Letitia Parcalabescu, Iacer Calixto, Anette Frank, Albert Gatt, Aykut Erdem, Erkut Erdem
+            <br>
+            <em>EMNLP Workshop</em>, 2022
+            <br>
+            <a href="https://arxiv.org/pdf/2211.01736.pdf">arxiv</a> 
+            / <a href="https://github.com/emrecanacikgoz/mrl2022">code</a> 
+            / <a href="/pdfs/mrl-pres-new.pdf">slides</a>
+            <p>This paper describes the winning approaches in <a href="https://sigtyp.github.io/st2022-mrl.html">MRL: The 1st Shared Task on Multilingual Clause-level Morphology</a>. Our submission, which excelled in all three parts of the shared task — inflection, reinflection, and analysis — won the first prize in each category.</p>
+          </td>
+        </tr>
         </table>
+            
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
