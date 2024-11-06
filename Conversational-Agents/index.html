@@ -181,7 +181,7 @@ This post only focuses on prompt engineering for autoregressive language models,
 
         <div class="inner"><ul>
                 <li><a href="#llm-oriented-domain-shift" aria-label="LLM-oriented Domain Shift">LLM-oriented Domain Shift</a></li>
-                <li><a href="#transforming-conversational-ai" aria-label="Transforming Conversational AI">Transforming Conversational AI</a></li>
+                <li><a href="#conversational-ai-agents" aria-label="Conversational AI Agents">Conversational AI Agents</a></li>
                 <li><a href="#challenges-and-future-directions" aria-label="Challenges and Future Directions">Challenges and Future Directions</a></li>
                 <li><a href="#citation" aria-label="Citation">Citation</a></li>
                 <li><a href="#useful-resources" aria-label="Useful Resources">Useful Resources</a></li>
@@ -212,12 +212,16 @@ This post only focuses on prompt engineering for autoregressive language models,
 <img src="assets/images/conv-new.png" style="width: 100%;" class="center" />
     <figcaption>Figure 2. Example of a dialogue between a user and an agent with support from tool calls.</figcaption>
 
-<h1 id="Transforming Conversational AI">Transforming Conversational AI<a hidden class="anchor" aria-hidden="true" href="#transforming-conversational-ai">#</a></h1>
-<p>We defined a <em>Conversational Agent</em> as an LLM-based system designed to perform multi-turn interactions with users, by integrating reasoning and planning capabilities with action execution, following the predefined instructions.</p>
-<p>While LLMs excel in language tasks, they often lack real-time information retrieval and user-specific action capabilities. Tool-enabled agents can now make API calls or interact with external systems to fetch real-time data, like checking the weather or booking a reservation. These agents can manage real-world operations more effectively, providing users with more practical and responsive assistance.</p>
-<p>Some applications require more than just responses—they require action-based reasoning, like planning a series of steps. The ReAct framework enables LLMs to combine reasoning with actions, making them capable of following a more analytical process. Meanwhile, systems like Reflexion encourage LLMs to self-reflect, learning from past errors to improve future decisions.</p>
-<p>Some applications require more than just responses—they require action-based reasoning, like planning a series of steps. The ReAct framework enables LLMs to combine reasoning with actions, making them capable of following a more analytical process. Meanwhile, systems like Reflexion encourage LLMs to self-reflect, learning from past errors to improve future decisions.</p>
-<p>Multi-agent frameworks can coordinate specialized agents to handle complex tasks. For example, a travel planning system may employ a “concierge” AI to manage and delegate tasks among specialized agents, such as flight bookings, hotel reservations, or restaurant searches, improving both accuracy and efficiency in handling intricate, multi-faceted queries. </p>
+<h1 id="Conversational AI Agents">Conversational AI Agents<a hidden class="anchor" aria-hidden="true" href="#conversational-ai-agents">#</a></h1>
+<p>In this blogpost, we explicitly want to motivate the emergent field of <em>Conversational Agent</em>, where an LLM-based agent designed to perform multi-turn interactions with users, by integrating reasoning and planning capabilities with action execution.</p>
+<p>We categorize the recent developments on LLM Agents into three different categories: (i) tool-usage, (ii) thinking, planning, and acting, and (iii) Evaluation.</p>
+
+<p><strong>Tools Usage.</strong> While LLMs are good at solving language tasks with their own reasoning (CITE CoT), they struggle with real-time tasks that requires perfoming actions like checking live weather or executing specific commands. Integrating tools like APIs can help LLMs perform these tasks by letting them call functions directly CITE(OpenAI Function Calling). Studies such as ToolFormer (CITE), Gorilla (CITE), and ToolLLM (CITE) have shown that enabling LLMs to use tools that improves their ability to complete tasks.</p>
+
+<p><strong>Reasoning, Planning, and Acting.</strong> Adding tools helps, but LLMs still need the skill to think through tasks and decide on when and how to call theright actions. Focusing that  ReAct (CITE) let these LLM agents to think and act by integrating thought with execution for effective outcomes. Proprietary models like GPT-4 are ahead in these agent skills, but methods like FireAct (CITE) and AgentTuning (CITE) work on training open-source models for agent thinking and acting. On the other hand, agents sometimes follow planned steps to reach goals, from moving physically \cite{sarch2024helper,wang2024executable} to online navigation CITE(Webarena), sharing progress with users for real-time feedback and smoother interactions.</p>
+
+<p><strong>Evaluation.</strong> Agent evaluation has evolved from checking basic commands CITE(tur2011spoken) to more advanced tests, like tracking multi-turn dialogue CITE(rastogi2020towards-sgd) and completing complex tasks in real time CITE(hudevcek2023llms). New benchmarks like AgentBench CITE(liu2023agentbench) and GAIA CITE(mialon2023gaia) assess agents on tougher challenges, including maintaining consistency over multiple interactions and adapting to changing environments. Recent work, like $\tau$-bench~\cite{Yao2024tau} and TravelPlanner~\cite{Xie2024TravelPlanner}, pushes the frontier by measuring both interactive consistency and environmental adaptability in real-world scenarios.</p>
+
 
 <img src="assets/images/blog-stats.png" style="width: 100%;" class="center" />
     <figcaption>Figure 3. LLM-oriented Agent publications in top-tier conferences (ACL, NAACL, EMNLP, AAAI, ICML, ICLR, NeurIPS) from 2021 to 2024. Publication counts were determined through simple string matching by searching for agents in paper titles and categorizing each as LLM-based. For ambiguous titles, further reading was performed.</figcaption>
