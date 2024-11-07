@@ -200,7 +200,7 @@ This post only focuses on prompt engineering for autoregressive language models,
 
     
     <img src="assets/images/conv-new.png" style="width: 100%;" class="center" />
-    <figcaption>Figure 2. Example of a dialogue between a user and an agent with support from tool calls.</figcaption>
+    <figcaption>Figure 1. Example of a dialogue between a user and an agent with support from tool calls.</figcaption>
     
 
 <h1 id="Paradigm Shift in the Era of LLMs">Paradigm Shift in the Era of LLMs<a hidden class="anchor" aria-hidden="true" href="#llm-oriented-domain-shift">#</a></h1>
@@ -210,7 +210,7 @@ This post only focuses on prompt engineering for autoregressive language models,
 <p>Despite these, when interacting with users, LLMs remain fundamentally limited to their parametric knowledge during response generation, lacking emergent agent abilities like reasoning, planning, decision-making, and acting.</p>
 
 <img src="assets/images/blog1.png" style="width: 100%;" class="center" />
-    <figcaption> Figure 1. Illustration of LLM-oriented agent research growth over time, categorized into three key areas: Tools and LLMs, Reasoning-Planning-Acting, and Datasets and Benchmarks. Each category is color-coded to highlight advancements according to their release timelines.</figcaption>
+    <figcaption> Figure 2. Illustration of LLM-oriented agent research growth over time, categorized into three key areas: Tools and LLMs, Reasoning-Planning-Acting, and Datasets and Benchmarks. Each category is color-coded to highlight advancements according to their release timelines.</figcaption>
 
 <h1 id="Conversational AI Agents">Conversational AI Agents<a hidden class="anchor" aria-hidden="true" href="#conversational-ai-agents">#</a></h1>
 <p>In this blogpost, we explicitly want to motivate the emergent field of <em>Conversational Agent</em>, where an LLM-based agent designed to perform multi-turn interactions with users, by integrating reasoning and planning capabilities with action execution.</p>
@@ -220,11 +220,12 @@ This post only focuses on prompt engineering for autoregressive language models,
 
 <p><strong>Reasoning, Planning, and Acting.</strong> Adding tools helps, but LLMs still need the skill to think through tasks and decide on when and how to call theright actions. Focusing that ReAct <a href="https://arxiv.org/abs/2210.03629">(Yao et al., 2022)</a> let these LLM agents to think and act by integrating thought with execution for effective outcomes. Proprietary models like GPT-4 are ahead in these agent skills, but methods like AgentTuning <a href="https://arxiv.org/abs/2310.12823">(Zeng et al., 2023)</a> and FireAct <a href="https://arxiv.org/abs/2310.05915">(Chen et al., 2023)</a> work on training open-source models for agent thinking and acting. On the other hand, agents sometimes follow planned steps to reach goals, from moving physically such as Helper-X <a href="https://arxiv.org/abs/2404.19065"> (Sarch et al., 2024)</a> and CodeAct <a href="https://arxiv.org/abs/2402.01030">(Wang et al., 2024)</a> to online navigation like Webarena <a href="https://arxiv.org/abs/2307.13854">(Zhou et al., 2023)</a>, sharing progress with users for real-time feedback and smoother interactions.</p>
 
-<p><strong>Evaluation.</strong> Agent evaluation has evolved from checking basic commands <a href="https://ieeexplore.ieee.org/book/8042134">(Tur et al., 2011)</a> to more advanced tests, like tracking multi-turn dialogue <a href="https://arxiv.org/abs/1909.05855">(Rastogi et al., 2019)</a> and completing complex tasks in real time <a href="https://arxiv.org/abs/2304.06556">(Hudecek et al., 2023)</a>. New benchmarks like AgentBench <a href="https://arxiv.org/abs/2308.03688">(Liu et al., 2023)</a>  and GAIA <a href="https://arxiv.org/abs/2311.12983">(Mialon et al., 2023)</a> assess agents on tougher challenges, including maintaining consistency over multiple interactions and adapting to changing environments. Recent work, like $\tau$-bench <a href="https://arxiv.org/abs/2406.12045">(Yao et al., 2024)</a>  and TravelPlanner <a href="https://arxiv.org/abs/2402.01622">(Xie et al., 2024)</a>, pushes the frontier by measuring both interactive consistency and environmental adaptability in real-world scenarios.</p>
+<p><strong>Evaluation.</strong> Agent evaluation has evolved from checking basic commands <a href="https://ieeexplore.ieee.org/book/8042134">(Tur et al., 2011)</a> to more advanced tests, like tracking multi-turn dialogue <a href="https://arxiv.org/abs/1909.05855">(Rastogi et al., 2019)</a> and completing complex tasks in real time <a href="https://arxiv.org/abs/2304.06556">(Hudecek et al., 2023)</a>. New benchmarks like AgentBench <a href="https://arxiv.org/abs/2308.03688">(Liu et al., 2023)</a>  and GAIA <a href="https://arxiv.org/abs/2311.12983">(Mialon et al., 2023)</a> assess agents on tougher challenges, including maintaining consistency over multiple interactions and adapting to changing environments. Recent work, like $\tau$-bench <a href="https://arxiv.org/abs/2406.12045">(Yao et al., 2024)</a> and TravelPlanner <a href="https://arxiv.org/abs/2402.01622">(Xie et al., 2024)</a>, pushes the frontier by measuring both interactive consistency and environmental adaptability in real-world scenarios.</p>
 
 
-<img src="assets/images/blog-stats.png" style="width: 100%;" class="center" />
-    <figcaption>Figure 3. LLM-oriented Agent publications in top-tier conferences (ACL, NAACL, EMNLP, AAAI, ICML, ICLR, NeurIPS) from 2021 to 2024. Publication counts were determined through simple string matching by searching for agents in paper titles and categorizing each as LLM-based. For ambiguous titles, further reading was performed.</figcaption>
+<img src="assets/images/modern.png" style="width: 100%;" class="center" />
+    <figcaption>Figure 3. A modern flowcaht for LLM-based Conversational Agent that integrates explicit reasoning (or "thinking"), real-time API calls, aacting, and continuous learning from environmental observations. </figcaption>
+
 
 <h1 id="Next-Generation Conversational Task-Completion Agents">Next-Generation Conversational Task-Completion Agents<a hidden class="anchor" aria-hidden="true" href="#next-generation-conversational-task-completion-agents">#</a></h1>
 <p>Beside general Agent domain, LLMs have reshaped dialogue systems by transitioning from rigid, modular architectures <a href="https://mi.eng.cam.ac.uk/reports/svr-ftp/SJYoung_ICSLP02.pdf">(Young et al., 2002)</a> to adaptive, agent-based frameworks that can handle complex and multi-turn interactions with refined prompting and fine-tuning methods <a href="https://arxiv.org/abs/2205.12673">(Gupta et al., 2022)</a>. Rest, we will investigate the urgent required capabilities of Conversational Agents for better system towards AGI.</p>
@@ -233,13 +234,15 @@ This post only focuses on prompt engineering for autoregressive language models,
 <p><strong>Interactivity.</strong> Recent advances, like ReSpAct <a href="https://arxiv.org/abs/2411.00927">(Vardhan et al., 2023)</a>, advocate for user-guided interactions to clarify and adapt agent behavior in real-time, addressing ambiguities and obstacles for more natural and controllable dialogues.</p>
 <p><strong>Multi-Agent Collaboration.</strong> Finally, multi-agent frameworks like AutoGen <a href="https://arxiv.org/abs/2308.08155">(Wu et al., 2023)</a> allow specialized agents to collaborate, with a central "concierge" agent orchestrating tasks. This colloborative interaction between different agetns can enhance accuracy and user experience in complex settings such as customer service .</p>
 
+<img src="assets/images/blog-stats.png" style="width: 100%;" class="center" />
+    <figcaption>Figure 4. LLM-oriented Agent publications in top-tier conferences (ACL, NAACL, EMNLP, AAAI, ICML, ICLR, NeurIPS) from 2021 to 2024. Publication counts were determined through simple string matching by searching for agents in paper titles and categorizing each as LLM-based. For ambiguous titles, further reading was performed.</figcaption>
 
 <h1 id="Challenges and Future Directions">Challenges and Future Directions<a hidden class="anchor" aria-hidden="true" href="#challenges-and-future-directions">#</a></h1>
 <p>Conversational AI Agents have made remarkable progress but challenges remain. Ensuring controllability, managing context, and avoiding hallucinations (where the agent generates inaccurate responses or trying to call the tools that are not exist) are interesting areas for improvement. Agents will also need personalized interactions, where memory-based systems track user preferences for more tailored responses, enhancing trust and user satisfaction. Finally, proper benchmarks focused on these agentic abilities are essential—serving as an "ImageNet" for Agents—to significantly accelerate research in Conversational Agents. Furthermore, it is crucial to streamline these benchmarks, as they currently require significant manual setup. Ideal Agent benchmarks should be engineered for easy deployment and allowis researchers to set up and run evaluation environments within minutes.</p>
 <p>Looking forward, this shift presents both exciting opportunities and important challenges. While  significant progress has been made in agentic features like tool usage, memory, policy control, and collaboration, there remains much to explore in creating intelligent, adaptive, and reliable agents.</p>
 
 
-<h1 id="citation">Citation<a hidden class="anchor" aria-hidden="true" href="#citation">#</a></h1>ß
+<h1 id="citation">Citation<a hidden class="anchor" aria-hidden="true" href="#citation">#</a></h1>
 <pre tabindex="0"><code>@article{acikgoz2024agents,
   title   = &#34;The Rise of Conversational AI Agents with Large Language Models&#34;,
   author  = &#34;Emre Can Acikgoz and Dilek Hakkani-Tur and Gokhan Tur&#34;,
