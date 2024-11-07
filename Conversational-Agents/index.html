@@ -66,11 +66,14 @@ if (!doNotTrack) {
 }
 </script>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7GMW2L1KQC"></script>
 <script>
-    fetch('static/js/functions/count-visit', { method: 'POST' })
-      .then(response => response.text())
-      .then(data => console.log(data))
-      .catch(error => console.error('Error:', error));
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7GMW2L1KQC');
 </script>
 
 
