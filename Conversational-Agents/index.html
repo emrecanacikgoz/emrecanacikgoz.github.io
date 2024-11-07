@@ -65,6 +65,15 @@ if (!doNotTrack) {
 	gtag('config', 'G-HFT45VFBX6', { 'anonymize_ip': false });
 }
 </script>
+
+<script>
+    fetch('static/js/functions/count-visit', { method: 'POST' })
+      .then(response => response.text())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+</script>
+
+
 <meta property="og:title" content="The Rise of Conversational AI Agents with Large Language Models" />
 <meta property="og:description" content="The Rise of Conversational AI Agents with Large Language Models, also known as In-Context Prompting, refers to methods for how to communicate with LLM to steer its behavior for desired outcomes without updating the model weights. It is an empirical science and the effect of prompt engineering methods can vary a lot among models, thus requiring heavy experimentation and heuristics.
 This post only focuses on prompt engineering for autoregressive language models, so nothing with Cloze tests, image generation or multimodality models." />
