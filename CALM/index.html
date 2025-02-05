@@ -24,8 +24,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>Hippocrates</title>
-  <link rel="icon" href="./static/images/logo.png">
+  <title>CALM</title>
+
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="static/css/bulma.min.css">
@@ -199,7 +199,7 @@
               <div class="column has-text-centered">
                   <h2 class="title is-3">CALM</h2>
                   <div class="content has-text-justified">
-                    <img src="static/images/conv-new-new.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 100%;"/>
+                    <img src="static/images/conv-new-new.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 75%;"/>
                     <br>
                     <p> Imagine chatting with an AI that not only understands your every question across multiple turns but can also seamlessly call external services—like booking a hotel, checking flight tickets, or retrieving product information—when needed. This vision has long been the holy grail of conversational AI, and the emergence of Large Language Models (LLMs) has brought us closer than ever. However, there remains a significant trade-off: traditional Task-Oriented Dialogue (TOD) systems excel at carefully orchestrated, multi-turn conversations but lack the adaptability to use new tools or APIs. Language Agents (LAs), on the other hand, can dynamically invoke APIs but often fumble through multi-turn scenarios, losing track of what the user really wants. Our paper tackles this dilemma head-on.</p>
                     <p>Our release includes:</p>
@@ -270,7 +270,7 @@ End Hippocrates Framework -->
               <div class="column has-text-centered">
                   <h2 class="title is-3">Confronting the TOD vs. LA Dilemma</h2>
                   <div class="content has-text-justified">
-                    <img src="static/images/conv-la.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 95%;"/>
+                    <img src="static/images/conv-la.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 75%;"/>
                     <br>
                     <ul style="list-style-type: none;">
                         <li> TOD systems typically rely on domain-specific data and rigid pipelines. They can accomplish booking tasks well in a controlled setting (e.g., "reserve a table at 6 PM"), but adding a new service—say, a flight API—requires new training data or extensive manual modifications. LAs, powered by advanced LLMs, handle a broad range of APIs on the fly, yet they may go off track in longer dialogues: user intentions get muddled, or the conversation derails. As user demands expand beyond narrowly defined tasks, we need an agent that can juggle wide-ranging domains, maintain conversation flow, and call upon a varied set of tools without skipping a beat. <br>     
@@ -290,7 +290,7 @@ End Hippocrates Framework -->
               <div class="column has-text-centered">
                   <h2 class="title is-3">Introducing CALM Framework</h2>
                   <div class="content has-text-justified">
-                    <img src="static/images/calm.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 95%;"/>
+                    <img src="static/images/calm.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 75%;"/>
                     <br>
                     <ul style="list-style-type: none;">
                         <li><strong>CALM.</strong> To bridge this gap, we propose CALM (Conversational Agentic Language Model), a unified approach that combines the robust multi-turn dialogue management of TOD with the dynamic function-calling prowess of LAs. Drawing on diverse data sources, we interleave standard booking flows, open-ended dialogues, and complex function calls, all unified under the umbrella of a single system. The result is an agent that adapts to new services without exhaustive retraining, while also preserving the clarity of multi-turn user interactions.<br> <br>
@@ -311,7 +311,7 @@ End Hippocrates Framework -->
               <div class="column has-text-centered">
                   <h2 class="title is-3">Results</h2>
                   <div class="content has-text-justified">
-                    <img src="static/images/res-bar.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 95%;"/>
+                    <img src="static/images/res-bar.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 75%;"/>
                     <br>
                     <ul style="list-style-type: none;">
                       <li><strong>Results on MultiWOZ.</strong> we compare CALM against specialized approaches and baseline LLMs. Traditional dialogue systems outperformed LAs on MultiWOZ’s core metrics like Inform Rate and Success Rate—often surpassing 40–50% success when well-trained. But LAs with advanced API-calling capabilities saw their success rates plummet, sometimes below 20%, revealing their struggle to track user needs in multi-turn dialogues. In contrast, CALM soared: even our smallest CALM-8B model doubled the success rates of typical LAs, and our larger models rivaled or exceeded top proprietary solutions.<br> <br>
