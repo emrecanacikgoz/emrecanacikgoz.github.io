@@ -83,7 +83,7 @@
                   }
                 </style>
                 
-                Can Dialogue Systems Be Agents, and Agents Be Conversational?<br>CALM: A Unified Conversational Agentic Language Model 
+                Can a Single Model Master Both Multi-turn Conversations and Tool Use? CALM: A Unified Conversational Agentic Language Model
             </h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
@@ -91,10 +91,11 @@
               <span class="author-block"><sup>2</sup><a href="" target="_blank">Jeremiah Greer</a>,</span>
               <span class="author-block"><sup>1</sup><a href="" target="_blank">Akul Datta</a>,</span>
               <span class="author-block"><sup>1</sup><a href="" target="_blank">Ze Yang</a>,</span>
+              <span class="author-block"><sup>2</sup><a href="" target="_blank">William Zeng</a>,</span><br>
               <span class="author-block"><sup>2</sup><a href="" target="_blank">Oussama Elachqar</a>,</span><br>
               <span class="author-block"><sup>2</sup><a href="" target="_blank">Emmanouil Koukoumidis</a>,</span>
-              <span class="author-block"><sup>1</sup><a href="" target="_blank">Dilek Hakkani-Tur</a>,</span>
-              <span class="author-block"><sup>1</sup><a href="" target="_blank">Gokhan Tur</a></span>
+              <span class="author-block"><sup>1</sup><a href="https://siebelschool.illinois.edu/about/people/faculty/gokhan" target="_blank">Dilek Hakkani-Tur</a>,</span>
+              <span class="author-block"><sup>1</sup><a href="https://siebelschool.illinois.edu/about/people/faculty/dilek" target="_blank">Gokhan Tur</a></span>
             </div>
 
             <div class="is-size-5 publication-authors">
@@ -125,22 +126,22 @@
 
                       <!-- Huggingface link -->
                     <span class="link-block">
-                      <a href="https://huggingface.co/emrecanacikgoz" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                      <a href="https://huggingface.co/collections/uiuc-convai/calm-67a3da0baa69ae101e55699a" target="_blank" class="external-link button is-normal is-rounded is-dark">
                           <span class="icon">🤗</span>
                           <span>Models</span>
                       </a>
                     </span>
 
                       <span class="link-block">
-                        <a href="https://huggingface.co/emrecanacikgoz" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                            <span class="icon"><i class="fas fa-database"></i></span>
+                        <a href="https://huggingface.co/datasets/uiuc-convai/CALM-IT" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">🤗</span>
                             <span>Dataset</span>
                         </a>
                     </span>
 
                     <!-- Github link -->
                     <span class="link-block">
-                      <a href="https://huggingface.co/emrecanacikgoz" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                      <a href="https://github.com/oumi-ai/oumi" target="_blank" class="external-link button is-normal is-rounded is-dark">
                         <span class="icon"> <i class="fab fa-github"></i> </span>
                         <span>Code</span>
                       </a>
@@ -192,7 +193,7 @@
 </section>
 <!-- End paper abstract -->
 
-<!-- Hippo Series -->
+<!-- Why do we need CALM? -->
 <section class="hero">
   <div class="hero-body">
       <div class="container is-max-desktop">
@@ -218,52 +219,7 @@
 </section>
 <!-- End Hippo Series -->
 
-<!-- Hippocrates Framework
-<section class="hero">
-  <div class="hero-body">
-      <div class="container is-max-desktop">
-          <div class="columns is-centered">
-              <div class="column has-text-centered">
-                  <h2 class="title is-3">Hippocrates Framework</h2>
-                  <div class="content has-text-justified">
-                    <img src="static/images/fig2.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 95%;"/>
-                    <br>
-                    <ul style="list-style-type: none;">
-                      <li>In this work, we provide full access to our framework, from the data sources to the training configurations and the reproducible evaluation protocols. We conduct a detailed empirical analysis to identify the impact of various design elements on LLM performance, leading to a domain-adapted framework that demonstrates superior performance on multiple medical benchmarks. Based on these insights, we develop a step-by-step guide for the efficient training of medical-LLMs. Our research efforts yield two advanced 7B parameter models, Hippo-Mistral and Hippo-LLaMA. As shown in first figure, our models not only outperform existing 7B and 13B models by a significant margin but also deliver results on par with, and in some cases exceeding, those of 70B models. We argue that the development of a broad, varied collection of open models is crucial for deepening our knowledge of language models and enhancing their applicability across various domains.</li>
-                      <li>The figure above shows the evolution of medical LLM performances on the MedQA dataset. Our 7B Hippo-Mistral and Hippo-LLaMA models achieve 50.8% and 59.9% 5-shot accuracy, respectively. Hippo-Mistral outperforms all existing open models, including even those with 70B parameters.</li>
-                    </ul> 
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
-End Hippocrates Framework -->
-
-
-<!-- Dataset 
-<section class="hero">
-  <div class="hero-body">
-      <div class="container is-max-desktop">
-          <div class="columns is-centered">
-              <div class="column has-text-centered">
-                  <h2 class="title is-3">Datasets</h2>
-                  <div class="content has-text-justified">
-                    <ul style="list-style-type: none;">
-                          <li><strong>Continued Pre-training Data.</strong> A key aspect of our methodology is the integration of specialized medical knowledge through an extensive pre-training corpus, assembled from three specialized datasets: Medical Guidelines, PMC-Patients, and PubMedQA-contexts. The Medical Guidelines dataset comprises clinical practice guidelines, is used for training Meditron models. The PMC-Patients dataset consists of patient summaries extracted from case reports within PubMed Central (PMC). Additionally, the PubMedQA-contexts dataset is constructed by extracting the context field of each sample in the training split of the benchmark PubMedQA. This extensive corpus, consisting of roughly 300M training tokens, forms the foundation of our models, ensuring their proficiency in navigating medical terminology and practices. We systematically assessed the impact of each dataset, both individually and in combination, to optimize our model's performance. <br>
-                          <li><strong>General Instructions Data.</strong> This dataset aggregates more than 400K samples from nine different datasets, each derived from the instruction corpora of previous studies. By excluding data from the training or test splits of downstream QA benchmarks, we aim to minimize bias and improve the model's generalization capabilities across different reasoning tasks. A pre-processing protocol was employed to remove irrelevant noise such as superfluous words and web URLs, ensuring the data's quality and relevance.
-                          <li><strong>Evaluation Instructions Data.</strong> This dataset was formed to examine the effects of including instruction samples directly from downstream tasks, a common practice in existing studies. Instruction-response pairs were crafted using the training splits of various benchmarks, following the templates established in Meditron. We conducted a series of experiments to assess the distinct influence of each split on each task, both individually and collectively.
-                          <li><strong>Medical Preference Data.</strong> Constructing a preference dataset typically involves generating diverse responses to identical queries using LLMs, which are subsequently evaluated by human annotators to identify the most accurate response. This method, however, can become prohibitively expensive, both in terms of computation for generating responses and the financial and time investments required for manual annotation. To circumvent these issues, we leveraged the iCliniq-10k dataset, containing 10K authentic patient-doctor dialogues from icliniq.com. Each dialogue features a patient question accompanied by three different answers: one from an actual doctor, and the others from ChatGPT and ChatDoctor. We conducted a thorough preprocessing of this dataset to eliminate any irrelevant or extraneous information.
-                          <li><strong>Medical RLAIF.</strong> To reduce annotation costs, we adopted the RLAIF methodology in the medical domain for the first time. Utilizing detailed prompts based on patient inquiries from the iCliniq-10k dataset, we used GPT4 to determine the optimal response based on predefined instructions. These instructions were derived from those used in qualitative assessments by medical professionals in Med-PaLM, with minor modifications. This annotation approach amounted to a cost of $120.
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</section>
- End Dataset -->
- 
-<!-- Methodology -->
+<!-- Confronting the TOD vs. LA Dilemma -->
 <section class="hero">
   <div class="hero-body">
       <div class="container is-max-desktop">
@@ -283,7 +239,7 @@ End Hippocrates Framework -->
 </section>
 <!-- End Methodology -->
 
-<!-- Stages -->
+<!-- Introducing CALM Framework -->
 <section class="hero">
   <div class="hero-body">
       <div class="container is-max-desktop">
@@ -295,6 +251,25 @@ End Hippocrates Framework -->
                     <br>
                     <ul style="list-style-type: none;">
                         <li><strong>CALM.</strong> To bridge this gap, we propose CALM (Conversational Agentic Language Model), a unified approach that combines the robust multi-turn dialogue management of TOD with the dynamic function-calling prowess of LAs. Drawing on diverse data sources, we interleave standard booking flows, open-ended dialogues, and complex function calls, all unified under the umbrella of a single system. The result is an agent that adapts to new services without exhaustive retraining, while also preserving the clarity of multi-turn user interactions.<br> <br>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- End Stages <style>.logo1 {vertical-align: middle;}</style>-->
+
+<!-- Introducing CALM Framework -->
+<section class="hero">
+  <div class="hero-body">
+      <div class="container is-max-desktop">
+          <div class="columns is-centered">
+              <div class="column has-text-centered">
+                  <h2 class="title is-3">CALM-IT Dataset</h2>
+                  <div class="content has-text-justified">
+                    <img src="static/images/table.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 95%;"/>
+                    <br>
+                    <ul style="list-style-type: none;">
                         <li><strong>CALM-IT.</strong> At the heart of CALM is our CALM-IT dataset—a carefully constructed multi-task corpus that blends state-tracking tasks, comprehensive TOD dialogues, and ReAct-based function usage. We apply this dataset to train models of various scales: <strong>CALM-8B</strong>, <strong>CALM-70B</strong>, and <strong>CALM-405B</strong>. Unlike most TOD datasets that focus on a limited set of actions, CALM-IT introduces scenarios where the AI must pick and choose from an array of potential APIs, reason out the user’s need (sometimes over multiple turns), and decide how best to respond. By consistently interleaving standard dialogue tasks with tool-calling scenarios, we foster a system that simultaneously learns to maintain context and interact with external services.
                   </div>
               </div>
