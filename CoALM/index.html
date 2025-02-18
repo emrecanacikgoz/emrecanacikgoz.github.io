@@ -24,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>CALM</title>
+  <title>CoALM</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -83,7 +83,7 @@
                   }
                 </style>
                 
-                Can a Single Model Master Both Multi-turn Conversations and Tool Use? CALM: A Unified Conversational Agentic Language Model
+                Can a Single Model Master Both Multi-turn Conversations and Tool Use? CoALM: A Unified Conversational Agentic Language Model
             </h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
@@ -183,8 +183,8 @@
                         Large Language Models (LLMs) with API-calling capabilities enabled building Language Agents (LA), while also revolutionizing the conventional task-oriented dialogue (TOD) paradigm.
                         However, current approaches face a critical dilemma: TOD systems are often trained on a limited set of target APIs, requiring new data to maintain their quality when interfacing with new services, while LAs often struggle to maintain user intent over multi-turn conversations. 
                         Because both robust multi-turn management and advanced function calling are crucial for effective Conversational Agents, we evaluate these skills on three popular benchmarks: MultiWOZ 2.4 (TOD), BFCL V3 (LA), and API-Bank (LA)—and our analyses reveal that specialized approaches excel in one domain but underperform in the other.
-                        To bridge this chasm, we introduce <strong>CALM</strong> (<strong>C</strong>onversational <strong>A</strong>gentic <strong>L</strong>anguage <strong>M</strong>odel), a unified approach that integrates both conversational and agentic capabilities.
-                        We created <strong>CALM-IT</strong>, a carefully constructed multi-task dataset that interleave multi-turn ReAct reasoning with complex API usage. Using CALM-IT, we train three models <strong>CALM-8B</strong>, <strong>CALM-70B</strong>, and <strong>CALM-405B</strong>, which outperform top domain-specific models, including GPT-4o, across all three benchmarks.
+                        To bridge this chasm, we introduce <strong>CoALM</strong> (<strong>Co</strong>nversational <strong>A</strong>gentic <strong>L</strong>anguage <strong>M</strong>odel), a unified approach that integrates both conversational and agentic capabilities.
+                        We created <strong>CoALM-IT</strong>, a carefully constructed multi-task dataset that interleave multi-turn ReAct reasoning with complex API usage. Using CoALM-IT, we train three models <strong>CoALM-8B</strong>, <strong>CoALM-70B</strong>, and <strong>CoALM-405B</strong>, which outperform top domain-specific models, including GPT-4o, across all three benchmarks.
                         This demonstrates the feasibility of a single model approach for both TOD and LA, setting a new standard for Conversational Agents. We release all model weights, datasets, and training artifacts to support further research.
                       </p>
                   </div>
@@ -195,21 +195,21 @@
 </section>
 <!-- End paper abstract -->
 
-<!-- Why do we need CALM? -->
+<!-- Why do we need CoALM? -->
 <section class="hero">
   <div class="hero-body">
       <div class="container is-max-desktop">
           <div class="columns is-centered">
               <div class="column has-text-centered">
-                  <h2 class="title is-3">Why do we need CALM?</h2>
+                  <h2 class="title is-3">Why do we need CoALM?</h2>
                   <div class="content has-text-justified">
                    <!-- <img src="static/images/conv-new-new.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 75%;"/> -->
                     <br>
                     <p> Imagine chatting with an AI that not only understands your every question across multiple turns but can also seamlessly call external services—like booking a hotel, checking flight tickets, or retrieving product information—when needed. This vision has long been the holy grail of conversational AI, and the emergence of Large Language Models (LLMs) has brought us closer than ever. However, there remains a significant trade-off: traditional Task-Oriented Dialogue (TOD) systems excel at carefully orchestrated, multi-turn conversations but lack the adaptability to use new tools or APIs. Language Agents (LAs), on the other hand, can dynamically invoke APIs but often fumble through multi-turn scenarios, losing track of what the user really wants. Our paper tackles this dilemma head-on.</p>
                     <p>Our release includes:</p>
                         <ul style="list-style-type: disc; margin-left: 20px;">
-                            <li> CALM, a family of model series at different scales <a href="https://huggingface.co/uiuc-convai/CALM-8B">CALM 8B</a>, <a href="https://huggingface.co/uiuc-convai/CALM-70B">CALM 70B</a> and the largest open-source conversational agent <a href="https://huggingface.co/uiuc-convai/CALM-405B">CALM 405B</a>—all unified by unified multi-turn dialogue skills and advanced function-calling capabilities. Our larger models, CALM 70B and CALM 405B, outperform GPT-4o and GPT-4o-mini on both TOD and LA tasks, narrowing the gap between closed-source and open-source models. </li>
-                            <li> We introduce <a href="https://huggingface.co/datasets/uiuc-convai/CALM-IT">CALM-IT</a>, a hybrid dataset for conversational agents featuring unique ReAct reasoning steps in multi-turn settings, encompassing 312K samples across diverse domains, tasks, and abilities.</li>
+                            <li> CoALM, a family of model series at different scales <a href="https://huggingface.co/uiuc-convai/CALM-8B">CoALM 8B</a>, <a href="https://huggingface.co/uiuc-convai/CALM-70B">CoALM 70B</a> and the largest open-source conversational agent <a href="https://huggingface.co/uiuc-convai/CALM-405B">CoALM 405B</a>—all unified by unified multi-turn dialogue skills and advanced function-calling capabilities. Our larger models, CoALM 70B and CoALM 405B, outperform GPT-4o and GPT-4o-mini on both TOD and LA tasks, narrowing the gap between closed-source and open-source models. </li>
+                            <li> We introduce <a href="https://huggingface.co/datasets/uiuc-convai/CALM-IT">CoALM-IT</a>, a hybrid dataset for conversational agents featuring unique ReAct reasoning steps in multi-turn settings, encompassing 312K samples across diverse domains, tasks, and abilities.</li>
                             <li> To foster further research within the open-source community, we publicly release all model weights, datasets, intermediate checkpoints, and wandb reports.</li>
                         </ul>
                     
@@ -241,18 +241,18 @@
 </section>
 <!-- End Methodology -->
 
-<!-- Introducing CALM Framework -->
+<!-- Introducing CoALM Framework -->
 <section class="hero">
   <div class="hero-body">
       <div class="container is-max-desktop">
           <div class="columns is-centered">
               <div class="column has-text-centered">
-                  <h2 class="title is-3">Introducing CALM Framework</h2>
+                  <h2 class="title is-3">Introducing CoALM Framework</h2>
                   <div class="content has-text-justified">
                     <img src="static/images/calm.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 95%;"/>
                     <br>
                     <ul style="list-style-type: none;">
-                        <li><strong>CALM.</strong> To bridge this gap, we propose CALM (Conversational Agentic Language Model), a unified approach that combines the robust multi-turn dialogue management of TOD with the dynamic function-calling prowess of LAs. Drawing on diverse data sources, we interleave standard booking flows, open-ended dialogues, and complex function calls, all unified under the umbrella of a single system. The result is an agent that adapts to new services without exhaustive retraining, while also preserving the clarity of multi-turn user interactions.<br> <br>
+                        <li><strong>CoALM.</strong> To bridge this gap, we propose CoALM (Conversational Agentic Language Model), a unified approach that combines the robust multi-turn dialogue management of TOD with the dynamic function-calling prowess of LAs. Drawing on diverse data sources, we interleave standard booking flows, open-ended dialogues, and complex function calls, all unified under the umbrella of a single system. The result is an agent that adapts to new services without exhaustive retraining, while also preserving the clarity of multi-turn user interactions.<br> <br>
                   </div>
               </div>
           </div>
@@ -267,12 +267,12 @@
       <div class="container is-max-desktop">
           <div class="columns is-centered">
               <div class="column has-text-centered">
-                  <h2 class="title is-3">CALM-IT Dataset</h2>
+                  <h2 class="title is-3">CoALM-IT Dataset</h2>
                   <div class="content has-text-justified">
                     <img src="static/images/table.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 95%;"/>
                     <br>
                     <ul style="list-style-type: none;">
-                        <li><strong>CALM-IT.</strong> At the heart of CALM is our CALM-IT dataset—a carefully constructed multi-task corpus that blends state-tracking tasks, comprehensive TOD dialogues, and ReAct-based function usage. We apply this dataset to train models of various scales: <strong>CALM-8B</strong>, <strong>CALM-70B</strong>, and <strong>CALM-405B</strong>. Unlike most TOD datasets that focus on a limited set of actions, CALM-IT introduces scenarios where the AI must pick and choose from an array of potential APIs, reason out the user’s need (sometimes over multiple turns), and decide how best to respond. By consistently interleaving standard dialogue tasks with tool-calling scenarios, we foster a system that simultaneously learns to maintain context and interact with external services.
+                        <li><strong>CoALM-IT.</strong> At the heart of CoALM is our CoALM-IT dataset—a carefully constructed multi-task corpus that blends state-tracking tasks, comprehensive TOD dialogues, and ReAct-based function usage. We apply this dataset to train models of various scales: <strong>CoALM-8B</strong>, <strong>CoALM-70B</strong>, and <strong>CoALM-405B</strong>. Unlike most TOD datasets that focus on a limited set of actions, CoALM-IT introduces scenarios where the AI must pick and choose from an array of potential APIs, reason out the user’s need (sometimes over multiple turns), and decide how best to respond. By consistently interleaving standard dialogue tasks with tool-calling scenarios, we foster a system that simultaneously learns to maintain context and interact with external services.
                   </div>
               </div>
           </div>
@@ -292,8 +292,8 @@
                     <img src="static/images/results2.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 95%;"/>
                     <br>
                     <ul style="list-style-type: none;">
-                      <li><strong>Results on MultiWOZ.</strong> we compare CALM against specialized approaches and baseline LLMs. Traditional dialogue systems outperformed LAs on MultiWOZ’s core metrics like Inform Rate and Success Rate—often surpassing 40–50% success when well-trained. But LAs with advanced API-calling capabilities saw their success rates plummet, sometimes below 20%, revealing their struggle to track user needs in multi-turn dialogues. In contrast, CALM soared: even our smallest CALM-8B model doubled the success rates of typical LAs, and our larger models rivaled or exceeded top proprietary solutions.<br> <br>
-                      <li><strong>Results on BFCL and API-Bank.</strong> Next, we turn to two popular benchmarks for function calling: BFCL V3 and API-Bank. Here, specialized LAs shine, adeptly generating syntactically correct API calls with high success rates on short, single-turn prompts. When extended to multi-turn, they often stumble. Our results show how CALM closes this gap. CALM-8B significantly outperforms TOD-only models—revealing that domain-restricted architectures can’t pivot to new tools. More impressively, our larger CALM-70B and CALM-405B not only handle unknown APIs but also maintain coherent conversations, besting strong baselines like GPT-4o on both TOD and tool-calling tasks in key metrics.
+                      <li><strong>Results on MultiWOZ.</strong> we compare CoALM against specialized approaches and baseline LLMs. Traditional dialogue systems outperformed LAs on MultiWOZ’s core metrics like Inform Rate and Success Rate—often surpassing 40–50% success when well-trained. But LAs with advanced API-calling capabilities saw their success rates plummet, sometimes below 20%, revealing their struggle to track user needs in multi-turn dialogues. In contrast, CoALM soared: even our smallest CoALM-8B model doubled the success rates of typical LAs, and our larger models rivaled or exceeded top proprietary solutions.<br> <br>
+                      <li><strong>Results on BFCL and API-Bank.</strong> Next, we turn to two popular benchmarks for function calling: BFCL V3 and API-Bank. Here, specialized LAs shine, adeptly generating syntactically correct API calls with high success rates on short, single-turn prompts. When extended to multi-turn, they often stumble. Our results show how CoALM closes this gap. CoALM-8B significantly outperforms TOD-only models—revealing that domain-restricted architectures can’t pivot to new tools. More impressively, our larger CoALM-70B and CoALM-405B not only handle unknown APIs but also maintain coherent conversations, besting strong baselines like GPT-4o on both TOD and tool-calling tasks in key metrics.
                   </div>
               </div>
           </div>
@@ -322,7 +322,7 @@
                   <h2 class="title is-3">The Path Forward</h2>
                   <div class="content has-text-justified">
                     <ul style="list-style-type: none;">
-                        <li>By unifying TOD strengths and LA flexibility, we believe CALM sets a new paradigm for Conversational Agents. Beyond the promising numbers, our open-source release of model weights, datasets, and training artifacts offers the community an unprecedented opportunity to explore and refine these capabilities further. Whether you’re looking to build a chat assistant that can manage a business meeting or an AI travel agent that can handle flight, hotel, and taxi bookings all in one conversation, CALM’s blueprint is designed to adapt. We look forward to the innovations that researchers and developers will create, pushing us closer to a future where AI can truly converse, reason, and act in one unified frame.<br> <br>
+                        <li>By unifying TOD strengths and LA flexibility, we believe CoALM sets a new paradigm for Conversational Agents. Beyond the promising numbers, our open-source release of model weights, datasets, and training artifacts offers the community an unprecedented opportunity to explore and refine these capabilities further. Whether you’re looking to build a chat assistant that can manage a business meeting or an AI travel agent that can handle flight, hotel, and taxi bookings all in one conversation, CoALM blueprint is designed to adapt. We look forward to the innovations that researchers and developers will create, pushing us closer to a future where AI can truly converse, reason, and act in one unified frame.<br> <br>
                   </div>
               </div>
           </div>
@@ -341,7 +341,7 @@
       <br><br>
       <pre><code>
         @misc{acikgoz2025singlemodelmastermultiturn,
-          title={Can a Single Model Master Both Multi-turn Conversations and Tool Use? CALM: A Unified Conversational Agentic Language Model}, 
+          title={Can a Single Model Master Both Multi-turn Conversations and Tool Use? CoALM: A Unified Conversational Agentic Language Model}, 
           author={Emre Can Acikgoz and Jeremiah Greer and Akul Datta and Ze Yang and William Zeng and Oussama Elachqar and Emmanouil Koukoumidis and Dilek Hakkani-Tür and Gokhan Tur},
           year={2025},
           eprint={2502.08820},
@@ -357,7 +357,7 @@
 <section class="section" id="Acknowledgements">
   <div class="container is-max-desktop content">
       <h2 class="title">Acknowledgements</h2>
-      We would like to acknowledge the Oumi AI team for their assistance in training and scaling with the larger CALM models. We would also like to thank Together AI for providing the cluster resources necessary to enable CALM-405B training. This project also has benefited from the Microsoft Accelerate Foundation
+      We would like to acknowledge the Oumi AI team for their assistance in training and scaling with the larger CoALM models. We would also like to thank Together AI for providing the cluster resources necessary to enable CoALM-405B training. This project also has benefited from the Microsoft Accelerate Foundation
       Models Research (AFMR) grant program, through which leading foundation models hosted by Microsoft Azure and access to Azure credits were provided to conduct the research.. 
   </div>
 </section>
