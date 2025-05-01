@@ -101,6 +101,8 @@
                 University of Illinois Urbana-Champaign,
             </div>
 
+            <img alt="Conversational AI Lab" src="static/images/conv-oumi.png" style="width:10%" />
+
             <div class="is-size-5 publication-authors">
               <span class="author-block"><a href="https://uiuc-conversational-ai-lab.github.io/" target="_blank">ConvAI Lab</a><br></span>
               <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
@@ -190,7 +192,7 @@
                     <img src="static/images/figure1.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 85%;"/>
                     <br>
                     <ul style="list-style-type: none;">
-                        <li> Traditional evaluation metrics in task-oriented dialogue (TOD) systems, like Inform and Success rates, often provide an incomplete picture, focusing solely on final outcomes and ignoring intermediate errors during conversations. With the rise of sophisticated Large Language Models (LLMs), these outdated metrics fail to capture subtle yet significant mistakes such as incorrect information provided mid-dialogue or inconsistencies in responses. For example, a system might hallucinate a restaurant's existence and provide false information to a user, but still receive a perfect score if it eventually corrects itself later in the conversation. This failure to detect turn-level errors creates an accountability gap in TOD research. TD-EVAL addresses this problem by combining fine-grained turn-level analysis—evaluating conversation cohesion, backend knowledge accuracy, and policy adherence—with holistic dialogue-level comparisons to ensure comprehensive evaluation aligned closely with real-world conversational quality.<br>     
+                        <li> Traditional evaluation metrics in task-oriented dialogue (TOD) systems, like Inform and Success rates, often provide an incomplete picture, focusing solely on final outcomes and ignoring intermediate errors during conversations. With the rise of sophisticated Large Language Models (LLMs), these outdated metrics fail to capture subtle yet significant mistakes such as incorrect information provided mid-dialogue or inconsistencies in responses. For example, a system might hallucinate a restaurant's existence and provide false information to a user, but still receive a perfect score if it eventually corrects itself later in the conversation. This failure to detect turn-level errors creates an accountability gap in TOD research. TD-EVAL addresses this problem by combining fine-grained turn-level analysis—evaluating conversation cohesion, backend knowledge accuracy, and policy adherence—with holistic dialogue-level comparisons to ensure comprehensive evaluation aligned closely with real-world conversational quality.    
                   </div>
               </div>
           </div>
@@ -210,7 +212,7 @@
                     <img src="static/images/figure2.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 95%;"/>
                     <br>
                     <ul style="list-style-type: none;">
-                        <li> TD-Eval adopts a structured two-step evaluation protocol, clearly illustrated in Figure 2. In the first step (left), each response within a dialogue is assessed at the turn-level across three key dimensions—conversation cohesion, backend knowledge consistency, and policy compliance—by an LLM-based judge. The judge evaluates the responses in the context of dialogue history, user queries, and backend database results, assigning scores from 1 to 5 along with detailed justifications. The second step (right) involves a holistic dialogue-level assessment using the TOD Agent Arena, where entire dialogues from different agents compete and are ranked through pairwise Elo-based comparisons. This dual-step evaluation ensures both detailed error analysis and broad performance comparisons, as clearly depicted in the main illustration.<br> <br>
+                        <li> TD-Eval adopts a structured two-step evaluation protocol, clearly illustrated in Figure 2. In the first step (left), each response within a dialogue is assessed at the turn-level across three key dimensions—conversation cohesion, backend knowledge consistency, and policy compliance—by an LLM-based judge. The judge evaluates the responses in the context of dialogue history, user queries, and backend database results, assigning scores from 1 to 5 along with detailed justifications. The second step (right) involves a holistic dialogue-level assessment using the TOD Agent Arena, where entire dialogues from different agents compete and are ranked through pairwise Elo-based comparisons. This dual-step evaluation ensures both detailed error analysis and broad performance comparisons, as clearly depicted in the main illustration.
                   </div>
               </div>
           </div>
@@ -231,7 +233,7 @@
                     <img src="static/images/table-1-2.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 95%;"/>
                     <br>
                     <ul style="list-style-type: none;">
-                        <li> Our human evaluation study with 10 annotators (PhD students in NLP, all advanced in English) demonstrated that TD-EVAL significantly outperforms traditional metrics in alignment with human judgments. When compared against traditional Success rate, τ-Bench reward, and LMUnit metrics, TD-EVAL achieved higher agreement scores with human ratings (Gwet's AC1 of 0.56 for turn-level and 0.57 for dialogue-level evaluations). This strong alignment validates TD-EVAL's effectiveness in capturing the nuanced aspects of conversational quality that matter to users. Notably, our evaluation revealed a tendency for human annotators to rate high-quality TOD interactions in the 4-5 range on our 5-point Likert scale, indicating that our framework successfully identifies the subtle distinctions between good and excellent conversations that traditional metrics miss entirely.<br> <br>
+                        <li> Our human evaluation study with 10 annotators (PhD students in NLP, all advanced in English) demonstrated that TD-EVAL significantly outperforms traditional metrics in alignment with human judgments. When compared against traditional Success rate, τ-Bench reward, and LMUnit metrics, TD-EVAL achieved higher agreement scores with human ratings (Gwet's AC1 of 0.56 for turn-level and 0.57 for dialogue-level evaluations). This strong alignment validates TD-EVAL's effectiveness in capturing the nuanced aspects of conversational quality that matter to users. Notably, our evaluation revealed a tendency for human annotators to rate high-quality TOD interactions in the 4-5 range on our 5-point Likert scale, indicating that our framework successfully identifies the subtle distinctions between good and excellent conversations that traditional metrics miss entirely.
                   </div>
               </div>
           </div>
@@ -251,7 +253,7 @@
                     <img src="static/images/table-3-4.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 95%;"/>
                     <br>
                     <ul style="list-style-type: none;">
-                        <li> Our comprehensive evaluation of several state-of-the-art LLMs across MultiWOZ 2.4 and τ-Bench datasets revealed fascinating insights into model capabilities. At the turn level, the o1 model achieved the highest overall score (4.49/5.00), demonstrating strong performance across all dimensions, particularly in policy compliance. Claude-3.5-Sonnet ranked second overall, while Llama-3.1-405B emerged as the top open-source model with particularly strong backend knowledge consistency. Our TOD Agent Arena (dialogue-level evaluation) produced somewhat different rankings, with Claude-3.5-Sonnet dominating with an Elo rating of 1279.66, winning most head-to-head matchups. Interestingly, models like Mistral-Large performed better in dialogue-level comparisons than turn-level scores would suggest, indicating their ability to recover from localized errors in end-to-end conversations. These results highlight the importance of evaluating TOD systems from multiple perspectives.<br> <br>
+                        <li> Our comprehensive evaluation of several state-of-the-art LLMs across MultiWOZ 2.4 and τ-Bench datasets revealed fascinating insights into model capabilities. At the turn level, the o1 model achieved the highest overall score (4.49/5.00), demonstrating strong performance across all dimensions, particularly in policy compliance. Claude-3.5-Sonnet ranked second overall, while Llama-3.1-405B emerged as the top open-source model with particularly strong backend knowledge consistency. Our TOD Agent Arena (dialogue-level evaluation) produced somewhat different rankings, with Claude-3.5-Sonnet dominating with an Elo rating of 1279.66, winning most head-to-head matchups. Interestingly, models like Mistral-Large performed better in dialogue-level comparisons than turn-level scores would suggest, indicating their ability to recover from localized errors in end-to-end conversations. These results highlight the importance of evaluating TOD systems from multiple perspectives.
                   </div>
               </div>
           </div>
@@ -271,7 +273,7 @@
                   <div class="content has-text-justified">
                     <ul style="list-style-type: none;">
                         <li>We present TD-Eval, a simple yet powerful framework for TOD evaluation that combines fine-grained turn-level checks with a holistic dialogue-level ranking. By adopting an LLM-as-judge paradigm, TD-Eval goes beyond standard metrics to reveal subtle yet critical errors, such as inconsistent database usage and policy violations, which often remain undetected by final-turn or dialogue-level summaries. Through Elo-based ranking and targeted turn-level scoring, our experiments on MultiWOZ~2.4 and τ-Bench demonstrate TD-Eval’s alignment with human judgments. This work opens a new path for LLM-driven TOD evaluation—one that is both flexible and transparent—ensuring greater accountability and accuracy in developing next-generation dialogue systems. We intend to release our framework, system responses, and human evaluations to foster reproducibility and community adoption.<br> <br>
-                        <li>While metrics in TD-Eval cover core aspects occurring in general TOD scenarios, it still remains open questions to design more flexible, fine-grained evaluation metrics that can cover diverse scenarios during multi-turn interactions. Furthermore, practitioners should consider that the performance of LLM-based evaluation can be improved when appending qualified few-shot demonstrations or tailored scoring rubrics in specific service domains. Lastly, it should be noted that conventional evaluation metrics are still useful to evaluate TOD in specific aspects, thus TD-Eval should be used alongside existing metrics in a complementary relationship.<br> <br>
+                        <li>While metrics in TD-Eval cover core aspects occurring in general TOD scenarios, it still remains open questions to design more flexible, fine-grained evaluation metrics that can cover diverse scenarios during multi-turn interactions. Furthermore, practitioners should consider that the performance of LLM-based evaluation can be improved when appending qualified few-shot demonstrations or tailored scoring rubrics in specific service domains. Lastly, it should be noted that conventional evaluation metrics are still useful to evaluate TOD in specific aspects, thus TD-Eval should be used alongside existing metrics in a complementary relationship.
                   </div>
               </div>
           </div>
@@ -289,15 +291,12 @@
       Please don't forget to kindly cite our paper if you use our models, data, codes, or results:
       <br><br>
       <pre><code>
-        @misc{acikgoz2025tdevalrevisitingtaskorienteddialogue,
-          title={TD-EVAL: Revisiting Task-Oriented Dialogue Evaluation by Combining Turn-Level Precision with Dialogue-Level Comparisons}, 
-          author={Emre Can Acikgoz and Carl Guo and Suvodip Dey and Akul Datta and Takyoung Kim and Gokhan Tur and Dilek Hakkani-Tür},
-          year={2025},
-          eprint={2504.19982},
-          archivePrefix={arXiv},
-          primaryClass={cs.CL},
-          url={https://arxiv.org/abs/2504.19982}, 
-    }
+        @article{acikgoz2025td,
+          title={TD-EVAL: Revisiting Task-Oriented Dialogue Evaluation by Combining Turn-Level Precision with Dialogue-Level Comparisons},
+          author={Acikgoz, Emre Can and Guo, Carl and Dey, Suvodip and Datta, Akul and Kim, Takyoung and Tur, Gokhan and Hakkani-T{\"u}r, Dilek},
+          journal={arXiv preprint arXiv:2504.19982},
+          year={2025}
+        }
       </code></pre>
   </div>
 </section>
@@ -305,7 +304,7 @@
 
 <section class="section" id="Acknowledgements">
   <div class="container is-max-desktop content">
-      <h2 class="title">Acknowledgements</h2>
+      <h2 class="title">Ethics Statement</h2>
       We conduct our experiments using the publicly available MultiWOZ and τ-Bench datasets, adhering fully to their terms of use. Since we employ LLMs to generate evaluations with justifications, the risk of producing harmful, biased, or discriminatory statements is minimal. However, we acknowledge the potential ethical concerns associated with this work.
   </div>
 </section>
