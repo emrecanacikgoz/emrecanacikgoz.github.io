@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
+  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
+  <meta property="og:url" content="Lorem ipsum"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>TD-Eval</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="static/js/jquery.min.js"></script>
+  <script src="static/js/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="static/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="static/js/jquery-3.5.1.js"></script>
+  <script type="text/javascript" charset="utf8" src="static/js/jquery.dataTables.js"></script>
+  <style>
+      /* #special-table tbody tr td:nth-child(0),
+      #special-table tbody tr td:nth-child(1) {
+          padding-right: 30px;
+      }
+      #special-table tbody tr td:nth-child(0),
+      #special-table tbody tr td:nth-child(1) {
+          padding-left: 30px;
+      } */
+
+      .number-box {
+          border: 1px solid #000; /* 黑色边框 */
+          padding: 3px; /* 内边距 */
+          margin: 3px; /* 外边距 */
+      }
+  </style>
+
+    
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              <style>
+                  .logo {
+                    width: 1.5em; /* 调整图标大小 */
+                    position: relative; /* 使 top 和 left 属性生效 */
+                    top: -10px; /* 向上移动 */
+                    left: -5px; /* 向左移动 */
+                    vertical-align: middle;
+                  }
+                </style>
+                
+                TD-EVAL: Revisiting Task-Oriented Dialogue Evaluation by Combining Turn-Level Precision with Dialogue-Level Comparisons
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block"><a href="https://emrecanacikgoz.github.io/" target="_blank">Emre Can Acikgoz</a><sup>*</sup>,</span>
+              <span class="author-block"><a href="https://www.linkedin.com/in/guoca2" target="_blank">Carl Guo</a><sup>*</sup>,</span>
+              <span class="author-block"><a href="https://sites.google.com/view/suvodip-dey" target="_blank">Suvodip Dey</a><sup>*</sup>,</span>
+              <span class="author-block"><a href="https://www.linkedin.com/in/akuldatta" target="_blank">Akul Datta</a>,</span>
+              <span class="author-block"><a href="https://youngerous.github.io/" target="_blank">Takyoung Kim</a>,</span>
+              <span class="author-block"><a href="https://siebelschool.illinois.edu/about/people/faculty/gokhan" target="_blank">Gokhan Tur</a><sup>1</sup>,</span>
+              <span class="author-block"><a href="https://siebelschool.illinois.edu/about/people/faculty/dilek" target="_blank">Dilek Hakkani-Tür</a><sup>1</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                University of Illinois Urbana-Champaign,
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><a href="https://uiuc-conversational-ai-lab.github.io/" target="_blank">ConvAI Lab</a><br></span>
+              <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
+            </div> 
+
+            <header style="text-align: center;">
+            </header>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                      <!-- ArXiv abstract Link -->
+                      <span class="link-block">
+                        <a href="https://arxiv.org/abs/2504.19982" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                          <span class="icon"><i class="ai ai-arxiv"></i> </span>
+                          <span>arXiv</span>
+                        </a>
+                      </span>
+
+                      <!-- Github link -->
+                    <span class="link-block">
+                      <a href="https://github.com/emrecanacikgoz/TD-Eval" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon"><i class="fab fa-github"></i> </span>
+                        <span>Code</span>
+                      </a>
+                    </span>
+
+
+                      <span class="link-block">
+                        <a href="https://huggingface.co/spaces/uiuc-convai/TD-EVAL_leaderboard" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">🤗</span>
+                            <span>Leaderboard</span>
+                        </a>
+                    </span>
+
+                    
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 
+<header style="text-align: center;">
+  <img src="static/images/fig1.png" alt="ResultsTable" width="70%" >
+</header>
+-->
+
+
+<!-- Paper abstract -->
+<section class="hero">
+  <div class="hero-body">
+      <div class="container is-max-desktop">
+          <div class="columns is-centered">
+              <div class="column has-text-centered">
+                  <h2 class="title is-3">Abstract</h2>
+                  <div class="content has-text-justified">
+                      <p>
+                        Task-oriented dialogue (TOD) systems are experiencing a revolution driven by Large Language Models (LLMs), yet the evaluation methodologies for these systems remain insufficient for their growing sophistication. 
+                        While traditional automatic metrics effectively assessed earlier modular systems, they focus solely on the dialogue level and cannot detect critical intermediate errors that can arise during user-agent interactions. 
+                        In this paper, we introduce <strong>TD-EVAL</strong> (<strong>T</strong>urn and <strong>D</strong>ialogue-level <strong>Eval</strong>uation), a two-step evaluation framework that unifies fine-grained turn-level analysis with holistic dialogue-level comparisons. 
+                        At turn level, we evaluate each response along three TOD-specific dimensions: <em>conversation cohesion</em>, <em>backend knowledge consistency</em>, and <em>policy compliance</em>. 
+                        Meanwhile, we design <em>TOD Agent Arena</em> that uses pairwise comparisons to provide a measure of dialogue-level quality. 
+                        Through experiments on MultiWOZ 2.4 and τ-Bench, we demonstrate that TD-EVAL effectively identifies the conversational errors that conventional metrics miss. 
+                        Furthermore, TD-EVAL exhibits better alignment with human judgments than traditional and LLM-based metrics. 
+                        These findings demonstrate that TDEVAL introduces a new paradigm for TOD system evaluation, efficiently assessing both turn and system levels with a plug-and-play framework for future research
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<!-- Why We Need TD-Eval -->
+<section class="hero">
+  <div class="hero-body">
+      <div class="container is-max-desktop">
+          <div class="columns is-centered">
+              <div class="column has-text-centered">
+                  <h2 class="title is-3">Why We Need TD-Eval</h2>
+                  <div class="content has-text-justified">
+                    <img src="static/images/figure1.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 85%;"/>
+                    <br>
+                    <ul style="list-style-type: none;">
+                        <li> Traditional evaluation metrics in task-oriented dialogue (TOD) systems, like Inform and Success rates, often provide an incomplete picture, focusing solely on final outcomes and ignoring intermediate errors during conversations. With the rise of sophisticated Large Language Models (LLMs), these outdated metrics fail to capture subtle yet significant mistakes such as incorrect information provided mid-dialogue or inconsistencies in responses. For example, a system might hallucinate a restaurant's existence and provide false information to a user, but still receive a perfect score if it eventually corrects itself later in the conversation. This failure to detect turn-level errors creates an accountability gap in TOD research. TD-EVAL addresses this problem by combining fine-grained turn-level analysis—evaluating conversation cohesion, backend knowledge accuracy, and policy adherence—with holistic dialogue-level comparisons to ensure comprehensive evaluation aligned closely with real-world conversational quality.<br>     
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- End Methodology -->
+
+<!-- TD-Eval -->
+<section class="hero">
+  <div class="hero-body">
+      <div class="container is-max-desktop">
+          <div class="columns is-centered">
+              <div class="column has-text-centered">
+                  <h2 class="title is-3">TD-Eval</h2>
+                  <div class="content has-text-justified">
+                    <img src="static/images/figure2.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 95%;"/>
+                    <br>
+                    <ul style="list-style-type: none;">
+                        <li> TD-Eval adopts a structured two-step evaluation protocol, clearly illustrated in Figure 2. In the first step (left), each response within a dialogue is assessed at the turn-level across three key dimensions—conversation cohesion, backend knowledge consistency, and policy compliance—by an LLM-based judge. The judge evaluates the responses in the context of dialogue history, user queries, and backend database results, assigning scores from 1 to 5 along with detailed justifications. The second step (right) involves a holistic dialogue-level assessment using the TOD Agent Arena, where entire dialogues from different agents compete and are ranked through pairwise Elo-based comparisons. This dual-step evaluation ensures both detailed error analysis and broad performance comparisons, as clearly depicted in the main illustration.<br> <br>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- End Stages <style>.logo1 {vertical-align: middle;}</style>-->
+
+
+<!-- Human Evaluation -->
+<section class="hero">
+  <div class="hero-body">
+      <div class="container is-max-desktop">
+          <div class="columns is-centered">
+              <div class="column has-text-centered">
+                  <h2 class="title is-3">Human Evaluation</h2>
+                  <div class="content has-text-justified">
+                    <img src="static/images/table-1-2.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 95%;"/>
+                    <br>
+                    <ul style="list-style-type: none;">
+                        <li> Our human evaluation study with 10 annotators (PhD students in NLP, all advanced in English) demonstrated that TD-EVAL significantly outperforms traditional metrics in alignment with human judgments. When compared against traditional Success rate, τ-Bench reward, and LMUnit metrics, TD-EVAL achieved higher agreement scores with human ratings (Gwet's AC1 of 0.56 for turn-level and 0.57 for dialogue-level evaluations). This strong alignment validates TD-EVAL's effectiveness in capturing the nuanced aspects of conversational quality that matter to users. Notably, our evaluation revealed a tendency for human annotators to rate high-quality TOD interactions in the 4-5 range on our 5-point Likert scale, indicating that our framework successfully identifies the subtle distinctions between good and excellent conversations that traditional metrics miss entirely.<br> <br>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- End Stages <style>.logo1 {vertical-align: middle;}</style>-->
+
+<!-- Human Evaluation -->
+<section class="hero">
+  <div class="hero-body">
+      <div class="container is-max-desktop">
+          <div class="columns is-centered">
+              <div class="column has-text-centered">
+                  <h2 class="title is-3">Main Results</h2>
+                  <div class="content has-text-justified">
+                    <img src="static/images/table-3-4.png" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 95%;"/>
+                    <br>
+                    <ul style="list-style-type: none;">
+                        <li> Our comprehensive evaluation of several state-of-the-art LLMs across MultiWOZ 2.4 and τ-Bench datasets revealed fascinating insights into model capabilities. At the turn level, the o1 model achieved the highest overall score (4.49/5.00), demonstrating strong performance across all dimensions, particularly in policy compliance. Claude-3.5-Sonnet ranked second overall, while Llama-3.1-405B emerged as the top open-source model with particularly strong backend knowledge consistency. Our TOD Agent Arena (dialogue-level evaluation) produced somewhat different rankings, with Claude-3.5-Sonnet dominating with an Elo rating of 1279.66, winning most head-to-head matchups. Interestingly, models like Mistral-Large performed better in dialogue-level comparisons than turn-level scores would suggest, indicating their ability to recover from localized errors in end-to-end conversations. These results highlight the importance of evaluating TOD systems from multiple perspectives.<br> <br>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- End Stages <style>.logo1 {vertical-align: middle;}</style>-->
+
+<!-- Limitations -->
+
+<section class="hero">
+  <div class="hero-body">
+      <div class="container is-max-desktop">
+          <div class="columns is-centered">
+              <div class="column has-text-centered">
+                  <h2 class="title is-3">Conclusion and Limitations</h2>
+                  <div class="content has-text-justified">
+                    <ul style="list-style-type: none;">
+                        <li>We present TD-Eval, a simple yet powerful framework for TOD evaluation that combines fine-grained turn-level checks with a holistic dialogue-level ranking. By adopting an LLM-as-judge paradigm, TD-Eval goes beyond standard metrics to reveal subtle yet critical errors, such as inconsistent database usage and policy violations, which often remain undetected by final-turn or dialogue-level summaries. Through Elo-based ranking and targeted turn-level scoring, our experiments on MultiWOZ~2.4 and τ-Bench demonstrate TD-Eval’s alignment with human judgments. This work opens a new path for LLM-driven TOD evaluation—one that is both flexible and transparent—ensuring greater accountability and accuracy in developing next-generation dialogue systems. We intend to release our framework, system responses, and human evaluations to foster reproducibility and community adoption.<br> <br>
+                        <li>While metrics in TD-Eval cover core aspects occurring in general TOD scenarios, it still remains open questions to design more flexible, fine-grained evaluation metrics that can cover diverse scenarios during multi-turn interactions. Furthermore, practitioners should consider that the performance of LLM-based evaluation can be improved when appending qualified few-shot demonstrations or tailored scoring rubrics in specific service domains. Lastly, it should be noted that conventional evaluation metrics are still useful to evaluate TOD in specific aspects, thus TD-Eval should be used alongside existing metrics in a complementary relationship.<br> <br>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- End Limitations -->
+
+
+<!--BibTex citation -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+      <h2 class="title">License and BibTeX</h2>
+      This model is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/legalcode">Creative Commons NonCommercial (CC BY-NC 4.0)l</a><br>
+      Please don't forget to kindly cite our paper if you use our models, data, codes, or results:
+      <br><br>
+      <pre><code>
+        @misc{acikgoz2025tdevalrevisitingtaskorienteddialogue,
+          title={TD-EVAL: Revisiting Task-Oriented Dialogue Evaluation by Combining Turn-Level Precision with Dialogue-Level Comparisons}, 
+          author={Emre Can Acikgoz and Carl Guo and Suvodip Dey and Akul Datta and Takyoung Kim and Gokhan Tur and Dilek Hakkani-Tür},
+          year={2025},
+          eprint={2504.19982},
+          archivePrefix={arXiv},
+          primaryClass={cs.CL},
+          url={https://arxiv.org/abs/2504.19982}, 
+    }
+      </code></pre>
+  </div>
+</section>
+<!--End BibTex citation -->
+
+<section class="section" id="Acknowledgements">
+  <div class="container is-max-desktop content">
+      <h2 class="title">Acknowledgements</h2>
+      We conduct our experiments using the publicly available MultiWOZ and τ-Bench datasets, adhering fully to their terms of use. Since we employ LLMs to generate evaluations with justifications, the risk of producing harmful, biased, or discriminatory statements is minimal. However, we acknowledge the potential ethical concerns associated with this work.
+  </div>
+</section>
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
