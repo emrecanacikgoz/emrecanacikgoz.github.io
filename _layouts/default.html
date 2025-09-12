@@ -21,6 +21,44 @@
 <link rel="canonical" href="/">
 <!-- Theming-->
   <!-- Analytics removed for privacy -->
+<!-- Custom styles for badges -->
+<style>
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+}
+.badge-secondary {
+    color: #fff;
+    background-color: #6c757d;
+}
+.badge-primary {
+    color: #fff;
+    background-color: #007bff;
+}
+.badge-success {
+    color: #fff;
+    background-color: #28a745;
+}
+.badge-danger {
+    color: #fff;
+    background-color: #dc3545;
+}
+.badge-warning {
+    color: #212529;
+    background-color: #ffc107;
+}
+.badge-info {
+    color: #fff;
+    background-color: #17a2b8;
+}
+</style>
 <!-- MathJax -->
 <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js"></script>
 <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -61,7 +99,7 @@
     <!-- Content -->
     <div class="container mt-5">
       <div class="post">
-  <header class="post-header">
+  <header class="post-header" style="margin-top: 2rem;">
     <h1 class="post-title">
      <span class="font-weight-bold">Emre Can</span> Acikgoz
     </h1>
@@ -69,7 +107,7 @@
   </header>
   <d-article>
     <div class="profile float-right">
-        <img class="img-fluid z-depth-0.5 rounded" src="/images/emrecan.jpeg">
+        <img class="img-fluid z-depth-0.5 rounded" src="/images/emrecan.jpeg" style="max-width: 200px; max-height: 200px;">
     </div>
     <div class="clearfix">
       <p>I am a PhD fellow in Computer Science at <a href="https://cs.illinois.edu/">UIUC</a> advised by <a href="https://scholar.google.com/citations?user=GMcL_9kAAAAJ">Dilek Hakkani-Tur</a> and <a href="https://scholar.google.com/citations?user=8XSlAp4AAAAJ&hl=en">Gokhan Tur</a>. My research focus is in Conversational Agents and Large Language Models. I am currently an Applied Scientist Intern at Amazon Alexa AI (Bellevue).</p>
@@ -82,10 +120,10 @@
 <li>
 <div class="row">
   <div class="col-sm-2 abbr">
-    <abbr class="badge">arXiv</abbr>
+    <abbr class="badge badge-secondary">arXiv</abbr>
   </div>
   <div id="pipa2025" class="col-sm-8">
-    <div class="title"><a class="linked waves-effect waves-light" href="https://arxiv.org/abs/2505.01592">PIPA: A Unified Evaluation Protocol for Diagnosing Interactive Planning Agents</a></div>
+    <div class="title"><a class="linked waves-effect waves-light" style="color: #1e3a8a;" href="https://arxiv.org/abs/2505.01592" style="color: #1e3a8a;">PIPA: A Unified Evaluation Protocol for Diagnosing Interactive Planning Agents</a></div>
     <div class="author">Takyoung Kim, Janvijay Singh, Shuhaib Mehri, <em>Emre Can Acikgoz</em>, Sagnik Mukherjee, Nimet Beyza Bozdag, Sumuk Shashidhar, Gokhan Tur, Dilek Hakkani-Tür</div>
     <div class="periodical">
       <em>arXiv</em> 2025
@@ -97,10 +135,10 @@
 <li>
 <div class="row">
   <div class="col-sm-2 abbr">
-    <abbr class="badge">SIGDIAL Oral</abbr>
+    <abbr class="badge badge-secondary">SIGDIAL Oral</abbr>
   </div>
   <div id="td-eval2025" class="col-sm-8">
-    <div class="title"><a class="linked waves-effect waves-light" href="https://arxiv.org/abs/2504.19982">TD-EVAL: Revisiting Task-Oriented Dialogue Evaluation by Combining Turn-Level Precision with Dialogue-Level Comparisons</a></div>
+    <div class="title"><a class="linked waves-effect waves-light" style="color: #1e3a8a;" href="https://arxiv.org/abs/2504.19982" style="color: #1e3a8a;">TD-EVAL: Revisiting Task-Oriented Dialogue Evaluation by Combining Turn-Level Precision with Dialogue-Level Comparisons</a></div>
     <div class="author"><em>Emre Can Acikgoz*</em>, Carl Guo*, Suvodip Dey*, Akul Datta, Takyoung Kim, Gokhan Tur, Dilek Hakkani-Tür</div>
     <div class="periodical">
       <em>SIGDIAL (Oral)</em> 2025
@@ -112,10 +150,10 @@
 <li>
 <div class="row">
   <div class="col-sm-2 abbr">
-    <abbr class="badge">arXiv</abbr>
+    <abbr class="badge badge-secondary">arXiv</abbr>
   </div>
   <div id="toolrl2025" class="col-sm-8">
-    <div class="title"><a class="linked waves-effect waves-light" href="https://arxiv.org/abs/2504.13958">ToolRL: Reward is All Tool Learning Needs</a></div>
+    <div class="title"><a class="linked waves-effect waves-light" style="color: #1e3a8a;" href="https://arxiv.org/abs/2504.13958" style="color: #1e3a8a;">ToolRL: Reward is All Tool Learning Needs</a></div>
     <div class="author">Cheng Qian*, <em>Emre Can Acikgoz*</em>, Qi He, Hongru Wang, Xiusi Chen, Dilek Hakkani-Tür, Gokhan Tur, Heng Ji</div>
     <div class="periodical">
       <em>arXiv</em> 2025
@@ -127,10 +165,10 @@
 <li>
 <div class="row">
   <div class="col-sm-2 abbr">
-    <abbr class="badge">arXiv</abbr>
+    <abbr class="badge badge-secondary">arXiv</abbr>
   </div>
   <div id="convagents2025" class="col-sm-8">
-    <div class="title"><a class="linked waves-effect waves-light" href="https://arxiv.org/abs/2504.16939">A Desideratum for Conversational Agents: Capabilities, Challenges, and Future Directions</a></div>
+    <div class="title"><a class="linked waves-effect waves-light" style="color: #1e3a8a;" href="https://arxiv.org/abs/2504.16939">A Desideratum for Conversational Agents: Capabilities, Challenges, and Future Directions</a></div>
     <div class="author"><em>Emre Can Acikgoz*</em>, Cheng Qian*, Hongru Wang*, Vardhan Dongre, Xiusi Chen, Heng Ji, Dilek Hakkani-Tür, Gokhan Tur</div>
     <div class="periodical">
       <em>arXiv</em> 2025
@@ -142,10 +180,10 @@
 <li>
 <div class="row">
   <div class="col-sm-2 abbr">
-    <abbr class="badge">ACL 2025</abbr>
+    <abbr class="badge badge-secondary">ACL 2025</abbr>
   </div>
   <div id="smart2025" class="col-sm-8">
-    <div class="title"><a class="linked waves-effect waves-light" href="https://arxiv.org/abs/2502.11435">SMART: Self-Aware Agent for Tool Overuse Mitigation</a></div>
+    <div class="title"><a class="linked waves-effect waves-light" style="color: #1e3a8a;" href="https://arxiv.org/abs/2502.11435">SMART: Self-Aware Agent for Tool Overuse Mitigation</a></div>
     <div class="author">Cheng Qian*, <em>Emre Can Acikgoz*</em>, Hongru Wang, Xiusi Chen, Avirup Sil, Dilek Hakkani-Tür, Gokhan Tur, Heng Ji</div>
     <div class="periodical">
       <em>Findings of ACL</em> 2025
@@ -157,10 +195,10 @@
 <li>
 <div class="row">
   <div class="col-sm-2 abbr">
-    <abbr class="badge">ACL 2025</abbr>
+    <abbr class="badge badge-secondary">ACL 2025</abbr>
   </div>
   <div id="calm2025" class="col-sm-8">
-    <div class="title"><a class="linked waves-effect waves-light" href="https://arxiv.org/abs/2502.08820">Can a Single Model Master Both Multi-turn Conversations and Tool Use? CoALM: A Unified Conversational Agentic Language Model</a></div>
+    <div class="title"><a class="linked waves-effect waves-light" style="color: #1e3a8a;" href="https://arxiv.org/abs/2502.08820">Can a Single Model Master Both Multi-turn Conversations and Tool Use? CoALM: A Unified Conversational Agentic Language Model</a></div>
     <div class="author"><em>Emre Can Acikgoz</em>, Jeremiah Greer, Akul Datta, Ze Yang, William Zeng, Oussama Elachqar, Emmanouil Koukoumidis, Gokhan Tur, Dilek Hakkani-Tür</div>
     <div class="periodical">
       <em>ACL</em> 2025
@@ -172,10 +210,10 @@
 <li>
 <div class="row">
   <div class="col-sm-2 abbr">
-    <abbr class="badge">2024</abbr>
+    <abbr class="badge badge-secondary">2024</abbr>
   </div>
   <div id="respact2024" class="col-sm-8">
-      <div class="title"><a class="linked waves-effect waves-light" href="https://arxiv.org/abs/2411.00927">ReSpAct: Harmonizing Reasoning, Speaking, and Acting</a></div>
+      <div class="title"><a class="linked waves-effect waves-light" style="color: #1e3a8a;" href="https://arxiv.org/abs/2411.00927">ReSpAct: Harmonizing Reasoning, Speaking, and Acting</a></div>
       <div class="author">Vardhan Dongre, Xiaocheng Yang, <em>Emre Can Acikgoz</em>, Suvodip Dey, Gokhan Tur, Dilek Hakkani-Tür</div>
       <div class="periodical">
         <em>arXiv</em> 2024
@@ -187,10 +225,10 @@
 <li>
 <div class="row">
   <div class="col-sm-2 abbr">
-    <abbr class="badge">EMNLP Workshop</abbr>
+    <abbr class="badge badge-secondary">EMNLP Workshop</abbr>
   </div>
   <div id="bridge2024" class="col-sm-8">
-      <div class="title"><a class="linked waves-effect waves-light" href="https://arxiv.org/abs/2405.04685">Bridging the Bosphorus: Advancing Turkish Large Language Models through Strategies for Low-Resource Language Adaptation and Benchmarking</a></div>
+      <div class="title"><a class="linked waves-effect waves-light" style="color: #1e3a8a;" href="https://arxiv.org/abs/2405.04685">Bridging the Bosphorus: Advancing Turkish Large Language Models through Strategies for Low-Resource Language Adaptation and Benchmarking</a></div>
       <div class="author"><em>Emre Can Acikgoz</em>, Mete Erdoğan, Deniz Yuret</div>
       <div class="periodical">
         <em>EMNLP Workshop</em> 2024
@@ -202,10 +240,10 @@
 <li>
 <div class="row">
   <div class="col-sm-2 abbr">
-    <abbr class="badge">NeurIPS Workshop</abbr>
+    <abbr class="badge badge-secondary">NeurIPS Workshop</abbr>
   </div>
   <div id="hippo2024" class="col-sm-8">
-      <div class="title"><a class="linked waves-effect waves-light" href="https://arxiv.org/abs/2404.16621">Hippocrates: An Open-Source Framework for Advancing Large Language Models in Healthcare</a></div>
+      <div class="title"><a class="linked waves-effect waves-light" style="color: #1e3a8a;" href="https://arxiv.org/abs/2404.16621">Hippocrates: An Open-Source Framework for Advancing Large Language Models in Healthcare</a></div>
       <div class="author"><em>Emre Can Acikgoz</em>, Osman Batur İnce, Rayene Bech, Arda Anıl Boz, Ilker Kesen, Aykut Erdem, Erkut Erdem</div>
       <div class="periodical">
         <em>NeurIPS Workshop (Oral)</em> 2024
@@ -217,10 +255,10 @@
 <li>
 <div class="row">
   <div class="col-sm-2 abbr">
-    <abbr class="badge">ICLR</abbr>
+    <abbr class="badge badge-secondary">ICLR</abbr>
   </div>
   <div id="vilma2024" class="col-sm-8">
-    <div class="title"><a class="linked waves-effect waves-light" href="https://arxiv.org/abs/2311.07022">ViLMA: A Zero-Shot Benchmark for Linguistic and Temporal Grounding in Video-Language Models</a></div>
+    <div class="title"><a class="linked waves-effect waves-light" style="color: #1e3a8a;" href="https://arxiv.org/abs/2311.07022">ViLMA: A Zero-Shot Benchmark for Linguistic and Temporal Grounding in Video-Language Models</a></div>
     <div class="author">Ilker Kesen, Andrea Pedrotti, Mustafa Dogan, Michele Cafagna, <em>Emre Can Acikgoz</em>, Letitia Parcalabescu, Iacer Calixto, Anette Frank, Albert Gatt, Aykut Erdem, Erkut Erdem</div>
     <div class="periodical">
       <em>ICLR</em> 2024
@@ -232,10 +270,10 @@
 <li>
 <div class="row">
   <div class="col-sm-2 abbr">
-    <abbr class="badge">2022</abbr>
+    <abbr class="badge badge-secondary">2022</abbr>
   </div>
   <div id="mrl2022" class="col-sm-8">
-    <div class="title"><a class="linked waves-effect waves-light" href="https://arxiv.org/pdf/2211.01736.pdf">Transformers on Multilingual Clause-Level Morphology</a></div>
+    <div class="title"><a class="linked waves-effect waves-light" style="color: #1e3a8a;" href="https://arxiv.org/pdf/2211.01736.pdf">Transformers on Multilingual Clause-Level Morphology</a></div>
     <div class="author"><em>Emre Can Acikgoz</em>, Tilek Chubakov, Müge Kural, Gözde Gül Şahin, Deniz Yuret</div>
     <div class="periodical">
       <em>EMNLP Workshop</em> 2022
@@ -307,10 +345,10 @@
 </div>
     <div class="social">
       <span class="contact-icon text-center">
-  <a href="mailto:acikgoz2@illinois.edu"><i class="fas fa-envelope"></i></a>
-  <a href="https://scholar.google.com/citations?user=l6h_3H8AAAAJ&hl" target="_blank" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
-  <a href="https://github.com/emrecanacikgoz" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-  <a href="https://huggingface.co/emrecanacikgoz" target="_blank" title="HuggingFace"><i class="fab fa-huggingface"></i></a>
+  <a href="mailto:acikgoz2@illinois.edu" style="margin-right: 15px;"><i class="fas fa-envelope"></i></a>
+  <a href="https://scholar.google.com/citations?user=l6h_3H8AAAAJ&hl" target="_blank" title="Google Scholar" style="margin-right: 15px;"><i class="ai ai-google-scholar"></i></a>
+  <a href="https://github.com/emrecanacikgoz" target="_blank" title="GitHub" style="margin-right: 15px;"><i class="fab fa-github"></i></a>
+  <a href="https://huggingface.co/emrecanacikgoz" target="_blank" title="HuggingFace" style="margin-right: 15px;"><i class="fas fa-robot"></i></a>
   <a href="https://www.linkedin.com/in/emrecanacikgoz97" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
 </span>
       <div class="contact-note">Feel free to reach out to me at <code>acikgoz2@illinois.edu</code>!
