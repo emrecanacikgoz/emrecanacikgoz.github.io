@@ -99,6 +99,42 @@ span.highlight {
   background-color: #ffffd0;
 }
 
+// Badge styling
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 4px;
+  color: white;
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+}
+
+.badge-success {
+  background-color: #28a745;
+}
+
+.badge-info {
+  background-color: #17a2b8;
+}
+
+.badge-primary {
+  background-color: #007bff;
+}
+
+.badge-secondary {
+  background-color: #6c757d;
+}
+
+.badge-warning {
+  background-color: #ffc107;
+  color: #212529;
+}
+
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 //@import "highlights";
