@@ -216,28 +216,62 @@
   .stat-banner {
     background: linear-gradient(135deg, var(--ink) 0%, #2d2d5a 100%);
     color: white;
-    text-align: center;
-    padding: 44px 28px;
+    padding: 40px 28px;
     margin: 0;
+  }
+
+  .stat-banner-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .stat-text {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+  }
+
+  .stat-fig {
+    flex: 0 0 260px;
+  }
+
+  .stat-fig-img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    background: rgba(255,255,255,0.05);
+  }
+
+  @media (max-width: 780px) {
+    .stat-banner-inner {
+      flex-direction: column;
+      text-align: center;
+      gap: 24px;
+    }
+    .stat-fig { flex: 0 0 auto; max-width: 240px; }
   }
 
   .stat-banner .big-num {
     font-family: 'Crimson Pro', serif;
-    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
     font-weight: 700;
     line-height: 1.15;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
+    white-space: nowrap;
   }
 
   .stat-banner .big-num span { color: var(--tag-gen); }
 
   .stat-banner p {
     font-family: 'Source Sans 3', sans-serif;
-    font-size: 1rem;
+    font-size: 0.95rem;
     opacity: 0.75;
-    max-width: 460px;
+    max-width: 400px;
     margin: 0 auto;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   /* --- Diagram --- */
@@ -251,7 +285,20 @@
     font-family: 'Source Sans 3', sans-serif;
     font-size: 0.85rem;
     color: var(--muted);
-    margin-top: 10px;
+    margin-top: 14px;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .figure-img {
+    width: 100%;
+    max-width: 780px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    display: block;
+    margin: 0 auto;
   }
 
   .loop-diagram {
@@ -506,6 +553,53 @@
     color: var(--tag-sol);
     font-weight: 500;
   }
+
+  /* --- BibTeX --- */
+  .bibtex-wrapper {
+    position: relative;
+    margin-top: 18px;
+    background: #1e1e2e;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .bibtex {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    line-height: 1.65;
+    color: #cdd6f4;
+    padding: 24px 26px;
+    margin: 0;
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  .copy-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.08);
+    color: #cdd6f4;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .copy-btn:hover {
+    background: rgba(255,255,255,0.15);
+  }
+
+  .copy-btn.copied {
+    background: #16a34a;
+    border-color: #16a34a;
+    color: white;
+  }
 </style>
 </head>
 <body>
@@ -513,9 +607,9 @@
 <!-- ==================== HERO ==================== -->
 <header class="hero">
   <div class="container">
-    <div class="label">Preprint</div>
-    <h1><em>Tool-R0:</em> Self-Evolving LLM Agents for Tool-Learning with Zero Data</h1>
-    <p class="subtitle">A self-play RL framework for training general-purpose tool-calling agents from scratch, without any human data.</p>
+    <div class="label">COLM 2026 · Preprint</div>
+    <h1><em>Tool-R0:</em> Self-Evolving LLM Agents for Tool-Learning from Zero Data</h1>
+    <p class="subtitle">A self-play RL framework where a Generator and Solver co-evolve to build general-purpose tool-calling agents, without any human data.</p>
     <p class="authors">
       <strong>Emre Can Acikgoz</strong><sup>1</sup>,
       <strong>Cheng Qian</strong><sup>1</sup>,
@@ -527,10 +621,10 @@
     <p class="affiliations"><sup>1</sup>UIUC&ensp;&ensp;<sup>2</sup>ETH Zurich</p>
     <div class="hero-links">
       <a href="#" class="primary">📄 Paper</a>
-      <a href="https://github.com/emrecanacikgoz/Tool-R0" class="secondary">💻 Code</a>
-      <a href="https://huggingface.co/collections/emrecanacikgoz/tool-r0" class="secondary">🤗 Models</a>
-      <a href="https://api.wandb.ai/links/acikgoz2-university-of-illinois-urbana-champaign/olowdrg5" class="secondary">📊 Logs</a>
-      <a href="javascript:void(0)" class="secondary" onclick="copyBibtex(this)">🙌 Cite</a>
+      <a href="#" class="secondary">💻 Code</a>
+      <a href="#" class="secondary">🤗 Models</a>
+      <a href="#" class="secondary">📊 Logs</a>
+      <a href="javascript:void(0)" class="secondary" onclick="copyBibtex(this)">📎 Cite</a>
     </div>
   </div>
 </header>
@@ -548,12 +642,6 @@
   </div>
 </div>
 
-<!-- ==================== STAT BANNER ====================
-<div class="stat-banner">
-  <div class="big-num">Zero Data. Zero Labels.</div>
-  <p>Define your domain specifications and let the agents train themselves.<br>Tool-R0 turns a lightweight task specification into a full self-evolving curriculum; no datasets, no annotations, no intensive human effort.</p>
-</div> -->
-
 <!-- ==================== ABSTRACT ==================== -->
 <section>
   <div class="container fade-in">
@@ -568,38 +656,13 @@
   </div>
 </section>
 
-<!-- ==================== LOOP DIAGRAM ==================== -->
+<!-- ==================== FRAMEWORK FIGURE ==================== -->
 <div class="diagram-section">
   <div class="wide-container fade-in">
     <span class="section-num" style="text-align:center; display:block;">How It Works</span>
-    <h2 style="text-align:center; margin-bottom:30px;">The Self-Evolution Loop</h2>
-    <div class="loop-diagram">
-      <div class="loop-box gen">
-        🟡 Generator
-        <small>Synthesizes tasks via RLVR</small>
-      </div>
-      <div class="loop-arrow">→</div>
-      <div class="loop-box data">
-        📋 Curriculum
-        <small>Filter, deduplicate, rank</small>
-      </div>
-      <div class="loop-arrow">→</div>
-      <div class="loop-box sol">
-        🔵 Solver
-        <small>Learns tool calls via RLVR</small>
-      </div>
-    </div>
-    <div class="feedback-arrow"><span>⟵ &ensp;Competence feedback guides next iteration&ensp; ⟵</span></div>
-    <p class="caption">Both agents are initialized from the same base LLM and trained independently with GRPO.<br>The Generator is rewarded by the frozen Solver's answer uncertainty to target its competence frontier.</p>
-  </div>
-</div>
-
-<!-- ==================== FRAMEWORK FIGURE ==================== -->
-<div class="diagram-section" style="background: var(--paper);">
-  <div class="wide-container fade-in">
     <h2 style="text-align:center; margin-bottom:30px;">Framework Overview</h2>
-    <img src="toolr0.png" alt="Tool-R0 framework: Generator update and Solver update with reward signals" class="figure-img" />
-    <p class="caption"><strong>Figure 1.</strong> Tool-R0 Training Framework. The Generator is trained with format, validity, and curriculum rewards (r<sub>fmt</sub> + r<sub>valid</sub> + r<sub>curr</sub>). Generated tasks are filtered and ranked into a curriculum pool. The Solver is then trained with format and accuracy rewards (r<sub>fmt</sub> + r<sub>acc</sub>).</p>
+    <img src="fig2_framework.png" alt="Tool-R0 framework: Generator update and Solver update with reward signals" class="figure-img" />
+    <p class="caption"><strong>Figure 2.</strong> Tool-R0 framework. The Generator is trained with format, validity, and curriculum rewards (r<sub>fmt</sub> + r<sub>valid</sub> + r<sub>curr</sub>). Generated tasks are filtered and ranked into a curriculum pool. The Solver is then trained with format and accuracy rewards (r<sub>fmt</sub> + r<sub>acc</sub>).</p>
   </div>
 </div>
 
@@ -834,7 +897,7 @@
     <h2>BibTeX</h2>
     <p>If you find Tool-R0 useful in your research, please consider citing our work.</p>
     <div class="bibtex-wrapper">
-      <button class="copy-btn" onclick="copyBibtex()" id="copyBtn">Copy</button>
+      <button class="copy-btn" onclick="copyBibtex(this)" id="copyBtn">Copy</button>
       <pre class="bibtex" id="bibtexBlock">@article{acikgoz2026toolr0,
   title={Tool-R0: Self-Evolving LLM Agents for Tool-Learning from Zero Data},
   author={Acikgoz, Emre Can and Qian, Cheng and H{\"u}botter, Jonas and Ji, Heng and Tur, Gokhan and Hakkani-T{\"u}r, Dilek},
@@ -866,15 +929,25 @@
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  function copyBibtex() {
-    const text = document.getElementById('bibtexBlock').textContent;
-    navigator.clipboard.writeText(text).then(() => {
-      const btn = document.getElementById('copyBtn');
-      btn.textContent = 'Copied!';
-      btn.classList.add('copied');
+  const bibtex = `@article{acikgoz2026toolr0,
+  title={Tool-R0: Self-Evolving LLM Agents for Tool-Learning from Zero Data},
+  author={Acikgoz, Emre Can and Qian, Cheng and H{\\"u}botter, Jonas and Ji, Heng and Tur, Gokhan and Hakkani-T{\\"u}r, Dilek},
+  journal={arXiv preprint},
+  year={2026}
+}`;
+
+  function copyBibtex(el) {
+    navigator.clipboard.writeText(bibtex).then(() => {
+      const orig = el.innerHTML;
+      if (el.tagName === 'BUTTON') {
+        el.textContent = 'Copied!';
+        el.classList.add('copied');
+      } else {
+        el.innerHTML = '✅ Copied!';
+      }
       setTimeout(() => {
-        btn.textContent = 'Copy';
-        btn.classList.remove('copied');
+        el.innerHTML = orig;
+        el.classList.remove('copied');
       }, 2000);
     });
   }
