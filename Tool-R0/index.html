@@ -596,6 +596,59 @@
   .copy-btn:hover {
     background: #30363d;
   }
+
+  .stat-banner {
+  background:
+    radial-gradient(circle at 30% 50%, rgba(60,80,180,0.35), transparent 60%),
+    radial-gradient(circle at 70% 50%, rgba(120,140,255,0.25), transparent 60%),
+    linear-gradient(135deg, #0b0f25, #1a1f45);
+
+  padding: 90px 20px;
+  }
+
+  /* CARD that blends image into background */
+  .stat-fig-card {
+    background: rgba(255,255,255,0.04);
+    padding: 18px;
+
+    border-radius: 14px;
+
+    box-shadow:
+      0 10px 30px rgba(0,0,0,0.35),
+      0 0 40px rgba(90,120,255,0.15);
+
+    backdrop-filter: blur(6px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stat-fig-img {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+
+    border-radius: 8px;
+
+    box-shadow:
+      0 4px 14px rgba(0,0,0,0.25);
+  }
+  
+  .big-num {
+  font-size: 44px;
+  font-weight: 800;
+
+  background: linear-gradient(180deg, #ffffff, #cfd6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  margin-bottom: 16px;
+  }
+
+  .stat-text p {
+    color: rgba(255,255,255,0.72);
+  }
 </style>
 </head>
 <body>
@@ -630,8 +683,11 @@
   <div class="stat-banner-inner">
 
     <div class="stat-fig">
-      <img src="toolr0-abs.png" class="stat-fig-img">
+      <div class="stat-fig-card">
+        <img src="toolr0-abs.png" class="stat-fig-img">
+      </div>
     </div>
+
 
     <div class="stat-text">
       <div class="big-num">Zero Data. Zero Labels.</div>
