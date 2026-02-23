@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifelong Agent</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            color: #2a2a2a;
+            background: #f6f2ed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .hero {
+            margin-top: 130px;
+            text-align: center;
+            margin-bottom: 54px;
+            max-width: 600px;
+        }
+        .kicker {
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: #b45a3c;
+            margin-bottom: 14px;
+        }
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            line-height: 1.15;
+        }
+        .subtitle {
+            font-size: 0.95rem;
+            color: #8a8580;
+            margin-top: 14px;
+            line-height: 1.6;
+        }
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 22px;
+            flex-wrap: wrap;
+        }
+        .htag {
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .htag.learning { background: #e6ebe8; color: #4a6b56; }
+        .htag.aligning { background: #f0e5df; color: #9c5e42; }
+        .htag.evolving { background: #e2e4ec; color: #555e7a; }
+
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+            max-width: 870px;
+            margin-bottom: 130px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            width: 270px;
+            min-height: 135px;
+            padding: 22px 22px 14px;
+            background: #fffdf9;
+            border: 1px solid #e8e2da;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #1a1a1a;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+        .card:hover {
+            background: #fff;
+            border-color: #d4cdc4;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+        }
+
+        .card .title {
+            font-size: 1.02rem;
+            font-weight: 500;
+            line-height: 1.5;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card .bottom {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-top: 14px;
+        }
+
+        .card .labels {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        .label {
+            font-size: 0.58rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .label.learning { background: #e6ebe8; color: #4a6b56; }
+        .label.aligning { background: #f0e5df; color: #9c5e42; }
+        .label.evolving { background: #e2e4ec; color: #555e7a; }
+
+        .card .date {
+            font-size: 0.62rem;
+            color: #b0a99f;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 640px) {
+            .hero { margin-top: 80px; }
+            h1 { font-size: 2rem; }
+            .card { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <div class="kicker">Project Lifelong Agents</div>
+    <h1>Lifelong Agents: Learning, Aligning, Evolving</h1>
+    <!-- <p class="subtitle">A collection of ongoing research from the Lifelong Agent group, toward the dream of achieving superintelligent agents that never stop learning, aligning, and evolving.</p> -->
+    <p class="subtitle"></p>Project Lifelong Agent is an ongoing research effort driven by the dream of superintelligent agents that continuously learn, adapt, and evolve. This page collects our latest work toward that vision.</p>
+    <div class="hero-tags">
+        <span class="htag learning">Learning</span>
+        <span class="htag aligning">Aligning</span>
+        <span class="htag evolving">Evolving</span>
+    </div>
+</div>
+
+<div class="grid">
+
+    <a class="card" href="https://arxiv.org/pdf/2509.19736">
+        <span class="title">Tool-R0: Self-Evolving LLM Agents for Tool-Learning from Zero Data</span>
+        <span class="bottom">
+            <span class="labels"><span class="label learning">Learning</span><span class="label evolving">Evolving</span></span>
+            <span class="date">Feb 2026</span>
+        </span>
+    </a>
+
+    <a class="card" href="https://arxiv.org/pdf/2601.03905">
+        <span class="title">Current Agents Fail to Leverage World Model as Tool for Foresight</span>
+        <span class="bottom">
+            <span class="labels"><span class="label aligning">Aligning</span></span>
+            <span class="date">Jan 2026</span>
+        </span>
+    </a>
+
+    <a class="card" href="https://arxiv.org/pdf/2510.07841">
+        <span class="title">Self-Improving LLM Agents at Test-Time</span>
+        <span class="bottom">
+            <span class="labels"><span class="label learning">Learning</span><span class="label evolving">Evolving</span></span>
+            <span class="date">Oct 2025</span>
+        </span>
+    </a>
+
+    <a class="card" href="https://arxiv.org/pdf/2504.13958">
+        <span class="title">ToolRL: Reward is All Tool Learning Needs</span>
+        <span class="bottom">
+            <span class="labels"><span class="label learning">Learning</span></span>
+            <span class="date">Apr 2025</span>
+        </span>
+    </a>
+
+    <a class="card" href="https://arxiv.org/pdf/2502.11435">
+        <span class="title">SMART: Self-Aware Agent for Tool Overuse Mitigation</span>
+        <span class="bottom">
+            <span class="labels"><span class="label aligning">Aligning</span></span>
+            <span class="date">Feb 2025</span>
+        </span>
+    </a>
+
+</div>
+
+</body>
+</html>
