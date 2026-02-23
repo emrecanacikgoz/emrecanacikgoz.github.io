@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tool-R0: Self-Evolving LLM Agents for Tool-Learning from Zero Data</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --paper: #faf9f6;
+    --accent: #c0392b;
+    --accent2: #2c3e7a;
+    --muted: #6b7280;
+    --border: #e5e2dc;
+    --card: #ffffff;
+    --tag-gen: #e74c3c;
+    --tag-sol: #2980b9;
+    --highlight: #fef3c7;
+    --subtle-bg: #f4f2ee;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Crimson Pro', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.75;
+    font-size: 19px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: white;
+  }
+
+  /* --- Hero --- */
+  .hero {
+    position: relative;
+    padding: 100px 0 70px;
+    text-align: center;
+    overflow: hidden;
+    background: linear-gradient(180deg, #f0ede6 0%, var(--paper) 100%);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse 600px 300px at 20% 40%, rgba(192,57,43,0.04), transparent),
+      radial-gradient(ellipse 500px 400px at 80% 60%, rgba(44,62,122,0.04), transparent);
+    pointer-events: none;
+  }
+
+  .hero .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: inline-block;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.1s;
+  }
+
+  .hero h1 {
+    font-family: 'Crimson Pro', serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+    max-width: 800px;
+    margin: 0 auto 12px;
+    letter-spacing: -0.5px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.2s;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero .subtitle {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 620px;
+    margin: 0 auto 30px;
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.35s;
+  }
+
+  .authors {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.92rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.45s;
+  }
+
+  .authors strong { color: var(--ink); font-weight: 600; }
+
+  .affiliations {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.5s;
+  }
+
+  .hero-links {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.6s;
+  }
+
+  .hero-links a {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 9px 22px;
+    border-radius: 6px;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .hero-links a.primary {
+    background: var(--ink);
+    color: white;
+  }
+  .hero-links a.primary:hover { background: #2d2d4a; transform: translateY(-1px); }
+
+  .hero-links a.secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--border);
+  }
+  .hero-links a.secondary:hover { border-color: var(--ink); transform: translateY(-1px); }
+
+  /* --- Layout --- */
+  .container {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  .wide-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* --- Sections --- */
+  section {
+    padding: 56px 0;
+  }
+
+  section + section {
+    border-top: 1px solid var(--border);
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  h2 {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.85rem;
+    font-weight: 600;
+    margin-bottom: 22px;
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+  }
+
+  h3 {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 32px 0 14px;
+    color: var(--ink);
+  }
+
+  p {
+    margin-bottom: 18px;
+    font-weight: 400;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  .lead {
+    font-size: 1.12rem;
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  /* --- Highlight Stat --- */
+  .stat-banner {
+    background: linear-gradient(135deg, var(--ink) 0%, #2d2d5a 100%);
+    color: white;
+    text-align: center;
+    padding: 44px 28px;
+    margin: 0;
+  }
+
+  .stat-banner .big-num {
+    font-family: 'Crimson Pro', serif;
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .stat-banner .big-num span { color: var(--tag-gen); }
+
+  .stat-banner p {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    opacity: 0.75;
+    max-width: 460px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  /* --- Diagram --- */
+  .diagram-section {
+    background: var(--subtle-bg);
+    padding: 52px 0;
+    text-align: center;
+  }
+
+  .diagram-section .caption {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 10px;
+  }
+
+  .loop-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    max-width: 720px;
+    margin: 0 auto 14px;
+  }
+
+  .loop-box {
+    padding: 20px 28px;
+    border-radius: 10px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    min-width: 160px;
+    text-align: center;
+    position: relative;
+  }
+
+  .loop-box.gen {
+    background: linear-gradient(135deg, #fde8e8, #fbd5d5);
+    color: var(--tag-gen);
+    border: 1.5px solid #f5c6c6;
+  }
+
+  .loop-box.data {
+    background: linear-gradient(135deg, #fef9e7, #fdf3d0);
+    color: #92740c;
+    border: 1.5px solid #f5e6a3;
+  }
+
+  .loop-box.sol {
+    background: linear-gradient(135deg, #dbeafe, #c7d9f7);
+    color: var(--tag-sol);
+    border: 1.5px solid #a5c4f1;
+  }
+
+  .loop-box small {
+    display: block;
+    font-weight: 400;
+    font-size: 0.78rem;
+    margin-top: 4px;
+    opacity: 0.75;
+  }
+
+  .loop-arrow {
+    font-size: 1.6rem;
+    color: var(--muted);
+    padding: 0 8px;
+    user-select: none;
+  }
+
+  .feedback-arrow {
+    display: block;
+    text-align: center;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .feedback-arrow span {
+    display: inline-block;
+    padding: 3px 16px;
+    border: 1px dashed var(--border);
+    border-radius: 20px;
+  }
+
+  /* --- Tables --- */
+  .table-wrapper {
+    overflow-x: auto;
+    margin: 24px 0;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+  }
+
+  thead {
+    background: var(--subtle-bg);
+  }
+
+  th {
+    padding: 12px 14px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.3px;
+    color: var(--muted);
+    border-bottom: 1.5px solid var(--border);
+    white-space: nowrap;
+  }
+
+  th:first-child { text-align: left; }
+
+  td {
+    padding: 10px 14px;
+    text-align: center;
+    border-bottom: 1px solid #f0ede6;
+    white-space: nowrap;
+  }
+
+  td:first-child {
+    text-align: left;
+    font-weight: 500;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  .row-highlight {
+    background: rgba(192, 57, 43, 0.04);
+  }
+
+  .row-highlight td { font-weight: 600; }
+
+  .delta-row td {
+    font-size: 0.8rem;
+    color: var(--muted);
+    padding-top: 2px;
+    padding-bottom: 12px;
+    border-bottom: 1.5px solid var(--border);
+  }
+
+  .gain { color: #16a34a; font-weight: 600; }
+
+  .best { color: var(--accent); font-weight: 700; }
+
+  .zero-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    background: var(--accent);
+    color: white;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-left: 4px;
+    vertical-align: middle;
+    letter-spacing: 0.5px;
+  }
+
+  .data-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    background: #e5e7eb;
+    color: var(--muted);
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+
+  /* --- Takeaways / Findings --- */
+  .finding {
+    background: var(--card);
+    border-left: 3.5px solid var(--accent);
+    padding: 22px 26px;
+    margin: 28px 0;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+
+  .finding .finding-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .finding p {
+    font-size: 1rem;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* --- Footer --- */
+  footer {
+    text-align: center;
+    padding: 48px 28px;
+    border-top: 1px solid var(--border);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* --- Animations --- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    .hero { padding: 70px 0 50px; }
+    .hero h1 { font-size: 2rem; }
+    section { padding: 40px 0; }
+    .stat-banner .big-num { font-size: 2.8rem; }
+    .loop-arrow { display: none; }
+    .loop-diagram { flex-direction: column; gap: 10px; }
+    th, td { padding: 8px 10px; font-size: 0.8rem; }
+  }
+
+  /* --- Ablation mini-table --- */
+  .ablation-row td:first-child {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: #555;
+  }
+
+  /* Tag styles for inline mentions */
+  .tag-gen {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+    color: var(--tag-gen);
+    font-weight: 500;
+  }
+
+  .tag-sol {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+    color: var(--tag-sol);
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<header class="hero">
+  <div class="container">
+    <div class="label">Preprint</div>
+    <h1><em>Tool-R0:</em> Self-Evolving LLM Agents for Tool-Learning with Zero Data</h1>
+    <p class="subtitle">A self-play RL framework for training general-purpose tool-calling agents from scratch, without any human data.</p>
+    <p class="authors">
+      <strong>Emre Can Acikgoz</strong><sup>1</sup>,
+      <strong>Cheng Qian</strong><sup>1</sup>,
+      <strong>Jonas Hübotter</strong><sup>2</sup>,
+      <strong>Heng Ji</strong><sup>1</sup>,
+      <strong>Gokhan Tur</strong><sup>1</sup>,
+      <strong>Dilek Hakkani-Tür</strong><sup>1</sup>
+    </p>
+    <p class="affiliations"><sup>1</sup>UIUC&ensp;&ensp;<sup>2</sup>ETH Zurich</p>
+    <div class="hero-links">
+      <a href="#" class="primary">📄 Paper</a>
+      <a href="#" class="secondary">💻 Code</a>
+      <a href="#" class="secondary">🤗 Models</a>
+      <a href="https://huggingface.co/datasets/toolr0/toolr0-logs" class="secondary">📊 Logs</a>
+      <a href="javascript:void(0)" class="secondary" onclick="copyBibtex(this)">🙌 Cite</a>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== STAT BANNER + FIGURE 1 ==================== -->
+<div class="stat-banner">
+  <div class="stat-banner-inner">
+    <div class="stat-fig">
+      <img src="toolr0-abs.png" alt="Tool-R0 self-evolution loop" class="stat-fig-img" />
+    </div>
+    <div class="stat-text">
+      <div class="big-num">Zero Data. Zero Labels.</div>
+      <p>Define your domains. Let the agents train themselves. Tool-R0 takes a lightweight task specification and builds a full self-evolving curriculum from it. No datasets, no annotations, no human supervision.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== STAT BANNER ====================
+<div class="stat-banner">
+  <div class="big-num">Zero Data. Zero Labels.</div>
+  <p>Define your domain specifications and let the agents train themselves.<br>Tool-R0 turns a lightweight task specification into a full self-evolving curriculum; no datasets, no annotations, no intensive human effort.</p>
+</div> -->
+
+<!-- ==================== ABSTRACT ==================== -->
+<section>
+  <div class="container fade-in">
+    <span class="section-num">Abstract</span>
+    <h2>TL;DR</h2>
+    <p class="lead">
+      Large language models are increasingly used as autonomous agents that interact with external tools to solve complex tasks. Reinforcement learning has become a go-to approach for building these agentic capabilities, but it usually relies on carefully constructed task-solution pairs and a good amount of human supervision.
+    </p>
+    <p class="lead">
+      We propose <strong>Tool-R0</strong>, a framework for training general-purpose tool-calling agents from scratch with <em>self-play RL, under a zero data assumption</em>. Starting from the same base LLM, Tool-R0 co-evolves a <span class="tag-gen">Generator</span> and a <span class="tag-sol">Solver</span> with complementary rewards: one proposes challenging tasks right at the other's competence frontier, and the other learns to solve them through real-world tool calls.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== LOOP DIAGRAM ==================== -->
+<div class="diagram-section">
+  <div class="wide-container fade-in">
+    <span class="section-num" style="text-align:center; display:block;">How It Works</span>
+    <h2 style="text-align:center; margin-bottom:30px;">The Self-Evolution Loop</h2>
+    <div class="loop-diagram">
+      <div class="loop-box gen">
+        🟡 Generator
+        <small>Synthesizes tasks via RLVR</small>
+      </div>
+      <div class="loop-arrow">→</div>
+      <div class="loop-box data">
+        📋 Curriculum
+        <small>Filter, deduplicate, rank</small>
+      </div>
+      <div class="loop-arrow">→</div>
+      <div class="loop-box sol">
+        🔵 Solver
+        <small>Learns tool calls via RLVR</small>
+      </div>
+    </div>
+    <div class="feedback-arrow"><span>⟵ &ensp;Competence feedback guides next iteration&ensp; ⟵</span></div>
+    <p class="caption">Both agents are initialized from the same base LLM and trained independently with GRPO.<br>The Generator is rewarded by the frozen Solver's answer uncertainty to target its competence frontier.</p>
+  </div>
+</div>
+
+<!-- ==================== FRAMEWORK FIGURE ==================== -->
+<div class="diagram-section" style="background: var(--paper);">
+  <div class="wide-container fade-in">
+    <h2 style="text-align:center; margin-bottom:30px;">Framework Overview</h2>
+    <img src="toolr0.png" alt="Tool-R0 framework: Generator update and Solver update with reward signals" class="figure-img" />
+    <p class="caption"><strong>Figure 1.</strong> Tool-R0 Training Framework. The Generator is trained with format, validity, and curriculum rewards (r<sub>fmt</sub> + r<sub>valid</sub> + r<sub>curr</sub>). Generated tasks are filtered and ranked into a curriculum pool. The Solver is then trained with format and accuracy rewards (r<sub>fmt</sub> + r<sub>acc</sub>).</p>
+  </div>
+</div>
+
+<!-- ==================== MAIN RESULTS ==================== -->
+<section>
+  <div class="wide-container fade-in">
+    <span class="section-num">Results</span>
+    <h2>Main Results</h2>
+    <p>We evaluate Tool-R0 on five diverse tool-calling benchmarks. It turns out that self-play alone is enough to produce substantial gains across all of them, covering single-turn API selection, multi-step tool composition, conversational tool use, and intent tracking. On our primary model (Qwen2.5-1.5B), Tool-R0 yields a <strong>92.5% relative improvement</strong> over the base model on average.</p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>ToolAlpaca</th>
+            <th>SealTool</th>
+            <th>NexusRaven</th>
+            <th>API-Bank</th>
+            <th>SNIPS</th>
+            <th>Avg</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Qwen2.5-0.5B</td>
+            <td>20.17</td><td>37.07</td><td>4.71</td><td>13.85</td><td>1.57</td><td>15.47</td>
+          </tr>
+          <tr class="row-highlight">
+            <td>+ Tool-R0</td>
+            <td>31.58</td><td>63.95</td><td>17.61</td><td>28.00</td><td>14.29</td><td class="best">30.57</td>
+          </tr>
+          <tr class="delta-row">
+            <td></td>
+            <td class="gain">+56.6%</td><td class="gain">+72.5%</td><td class="gain">+273.9%</td><td class="gain">+102.2%</td><td class="gain">+810.2%</td><td class="gain">↑101.0%</td>
+          </tr>
+
+          <tr>
+            <td>Qwen2.5-1.5B</td>
+            <td>35.96</td><td>47.27</td><td>17.61</td><td>19.13</td><td>4.29</td><td>24.85</td>
+          </tr>
+          <tr class="row-highlight">
+            <td>+ Tool-R0</td>
+            <td>47.36</td><td>83.00</td><td>34.59</td><td>50.62</td><td>20.86</td><td class="best">47.84</td>
+          </tr>
+          <tr class="delta-row">
+            <td></td>
+            <td class="gain">+31.7%</td><td class="gain">+75.6%</td><td class="gain">+86.4%</td><td class="gain">+164.6%</td><td class="gain">+386.3%</td><td class="gain">↑92.5%</td>
+          </tr>
+
+          <tr>
+            <td>Qwen2.5-3B</td>
+            <td>45.61</td><td>69.72</td><td>44.33</td><td>44.95</td><td>14.28</td><td>43.97</td>
+          </tr>
+          <tr class="row-highlight">
+            <td>+ Tool-R0</td>
+            <td>53.51</td><td>78.23</td><td>47.80</td><td>47.94</td><td>15.57</td><td class="best">48.50</td>
+          </tr>
+          <tr class="delta-row">
+            <td></td>
+            <td class="gain">+17.3%</td><td class="gain">+12.2%</td><td class="gain">+7.8%</td><td class="gain">+6.7%</td><td class="gain">+9.0%</td><td class="gain">↑10.3%</td>
+          </tr>
+
+          <tr>
+            <td>Llama-3.2-3B</td>
+            <td>35.96</td><td>68.70</td><td>45.60</td><td>27.08</td><td>12.29</td><td>36.12</td>
+          </tr>
+          <tr class="row-highlight">
+            <td>+ Tool-R0</td>
+            <td>43.86</td><td>77.21</td><td>46.86</td><td>30.24</td><td>14.42</td><td class="best">40.47</td>
+          </tr>
+          <tr class="delta-row">
+            <td></td>
+            <td class="gain">+22.0%</td><td class="gain">+12.4%</td><td class="gain">+2.8%</td><td class="gain">+11.7%</td><td class="gain">+17.3%</td><td class="gain">↑12.0%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>An interesting pattern here: after training with Tool-R0, the <strong>0.5B model surpasses the 1.5B base</strong>, and the <strong>1.5B surpasses the 3B base</strong>. Self-play appears to unlock latent tool-use capabilities even in very small models that otherwise show limited tool-calling performance.</p>
+  </div>
+</section>
+
+<!-- ==================== VS SUPERVISED ==================== -->
+<section>
+  <div class="wide-container fade-in">
+    <span class="section-num">Comparison</span>
+    <h2>Surpassing Supervised Baselines</h2>
+    <p>To put these numbers in context, we compare Tool-R0 against models fine-tuned on existing curated tool-calling datasets ranging from 4k to 210k examples. For a fair comparison, all models are re-trained on the same Qwen2.5-1.5B backbone.</p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Data</th>
+            <th>ToolAlpaca</th>
+            <th>SealTool</th>
+            <th>NexusRaven</th>
+            <th>API-Bank</th>
+            <th>SNIPS</th>
+            <th>Avg</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Base model</td>
+            <td>–</td>
+            <td>35.96</td><td>47.27</td><td>17.61</td><td>10.13</td><td>4.29</td><td>24.85</td>
+          </tr>
+          <tr>
+            <td>xLAM <span class="data-badge">60k</span></td>
+            <td>60k</td>
+            <td>51.75</td><td>69.05</td><td>38.68</td><td>34.65</td><td>23.85</td><td>43.60</td>
+          </tr>
+          <tr>
+            <td>Hammer <span class="data-badge">210k</span></td>
+            <td>210k</td>
+            <td>45.61</td><td>68.70</td><td>51.88</td><td>33.10</td><td>19.42</td><td>43.74</td>
+          </tr>
+          <tr>
+            <td>ToolACE <span class="data-badge">12k</span></td>
+            <td>12k</td>
+            <td>45.61</td><td>67.01</td><td>43.08</td><td>53.71</td><td>14.14</td><td>44.71</td>
+          </tr>
+          <tr>
+            <td>ToolRL <span class="data-badge">4k</span></td>
+            <td>4k</td>
+            <td>46.49</td><td>72.78</td><td>34.14</td><td>62.04</td><td>14.86</td><td>46.06</td>
+          </tr>
+          <tr class="row-highlight">
+            <td>Tool-R0 <span class="zero-badge">0 data</span></td>
+            <td><strong>0</strong></td>
+            <td>47.36</td><td class="best">83.00</td><td>34.59</td><td>50.62</td><td>20.86</td><td class="best">47.84</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>With <em>zero curated data</em>, Tool-R0 reaches the highest average accuracy at 47.84%, outperforming all supervised baselines. We think the key reason is that the self-generated curriculum adaptively targets the model's evolving weaknesses rather than being locked to a fixed human-designed distribution. In other words, <em>the model itself knows best what data it needs</em>.</p>
+  </div>
+</section>
+
+<!-- ==================== ABLATIONS ==================== -->
+<section>
+  <div class="wide-container fade-in">
+    <span class="section-num">Analysis</span>
+    <h2>Ablation Studies</h2>
+    <p>We run a series of ablations to understand which design choices actually matter.</p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Configuration</th>
+            <th>Avg Accuracy</th>
+            <th>∆ (pp)</th>
+            <th>Relative Drop</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-highlight">
+            <td>Tool-R0 (full)</td>
+            <td class="best">47.84</td><td>–</td><td>–</td>
+          </tr>
+          <tr class="ablation-row">
+            <td>⊢ shared weights</td>
+            <td>30.42</td><td>−17.42</td><td style="color: var(--accent);">↓ 36.4%</td>
+          </tr>
+          <tr class="ablation-row">
+            <td>⊢ frozen Generator</td>
+            <td>41.65</td><td>−6.19</td><td style="color: var(--accent);">↓ 12.9%</td>
+          </tr>
+          <tr class="ablation-row">
+            <td>⊢ w/o difficulty reward</td>
+            <td>43.54</td><td>−4.30</td><td style="color: var(--accent);">↓ 9.0%</td>
+          </tr>
+          <tr class="ablation-row">
+            <td>⊢ w/o Gaussian falloff</td>
+            <td>44.10</td><td>−3.74</td><td style="color: var(--accent);">↓ 7.8%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>Parameter separation is critical.</strong> Sharing weights between Generator and Solver leads to a −17.4 pp drop. We attribute this to gradient interference: the exploration-driven Generator and the execution-driven Solver pull the shared representation in conflicting directions. <strong>The Generator also needs to actively learn</strong>, not just generate; freezing it costs 6.2 pp. Finally, <strong>difficulty calibration matters</strong>: both the band-pass reward and its smooth Gaussian transitions contribute to stable training.</p>
+  </div>
+</section>
+
+<!-- ==================== KEY FINDINGS ==================== -->
+<section style="background: var(--subtle-bg);">
+  <div class="container fade-in">
+    <span class="section-num">Insights</span>
+    <h2>Key Findings</h2>
+
+    <div class="finding">
+      <span class="finding-label">Finding 1</span>
+      <p><strong>Self-play can teach complex tool-calling from zero data.</strong> Even starting from weak priors, Tool-R0 produces consistent gains across model scales, architectures, and benchmarks. Self-play RL on its own is sufficient to learn non-trivial tool-calling capabilities.</p>
+    </div>
+
+    <div class="finding">
+      <span class="finding-label">Finding 2</span>
+      <p><strong>Self-generated curricula outperform static human supervision.</strong> The curriculum that emerges from self-play achieves the highest average similarity and the most uniform coverage across benchmarks, without ever seeing test data. It produces broader, more balanced training distributions than any of the curated datasets we compared against.</p>
+    </div>
+
+    <div class="finding">
+      <span class="finding-label">Finding 3</span>
+      <p><strong>Role separation is essential for stable co-evolution.</strong> Training Generator and Solver with separate parameters turns out to be necessary, especially when both roles operate over high-entropy action spaces with different reward objectives. Sharing weights leads to catastrophic forgetting.</p>
+    </div>
+
+    <div class="finding">
+      <span class="finding-label">Finding 4</span>
+      <p><strong>Difficulty-aware rewards are what drive learning.</strong> Self-play only works well when the Generator is actively learning and guided by a band-pass difficulty signal with smooth Gaussian transitions. Without calibrated difficulty, or with a frozen Generator, the system fails to produce the kind of targeted challenges that keep the Solver improving.</p>
+    </div>
+
+    <div class="finding">
+      <span class="finding-label">Finding 5</span>
+      <p><strong>Tool-R0 works as effective mid-training for post-training.</strong> Running self-play first and then doing supervised fine-tuning outperforms both SFT alone and standalone Tool-R0, reaching 48.1% accuracy. Self-play builds a stronger foundation that lets the model extract more from the same human-curated data.</p>
+    </div>
+
+    <div class="finding">
+      <span class="finding-label">Finding 6</span>
+      <p><strong>Larger models keep improving for longer.</strong> Smaller models tend to converge within about 3 iterations, settling near what looks like a Nash-like equilibrium. The 3B model, on the other hand, shows continuous improvement with no clear sign of saturation, suggesting that higher capacity delays convergence and leaves room for further gains from additional self-play rounds.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CITATION ==================== -->
+<section id="citation">
+  <div class="container fade-in">
+    <span class="section-num">Citation</span>
+    <h2>BibTeX</h2>
+    <p>If you find Tool-R0 useful in your research, please consider citing our work.</p>
+    <div class="bibtex-wrapper">
+      <button class="copy-btn" onclick="copyBibtex()" id="copyBtn">Copy</button>
+      <pre class="bibtex" id="bibtexBlock">@article{acikgoz2026toolr0,
+  title={Tool-R0: Self-Evolving LLM Agents for Tool-Learning from Zero Data},
+  author={Acikgoz, Emre Can and Qian, Cheng and H{\"u}botter, Jonas and Ji, Heng and Tur, Gokhan and Hakkani-T{\"u}r, Dilek},
+  journal={arXiv preprint},
+  year={2026}
+}</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <p><strong>Tool-R0</strong> · Emre Can Acikgoz, Cheng Qian, Jonas Hübotter, Heng Ji, Gokhan Tur, Dilek Hakkani-Tür</p>
+  <p style="margin-top: 6px;">UIUC &amp; ETH Zurich · 2026</p>
+  <p style="margin-top: 12px;">
+    <a href="#">Paper</a> · <a href="#">Code</a> · <a href="#">Models</a> · <a href="#">Logs</a> · <a href="#citation">Cite</a>
+  </p>
+</footer>
+
+<script>
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  function copyBibtex() {
+    const text = document.getElementById('bibtexBlock').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('copyBtn');
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Copy';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+</script>
+
+</body>
+</html>
