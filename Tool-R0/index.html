@@ -448,22 +448,6 @@
     margin: 0;
   }
 
-  .stat-banner-inner {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  max-width: 800px;
-  margin: 0 auto;
-  }
-
-  .stat-fig {
-    flex: 0 0 40%;
-  }
-
-  .stat-text {
-    flex: 0 0 60%;
-  }
-
   /* --- Footer --- */
   footer {
     text-align: center;
@@ -528,6 +512,90 @@
     color: var(--tag-sol);
     font-weight: 500;
   }
+
+  /* --- Stat Banner --- */
+  .stat-banner {
+  background: linear-gradient(135deg, #0f1226, #2b2f55);
+  padding: 80px 20px;
+  }
+
+  .stat-banner-inner {
+    display: flex;
+    align-items: center;        /* vertical center */
+    justify-content: center;    /* horizontal center */
+    gap: 60px;
+
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* IMAGE SIDE */
+  .stat-fig {
+    flex: 0 0 420px;            /* fixed visual width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .stat-fig-img {
+    width: 100%;
+    max-width: 420px;           /* prevents oversized figure */
+    height: auto;
+    display: block;
+  }
+
+  /* TEXT SIDE */
+  .stat-text {
+    flex: 0 0 420px;
+  }
+
+  .big-num {
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: white;
+  }
+
+  .stat-text p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .codeblock-wrapper {
+  position: relative;
+  margin-top: 16px;
+  }
+
+  .codeblock-shell {
+    background: #0d1117;
+    color: #c9d1d9;
+    padding: 18px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-x: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    border: 1px solid #30363d;
+  }
+
+  .copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #21262d;
+    color: #c9d1d9;
+    border: 1px solid #30363d;
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .copy-btn:hover {
+    background: #30363d;
+  }
 </style>
 </head>
 <body>
@@ -560,15 +628,11 @@
 <!-- ==================== STAT BANNER + FIGURE 1 ==================== -->
 <div class="stat-banner">
   <div class="stat-banner-inner">
-    
-    <!-- LEFT: FIGURE -->
+
     <div class="stat-fig">
-      <img src="toolr0-abs.png"
-           alt="Tool-R0 self-evolution loop"
-           class="stat-fig-img" />
+      <img src="toolr0-abs.png" class="stat-fig-img">
     </div>
 
-    <!-- RIGHT: TEXT -->
     <div class="stat-text">
       <div class="big-num">Zero Data. Zero Labels.</div>
       <p>
@@ -861,18 +925,23 @@
 <!-- ==================== CITATION ==================== -->
 <section id="citation">
   <div class="container fade-in">
+    
     <span class="section-num">Citation</span>
     <h2>BibTeX</h2>
     <p>If you find Tool-R0 useful in your research, please consider citing our work.</p>
-    <div class="bibtex-wrapper">
-      <button class="copy-btn" onclick="copyBibtex()" id="copyBtn">Copy</button>
-      <pre class="bibtex" id="bibtexBlock">@article{acikgoz2026toolr0,
-  title={Tool-R0: Self-Evolving LLM Agents for Tool-Learning from Zero Data},
-  author={Acikgoz, Emre Can and Qian, Cheng and H{\"u}botter, Jonas and Ji, Heng and Tur, Gokhan and Hakkani-T{\"u}r, Dilek},
-  journal={arXiv preprint},
-  year={2026}
-}</pre>
+
+    <div class="codeblock-wrapper">
+      <button class="copy-btn" onclick="copyBibtex()">Copy</button>
+
+      <pre class="codeblock-shell"><code id="bibtexBlock">@article{acikgoz2026toolr0,
+  title   = {Tool-R0: Self-Evolving LLM Agents for Tool-Learning from Zero Data},
+  author  = {Acikgoz, Emre Can and Qian, Cheng and H{\"u}botter, Jonas and Ji, Heng and Tur, Gokhan and Hakkani-T{\"u}r, Dilek},
+  journal = {arXiv preprint},
+  year    = {2026}
+}</code></pre>
+
     </div>
+
   </div>
 </section>
 
