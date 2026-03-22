@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Schedule</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f5f4f0; min-height: 100vh; }
+  button { cursor: pointer; }
+  button:hover { opacity: 0.85; }
+  @keyframes nowPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.5); }
+    50% { box-shadow: 0 0 0 6px rgba(231, 76, 60, 0); }
+  }
+  @keyframes arrowBounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4px); }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+const DAYS = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const SHORT_DAYS = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+const DEADLINE = new Date("2026-05-04T23:59:00");
+
+const CATEGORIES = {
+  code:    { label:"Deep Coding",      color:"#1b3a2a", bg:"#dff0e6", border:"#3d8b5e", icon:"💻" },
+  read:    { label:"Paper Reading",    color:"#2a1a0e", bg:"#f5ead6", border:"#c49a5c", icon:"📄" },
+  neurips: { label:"NeurIPS Work",     color:"#4a0e0e", bg:"#fde8e8", border:"#c0392b", icon:"🔥" },
+  fixed:   { label:"Fixed Commitment", color:"#3a1525", bg:"#f4dce6", border:"#b8607a", icon:"📌" },
+  crossfit:{ label:"CrossFit",         color:"#2a2210", bg:"#fef3d6", border:"#d4a017", icon:"🏋️" },
+  log:     { label:"Experiment Log",   color:"#1e0e2e", bg:"#ecdff5", border:"#8a5cb0", icon:"🔬" },
+  journal: { label:"Daily Journal",    color:"#0e2a3a", bg:"#d6eaf5", border:"#4a7fa0", icon:"📓" },
+  support: { label:"Support / Admin",  color:"#2a2a2a", bg:"#eee",    border:"#999",    icon:"🔧" },
+  rest:    { label:"Break / Meals",    color:"#444",    bg:"#f5f5f5", border:"#ccc",    icon:"☕" },
+  routine: { label:"Morning Routine",  color:"#555",    bg:"#f0f0f0", border:"#bbb",    icon:"🌅" },
+};
+
+const schedule = {
+  Monday: [
+    { time:"6:00–6:30", label:"Morning routine", cat:"routine" },
+    { time:"6:30–8:30", label:"Deep Coding — Block 1 (2h)", cat:"code", highlight:true },
+    { time:"8:30–8:45", label:"Break", cat:"rest" },
+    { time:"8:45–9:45", label:"Paper Reading", cat:"read" },
+    { time:"9:45–10:00", label:"Break", cat:"rest" },
+    { time:"10:00–11:00", label:"Paper Reading", cat:"read" },
+    { time:"11:00–12:00", label:"Deep Coding — Block 2 (1h)", cat:"code", highlight:true },
+    { time:"12:00–12:30", label:"Lunch", cat:"rest" },
+    { time:"12:30–2:00", label:"🔥 NeurIPS: writing / experiments", cat:"neurips", highlight:true },
+    { time:"2:00–3:00", label:"📌 Weekly meeting with profs", cat:"fixed" },
+    { time:"3:00–3:30", label:"Process meeting notes", cat:"support" },
+    { time:"3:30–5:15", label:"🔥 NeurIPS: implement feedback", cat:"neurips", highlight:true },
+    { time:"5:15–5:30", label:"Transition to gym", cat:"rest" },
+    { time:"5:30–6:30", label:"CrossFit", cat:"crossfit" },
+    { time:"6:30–8:00", label:"Shower + dinner", cat:"rest" },
+    { time:"8:00–10:00", label:"Deep Coding — Block 3 (2h)", cat:"code", highlight:true },
+    { time:"10:00–11:00", label:"🔥 NeurIPS: revisions / polishing", cat:"neurips", highlight:true },
+    { time:"11:00–11:30", label:"Experiment logging", cat:"log", highlight:true },
+    { time:"11:30–12:00", label:"Daily journal summary", cat:"journal", highlight:true },
+  ],
+  Tuesday: [
+    { time:"6:00–6:30", label:"Morning routine", cat:"routine" },
+    { time:"6:30–8:30", label:"Deep Coding — Block 1 (2h)", cat:"code", highlight:true },
+    { time:"8:30–9:20", label:"Break + prep for class", cat:"support" },
+    { time:"9:30–10:45", label:"📌 Class", cat:"fixed" },
+    { time:"10:45–11:00", label:"Break", cat:"rest" },
+    { time:"11:00–12:00", label:"Deep Coding — Block 2 (1h)", cat:"code", highlight:true },
+    { time:"12:00–12:30", label:"Lunch", cat:"rest" },
+    { time:"12:30–2:00", label:"Paper Reading (1.5h)", cat:"read" },
+    { time:"2:00–3:00", label:"Paper Reading (0.5h) + break", cat:"read" },
+    { time:"3:00–4:00", label:"🔥 NeurIPS: writing / experiments", cat:"neurips", highlight:true },
+    { time:"4:00–4:15", label:"Transition to gym", cat:"rest" },
+    { time:"4:30–5:30", label:"CrossFit", cat:"crossfit" },
+    { time:"5:30–7:00", label:"Shower + dinner", cat:"rest" },
+    { time:"7:00–9:00", label:"Deep Coding — Block 3 (2h)", cat:"code", highlight:true },
+    { time:"9:00–11:00", label:"🔥 NeurIPS: deep writing session", cat:"neurips", highlight:true },
+    { time:"11:00–11:30", label:"Experiment logging", cat:"log", highlight:true },
+    { time:"11:30–12:00", label:"Daily journal summary", cat:"journal", highlight:true },
+  ],
+  Wednesday: [
+    { time:"6:00–6:30", label:"Morning routine", cat:"routine" },
+    { time:"6:30–8:30", label:"Deep Coding — Block 1 (2h)", cat:"code", highlight:true },
+    { time:"8:30–8:45", label:"Break", cat:"rest" },
+    { time:"8:45–9:45", label:"Paper Reading", cat:"read" },
+    { time:"9:45–10:45", label:"Paper Reading", cat:"read" },
+    { time:"10:45–11:00", label:"Break + prep", cat:"rest" },
+    { time:"11:00–12:00", label:"📌 Meeting", cat:"fixed" },
+    { time:"12:00–12:30", label:"Lunch", cat:"rest" },
+    { time:"12:30–2:00", label:"Deep Coding — Block 2 (1h) + buffer", cat:"code", highlight:true },
+    { time:"2:00–3:30", label:"🔥 NeurIPS: writing / experiments", cat:"neurips", highlight:true },
+    { time:"3:30–4:00", label:"Prep for meeting", cat:"support" },
+    { time:"4:00–5:00", label:"📌 Meeting", cat:"fixed" },
+    { time:"5:00–5:15", label:"Transition to gym", cat:"rest" },
+    { time:"5:30–6:30", label:"CrossFit", cat:"crossfit" },
+    { time:"6:30–8:00", label:"Shower + dinner", cat:"rest" },
+    { time:"8:00–10:00", label:"Deep Coding — Block 3 (2h)", cat:"code", highlight:true },
+    { time:"10:00–11:00", label:"🔥 NeurIPS: revisions / polishing", cat:"neurips", highlight:true },
+    { time:"11:00–11:30", label:"Experiment logging", cat:"log", highlight:true },
+    { time:"11:30–12:00", label:"Daily journal summary", cat:"journal", highlight:true },
+  ],
+  Thursday: [
+    { time:"6:00–6:30", label:"Morning routine", cat:"routine" },
+    { time:"6:30–8:30", label:"Deep Coding — Block 1 (2h)", cat:"code", highlight:true },
+    { time:"8:30–9:20", label:"Break + prep for class", cat:"support" },
+    { time:"9:30–10:45", label:"📌 Class", cat:"fixed" },
+    { time:"10:45–11:00", label:"Break", cat:"rest" },
+    { time:"11:00–12:00", label:"Deep Coding — Block 2 (1h)", cat:"code", highlight:true },
+    { time:"12:00–12:30", label:"Lunch", cat:"rest" },
+    { time:"12:30–2:00", label:"Paper Reading", cat:"read" },
+    { time:"2:00–3:00", label:"Paper Reading", cat:"read" },
+    { time:"3:00–4:00", label:"🔥 NeurIPS: writing / experiments", cat:"neurips", highlight:true },
+    { time:"4:00–4:15", label:"Transition to gym", cat:"rest" },
+    { time:"4:30–5:30", label:"CrossFit", cat:"crossfit" },
+    { time:"5:30–7:00", label:"Shower + dinner", cat:"rest" },
+    { time:"7:00–8:00", label:"Deep Coding — Block 3a (1h)", cat:"code", highlight:true },
+    { time:"8:00–9:00", label:"📌 Evening meeting", cat:"fixed" },
+    { time:"9:00–10:00", label:"Deep Coding — Block 3b (1h)", cat:"code", highlight:true },
+    { time:"10:00–11:00", label:"🔥 NeurIPS: late push", cat:"neurips", highlight:true },
+    { time:"11:00–11:30", label:"Experiment logging", cat:"log", highlight:true },
+    { time:"11:30–12:00", label:"Daily journal summary", cat:"journal", highlight:true },
+  ],
+  Friday: [
+    { time:"6:00–6:30", label:"Morning routine", cat:"routine" },
+    { time:"6:30–8:30", label:"Deep Coding — Block 1 (2h)", cat:"code", highlight:true },
+    { time:"8:30–9:00", label:"Prep for lab meeting", cat:"support" },
+    { time:"9:00–11:00", label:"📌 Lab meeting", cat:"fixed" },
+    { time:"11:00–12:00", label:"Deep Coding — Block 2 (1h)", cat:"code", highlight:true },
+    { time:"12:00–12:30", label:"Lunch", cat:"rest" },
+    { time:"12:30–1:30", label:"Paper Reading", cat:"read" },
+    { time:"1:30–2:30", label:"Paper Reading", cat:"read" },
+    { time:"2:30–4:00", label:"🔥 NeurIPS: writing / experiments", cat:"neurips", highlight:true },
+    { time:"4:00–4:15", label:"Transition to gym", cat:"rest" },
+    { time:"4:30–5:30", label:"CrossFit", cat:"crossfit" },
+    { time:"5:30–7:00", label:"Shower + dinner", cat:"rest" },
+    { time:"7:00–9:00", label:"Deep Coding — Block 3 (2h)", cat:"code", highlight:true },
+    { time:"9:00–11:00", label:"🔥 NeurIPS: deep writing session", cat:"neurips", highlight:true },
+    { time:"11:00–11:30", label:"Experiment logging", cat:"log", highlight:true },
+    { time:"11:30–12:00", label:"Daily journal summary", cat:"journal", highlight:true },
+  ],
+  Saturday: [
+    { time:"6:00–6:30", label:"Morning routine", cat:"routine" },
+    { time:"6:30–7:45", label:"🔥 NeurIPS: morning writing (1.25h)", cat:"neurips", highlight:true },
+    { time:"8:00–9:00", label:"CrossFit", cat:"crossfit" },
+    { time:"9:00–10:30", label:"Shower + breakfast", cat:"rest" },
+    { time:"10:30–12:30", label:"Deep Coding — Block 1 (2h)", cat:"code", highlight:true },
+    { time:"12:30–1:00", label:"Lunch", cat:"rest" },
+    { time:"1:00–2:00", label:"Deep Coding — Block 2 (1h)", cat:"code", highlight:true },
+    { time:"2:00–2:15", label:"Break", cat:"rest" },
+    { time:"2:15–3:15", label:"Paper Reading", cat:"read" },
+    { time:"3:15–4:15", label:"Paper Reading", cat:"read" },
+    { time:"4:15–4:30", label:"Break", cat:"rest" },
+    { time:"4:30–6:00", label:"🔥 NeurIPS: experiments / analysis", cat:"neurips", highlight:true },
+    { time:"6:00–7:00", label:"Dinner", cat:"rest" },
+    { time:"7:00–9:00", label:"Deep Coding — Block 3 (2h)", cat:"code", highlight:true },
+    { time:"9:00–11:00", label:"🔥 NeurIPS: deep writing session", cat:"neurips", highlight:true },
+    { time:"11:00–11:30", label:"Experiment logging", cat:"log", highlight:true },
+    { time:"11:30–12:00", label:"Daily journal summary", cat:"journal", highlight:true },
+  ],
+  Sunday: [
+    { time:"6:00–6:30", label:"Morning routine", cat:"routine" },
+    { time:"6:30–8:30", label:"Deep Coding — Block 1 (2h)", cat:"code", highlight:true },
+    { time:"8:30–8:45", label:"Break", cat:"rest" },
+    { time:"8:45–9:45", label:"Paper Reading", cat:"read" },
+    { time:"9:45–10:45", label:"Paper Reading", cat:"read" },
+    { time:"10:45–11:00", label:"Break", cat:"rest" },
+    { time:"11:00–12:00", label:"Deep Coding — Block 2 (1h)", cat:"code", highlight:true },
+    { time:"12:00–12:30", label:"Lunch", cat:"rest" },
+    { time:"12:30–2:30", label:"🔥 NeurIPS: writing / experiments", cat:"neurips", highlight:true },
+    { time:"2:30–2:45", label:"Break", cat:"rest" },
+    { time:"2:45–4:45", label:"🔥 NeurIPS: experiments / analysis", cat:"neurips", highlight:true },
+    { time:"4:45–5:00", label:"Break", cat:"rest" },
+    { time:"5:00–6:00", label:"Weekly planning + review", cat:"support" },
+    { time:"6:00–7:00", label:"Dinner", cat:"rest" },
+    { time:"7:00–9:00", label:"Deep Coding — Block 3 (2h)", cat:"code", highlight:true },
+    { time:"9:00–11:00", label:"🔥 NeurIPS: deep writing session", cat:"neurips", highlight:true },
+    { time:"11:00–11:30", label:"Experiment logging", cat:"log", highlight:true },
+    { time:"11:30–12:00", label:"Daily journal summary", cat:"journal", highlight:true },
+  ],
+};
+
+function getChicagoNow() {
+  const str = new Date().toLocaleString("en-US", { timeZone: "America/Chicago" });
+  return new Date(str);
+}
+
+function getChicagoDayIndex() {
+  const d = getChicagoNow().getDay();
+  return d === 0 ? 6 : d - 1; // Mon=0 ... Sun=6
+}
+
+function getChicagoDecimalHour() {
+  const n = getChicagoNow();
+  return n.getHours() + n.getMinutes() / 60;
+}
+
+function parseTimeRange(timeStr) {
+  const match = timeStr.match(/(\d+):(\d+)–(\d+):(\d+)/);
+  if (!match) return null;
+  const s = parseInt(match[1]) + parseInt(match[2]) / 60;
+  let e = parseInt(match[3]) + parseInt(match[4]) / 60;
+  if (e === 0) e = 24;
+  return { start: s, end: e };
+}
+
+function parseDuration(timeStr) {
+  const r = parseTimeRange(timeStr);
+  return r ? Math.max(0, r.end - r.start) : 0;
+}
+
+function getWeeklyStats() {
+  let code=0, read=0, neurips=0, fixed=0, crossfit=0, logJ=0, support=0;
+  Object.values(schedule).forEach(day => {
+    day.forEach(b => {
+      const d = parseDuration(b.time);
+      if (b.cat==="code") code+=d;
+      if (b.cat==="read") read+=d;
+      if (b.cat==="neurips") neurips+=d;
+      if (b.cat==="fixed") fixed+=d;
+      if (b.cat==="crossfit") crossfit+=d;
+      if (b.cat==="log"||b.cat==="journal") logJ+=d;
+      if (b.cat==="support") support+=d;
+    });
+  });
+  const totalWork = code+read+neurips+fixed+logJ+support;
+  return { code, read, neurips, fixed, crossfit, logJ, support, totalWork };
+}
+
+function getDayStats(dayName) {
+  let code=0, read=0, neurips=0, cf=0, total=0;
+  schedule[dayName].forEach(b => {
+    const d = parseDuration(b.time);
+    if (b.cat==="code") { code+=d; total+=d; }
+    if (b.cat==="read") { read+=d; total+=d; }
+    if (b.cat==="neurips") { neurips+=d; total+=d; }
+    if (b.cat==="crossfit") cf+=d;
+    if (b.cat==="fixed") total+=d;
+    if (b.cat==="log"||b.cat==="journal") total+=d;
+    if (b.cat==="support") total+=d;
+  });
+  return { code, read, neurips, cf, total };
+}
+
+function formatChicagoTime(d) {
+  return d.toLocaleTimeString("en-US", {
+    timeZone: "America/Chicago",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
+}
+
+function StatBar({ label, hours, max, color }) {
+  const pct = Math.min((hours/max)*100, 100);
+  return (
+    <div style={{ marginBottom:8 }}>
+      <div style={{ display:"flex", justifyContent:"space-between", fontSize:12, fontFamily:"'DM Sans', sans-serif", marginBottom:3 }}>
+        <span style={{ color:"#666" }}>{label}</span>
+        <span style={{ fontWeight:600, color:"#333" }}>{hours.toFixed(1)}h</span>
+      </div>
+      <div style={{ height:6, background:"#eee", borderRadius:3, overflow:"hidden" }}>
+        <div style={{ height:"100%", width:`${pct}%`, background:color, borderRadius:3, transition:"width 0.4s ease" }} />
+      </div>
+    </div>
+  );
+}
+
+function Countdown() {
+  const [now, setNow] = useState(new Date());
+  useEffect(() => {
+    const t = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(t);
+  }, []);
+  const diff = DEADLINE - now;
+  const days = Math.max(0, Math.floor(diff/(1000*60*60*24)));
+  const hours = Math.max(0, Math.floor((diff%(1000*60*60*24))/(1000*60*60)));
+  const mins = Math.max(0, Math.floor((diff%(1000*60*60))/(1000*60)));
+  const secs = Math.max(0, Math.floor((diff%(1000*60))/1000));
+  const weeksLeft = Math.ceil(days/7);
+  const totalDays = 43;
+  const pctElapsed = Math.min(100, Math.max(0, ((totalDays-days)/totalDays)*100));
+
+  return (
+    <div style={{
+      background:"linear-gradient(135deg, #1a1a2e 0%, #3d1520 50%, #4a0e0e 100%)",
+      borderRadius:12, padding:"16px 18px", marginBottom:22,
+      color:"#fff", position:"relative", overflow:"hidden",
+    }}>
+      <div style={{ position:"absolute", top:0, right:0, width:120, height:120, background:"radial-gradient(circle, rgba(192,57,43,0.3) 0%, transparent 70%)", borderRadius:"50%" }} />
+      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:10 }}>
+        <div>
+          <div style={{ fontSize:11, opacity:0.7, textTransform:"uppercase", letterSpacing:1.5, marginBottom:4 }}>
+            NeurIPS 2026 Deadline
+          </div>
+          <div style={{ fontFamily:"'Playfair Display', serif", fontSize:22, fontWeight:700 }}>
+            {days}d {hours}h {mins}m {secs}s
+          </div>
+          <div style={{ fontSize:11, opacity:0.6, marginTop:2 }}>
+            {weeksLeft} {weeksLeft===1?"week":"weeks"} left · May 4, 2026
+          </div>
+        </div>
+        <div style={{
+          background:"rgba(255,255,255,0.12)",
+          borderRadius:8, padding:"8px 14px",
+          textAlign:"center", backdropFilter:"blur(4px)",
+        }}>
+          <div style={{ fontSize:28, fontWeight:700, fontFamily:"'DM Sans', sans-serif", lineHeight:1 }}>90</div>
+          <div style={{ fontSize:10, opacity:0.7 }}>hrs/week</div>
+        </div>
+      </div>
+      <div style={{ marginTop:12, background:"rgba(255,255,255,0.15)", borderRadius:4, height:5, overflow:"hidden" }}>
+        <div style={{ height:"100%", width:`${pctElapsed}%`, background:"#c0392b", borderRadius:4, transition:"width 0.5s ease" }} />
+      </div>
+      <div style={{ display:"flex", justifyContent:"space-between", fontSize:9, opacity:0.5, marginTop:3 }}>
+        <span>Mar 22</span>
+        <span>May 4</span>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  const todayIdx = getChicagoDayIndex();
+  const [selectedDay, setSelectedDay] = useState(todayIdx);
+  const [chicagoHour, setChicagoHour] = useState(getChicagoDecimalHour);
+  const [chicagoTime, setChicagoTime] = useState(() => formatChicagoTime(new Date()));
+  const nowRef = useRef(null);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setChicagoHour(getChicagoDecimalHour());
+      setChicagoTime(formatChicagoTime(new Date()));
+    }, 15000);
+    return () => clearInterval(t);
+  }, []);
+
+  // Auto-scroll to NOW block
+  useEffect(() => {
+    if (selectedDay === todayIdx && nowRef.current) {
+      nowRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [selectedDay, chicagoHour]);
+
+  const isToday = selectedDay === todayIdx;
+  const stats = getWeeklyStats();
+  const dayStats = getDayStats(DAYS[selectedDay]);
+  const maxStat = Math.max(stats.code, stats.read, stats.neurips, stats.fixed) + 2;
+
+  // Find current block index
+  let currentBlockIdx = -1;
+  if (isToday) {
+    const blocks = schedule[DAYS[selectedDay]];
+    for (let i = 0; i < blocks.length; i++) {
+      const r = parseTimeRange(blocks[i].time);
+      if (r && chicagoHour >= r.start && chicagoHour < r.end) {
+        currentBlockIdx = i;
+        break;
+      }
+    }
+  }
+
+  // Progress within current block
+  let blockProgress = 0;
+  if (currentBlockIdx >= 0) {
+    const r = parseTimeRange(schedule[DAYS[selectedDay]][currentBlockIdx].time);
+    if (r) blockProgress = Math.min(1, Math.max(0, (chicagoHour - r.start) / (r.end - r.start)));
+  }
+
+  return (
+    <div style={{
+      fontFamily:"'DM Sans', sans-serif",
+      maxWidth:700,
+      margin:"0 auto",
+      padding:"20px 14px",
+      color:"#1a1a1a",
+    }}>
+      <div style={{ textAlign:"center", marginBottom:20 }}>
+        <h1 style={{
+          fontFamily:"'Playfair Display', serif",
+          fontSize:24, fontWeight:700, margin:0, letterSpacing:"-0.5px",
+          color:"#1a1a2e"
+        }}>
+          🔥 HUSTLE MODE 🔥
+        </h1>
+        <p style={{ color:"#c0392b", fontSize:12, marginTop:4, fontWeight:600 }}>
+          NeurIPS Sprint · ~{stats.totalWork.toFixed(0)}h productive work / week · 7 days on
+        </p>
+      </div>
+
+      <Countdown />
+
+      {/* Live clock */}
+      <div style={{ textAlign:"center", marginBottom:14 }}>
+        <span style={{
+          display:"inline-flex", alignItems:"center", gap:6,
+          background:"#1a1a2e", color:"#fff", padding:"5px 14px",
+          borderRadius:20, fontSize:12, fontWeight:600,
+        }}>
+          <span style={{ width:7, height:7, borderRadius:"50%", background:"#e74c3c", animation:"nowPulse 2s infinite" }} />
+          Chicago — {chicagoTime}
+        </span>
+      </div>
+
+      <div style={{ display:"flex", gap:3, marginBottom:18, justifyContent:"center", flexWrap:"wrap" }}>
+        {DAYS.map((day, i) => {
+          const isWeekend = i >= 5;
+          const isTodayTab = i === todayIdx;
+          return (
+            <button key={day} onClick={() => setSelectedDay(i)} style={{
+              padding:"7px 13px", borderRadius:7,
+              border: selectedDay===i ? "2px solid #1a1a2e" : isWeekend ? "1px solid #c0392b" : "1px solid #ddd",
+              background: selectedDay===i ? "#1a1a2e" : isWeekend ? "#fde8e8" : "#fff",
+              color: selectedDay===i ? "#fff" : isWeekend ? "#c0392b" : "#666",
+              fontSize:12.5, fontWeight: selectedDay===i ? 600 : isWeekend ? 600 : 400,
+              fontFamily:"'DM Sans', sans-serif",
+              transition:"all 0.15s ease",
+              position:"relative",
+            }}>
+              {SHORT_DAYS[i]}
+              {isTodayTab && <span style={{ position:"absolute", top:-2, right:-2, width:7, height:7, borderRadius:"50%", background:"#e74c3c", border:"1.5px solid #fff" }} />}
+            </button>
+          );
+        })}
+      </div>
+
+      <div style={{ display:"flex", gap:6, justifyContent:"center", marginBottom:14, flexWrap:"wrap" }}>
+        <span style={{ fontSize:11, background:CATEGORIES.code.bg, color:CATEGORIES.code.color, padding:"3px 10px", borderRadius:20, fontWeight:600, border:`1px solid ${CATEGORIES.code.border}` }}>
+          💻 {dayStats.code.toFixed(1)}h
+        </span>
+        <span style={{ fontSize:11, background:CATEGORIES.read.bg, color:CATEGORIES.read.color, padding:"3px 10px", borderRadius:20, fontWeight:600, border:`1px solid ${CATEGORIES.read.border}` }}>
+          📄 {dayStats.read.toFixed(1)}h
+        </span>
+        <span style={{ fontSize:11, background:CATEGORIES.neurips.bg, color:CATEGORIES.neurips.color, padding:"3px 10px", borderRadius:20, fontWeight:600, border:`1px solid ${CATEGORIES.neurips.border}` }}>
+          🔥 {dayStats.neurips.toFixed(1)}h
+        </span>
+        <span style={{ fontSize:10, background:"#f0f0f0", color:"#333", padding:"3px 10px", borderRadius:20, fontWeight:700, border:"1px solid #bbb" }}>
+          Σ {dayStats.total.toFixed(1)}h
+        </span>
+      </div>
+
+      <div style={{
+        background:"#fafafa", borderRadius:12, padding:14,
+        border:"1px solid #eee", marginBottom:22,
+      }}>
+        <h2 style={{
+          fontFamily:"'Playfair Display', serif",
+          fontSize:17, fontWeight:600, margin:"0 0 12px 0", color:"#1a1a2e"
+        }}>
+          {DAYS[selectedDay]}
+          {selectedDay >= 5 && <span style={{ fontSize:11, color:"#c0392b", marginLeft:8, fontFamily:"'DM Sans', sans-serif", fontWeight:600, background:"#fde8e8", padding:"2px 8px", borderRadius:10 }}>FULL WORK DAY</span>}
+        </h2>
+
+        {schedule[DAYS[selectedDay]].map((block, i) => {
+          const cat = CATEGORIES[block.cat];
+          const isCurrent = i === currentBlockIdx;
+
+          return (
+            <div
+              key={i}
+              ref={isCurrent ? nowRef : null}
+              style={{ position:"relative" }}
+            >
+              {/* NOW arrow indicator */}
+              {isCurrent && (
+                <div style={{
+                  position:"absolute",
+                  left:-22,
+                  top:"50%",
+                  transform:"translateY(-50%)",
+                  animation:"arrowBounce 1.2s ease-in-out infinite",
+                  fontSize:14,
+                  zIndex:2,
+                }}>
+                  ▶
+                </div>
+              )}
+              <div style={{
+                display:"flex", alignItems:"stretch", marginBottom:4,
+                borderRadius:7, overflow:"hidden",
+                background: isCurrent ? "#fff8e1" : block.highlight ? cat.bg : "#fff",
+                border: isCurrent ? "2px solid #e74c3c" : `1px solid ${block.highlight ? cat.border : "#e8e8e8"}`,
+                animation: isCurrent ? "nowPulse 2.5s infinite" : "none",
+                position:"relative",
+              }}>
+                <div style={{ width:4, background: isCurrent ? "#e74c3c" : cat.border, flexShrink:0 }} />
+                <div style={{ display:"flex", alignItems:"center", padding:"8px 10px", flex:1, gap:8, position:"relative", zIndex:1 }}>
+                  <span style={{ fontSize:14, flexShrink:0 }}>{cat.icon}</span>
+                  <div style={{ flex:1, minWidth:0 }}>
+                    <div style={{
+                      fontSize:12.5, fontWeight: (block.highlight || isCurrent) ? 600 : 500,
+                      color: isCurrent ? "#c0392b" : block.highlight ? cat.color : "#444", lineHeight:1.3,
+                    }}>
+                      {block.label}
+                      {isCurrent && <span style={{ marginLeft:6, fontSize:10, background:"#e74c3c", color:"#fff", padding:"1px 6px", borderRadius:8, fontWeight:700 }}>NOW</span>}
+                    </div>
+                    {/* Progress bar within current block */}
+                    {isCurrent && (
+                      <div style={{ marginTop:4, height:3, background:"rgba(231,76,60,0.15)", borderRadius:2, overflow:"hidden" }}>
+                        <div style={{ height:"100%", width:`${blockProgress * 100}%`, background:"#e74c3c", borderRadius:2, transition:"width 15s linear" }} />
+                      </div>
+                    )}
+                  </div>
+                  <div style={{
+                    fontSize:10.5, color: isCurrent ? "#c0392b" : "#aaa", fontVariantNumeric:"tabular-nums",
+                    flexShrink:0, textAlign:"right", minWidth:80,
+                    fontWeight: isCurrent ? 600 : 400,
+                  }}>
+                    {block.time}
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div style={{
+        background:"#fff", borderRadius:12, padding:16,
+        border:"1px solid #eee", marginBottom:18,
+      }}>
+        <h3 style={{ fontSize:13, fontWeight:600, margin:"0 0 12px 0", color:"#1a1a2e" }}>
+          Weekly Totals — <span style={{ color:"#c0392b" }}>~{stats.totalWork.toFixed(0)}h</span>
+        </h3>
+        <StatBar label="💻 Deep Coding" hours={stats.code} max={maxStat} color="#3d8b5e" />
+        <StatBar label="🔥 NeurIPS Work" hours={stats.neurips} max={maxStat} color="#c0392b" />
+        <StatBar label="📄 Paper Reading" hours={stats.read} max={maxStat} color="#c49a5c" />
+        <StatBar label="📌 Fixed Commitments" hours={stats.fixed} max={maxStat} color="#b8607a" />
+        <StatBar label="🔧 Support / Admin" hours={stats.support} max={maxStat} color="#999" />
+        <StatBar label="🏋️ CrossFit" hours={stats.crossfit} max={maxStat} color="#d4a017" />
+        <StatBar label="🔬📓 Logging + Journal" hours={stats.logJ} max={maxStat} color="#7a5cb0" />
+      </div>
+
+      <div style={{ display:"flex", flexWrap:"wrap", gap:"5px 12px", justifyContent:"center", marginBottom:14 }}>
+        {Object.entries(CATEGORIES).map(([key, val]) => (
+          <div key={key} style={{ display:"flex", alignItems:"center", gap:4, fontSize:10.5, color:"#888" }}>
+            <span style={{ width:7, height:7, borderRadius:2, background:val.border, display:"inline-block" }} />
+            {val.label}
+          </div>
+        ))}
+      </div>
+
+      <div style={{
+        background:"linear-gradient(135deg, #fde8e8 0%, #f7f6fb 100%)", borderRadius:10, padding:14,
+        border:"1px solid #e0c0c0", fontSize:11.5, color:"#555", lineHeight:1.6,
+      }}>
+        <div style={{ fontWeight:700, color:"#c0392b", marginBottom:5, fontSize:12.5 }}>🔥 Hustle Mode Rules (until May 4)</div>
+        <div style={{ marginBottom:3 }}><strong style={{ color:"#3d8b5e" }}>Coding 2-1-2:</strong> Block 1 at dawn. Block 2 midday. Block 3 after dinner.</div>
+        <div style={{ marginBottom:3 }}><strong style={{ color:"#c0392b" }}>NeurIPS blocks</strong> fill every gap — writing, experiments, revisions, figures.</div>
+        <div style={{ marginBottom:3 }}><strong style={{ color:"#d4a017" }}>CrossFit stays.</strong> 1h/day keeps you sharp.</div>
+        <div style={{ marginBottom:3 }}><strong style={{ color:"#c49a5c" }}>Weekends = full work days.</strong> No rest days until submission.</div>
+        <div><strong style={{ color:"#7a5cb0" }}>11 PM ritual is sacred.</strong> Log → Journal. Every single night.</div>
+      </div>
+
+      <div style={{ textAlign:"center", marginTop:18, fontSize:10, color:"#ccc" }}>
+        private schedule · do not share
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
