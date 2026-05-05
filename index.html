@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emre Can Acikgoz — UIUC</title>
+<meta name="description" content="Academic homepage of Emre Can Acikgoz, PhD student in Computer Science at UIUC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --serif: 'Source Serif 4', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --text: #1A1A1A;
+    --text-secondary: #5C5C5C;
+    --accent: #1B4D8E;
+    --accent-light: #E8EFF8;
+    --border: #E5E5E0;
+    --tag-bg: #F4F4F0;
+    --max-w: 780px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15.5px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent-light); }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 72px 24px 48px;
+    display: flex;
+    gap: 44px;
+    align-items: flex-start;
+    animation: fadeUp 0.7s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-photo {
+    width: 160px;
+    height: 200px;
+    border-radius: 12px;
+    object-fit: cover;
+    object-position: center 25%;
+    flex-shrink: 0;
+    background: var(--border);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+
+  .hero-text h1 {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    line-height: 1.25;
+    margin-bottom: 6px;
+  }
+
+  .hero-text .subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+  }
+
+  .hero-text .subtitle a {
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .hero-text .bio {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 560px;
+  }
+
+  .hero-text .bio a { font-weight: 500; }
+
+  .hero-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .hero-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: all 0.2s;
+  }
+
+  .hero-links a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 1px 4px rgba(27,77,142,0.08);
+    text-decoration: none;
+  }
+
+  .hero-links a svg { width: 14px; height: 14px; }
+
+  /* ── PROJECT CALLOUT ── */
+  .project-callout {
+    background: linear-gradient(135deg, #F7FAFD 0%, #F2F6FB 100%);
+    border: 1px solid #D8E2EE;
+    border-radius: 12px;
+    padding: 26px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-callout::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 4px;
+    background: var(--accent);
+  }
+
+  .project-callout .project-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .project-callout .project-label::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(27,77,142,0.15);
+  }
+
+  .project-callout h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    margin-bottom: 4px;
+    line-height: 1.25;
+  }
+
+  .project-callout h3 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .project-callout .project-sublabel {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .project-callout p {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 16px;
+    max-width: 620px;
+  }
+
+  .project-callout p:last-of-type { margin-bottom: 18px; }
+
+  .project-pillars {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+
+  .project-pillars .pillar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid #D8E2EE;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+  }
+
+  .project-pillars .pillar.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+
+  .project-pillars .pillar.active::before {
+    content: '◆';
+    font-size: 9px;
+  }
+
+  .project-pillars .arrow {
+    color: var(--text-secondary);
+    font-size: 11px;
+    opacity: 0.5;
+  }
+
+  .project-callout .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    padding: 7px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--accent);
+    background: white;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+
+  .project-callout .project-link:hover {
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+  }
+
+  .project-callout .project-link svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 24px 56px;
+  }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid var(--border);
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+  }
+
+  /* ── NEWS ── */
+  .news-list {
+    display: flex;
+    flex-direction: column;
+    max-height: 280px;
+    overflow-y: auto;
+    padding-right: 8px;
+  }
+
+  .news-list::-webkit-scrollbar { width: 6px; }
+  .news-list::-webkit-scrollbar-track { background: transparent; }
+  .news-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  .news-item {
+    display: flex;
+    gap: 18px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: baseline;
+  }
+  .news-item:last-child { border-bottom: none; }
+
+  .news-item time {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+    width: 90px;
+    letter-spacing: 0.02em;
+  }
+
+  .news-item .news-text {
+    font-size: 14.5px;
+    color: var(--text);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .news-item .news-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 1px 7px;
+    background: var(--accent-light);
+    color: var(--accent);
+    border-radius: 3px;
+    margin-right: 8px;
+    vertical-align: 1.5px;
+  }
+
+  /* ── PUBLICATIONS ── */
+  .pub-toggle {
+    display: inline-flex;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+
+  .pub-toggle button {
+    background: transparent;
+    border: none;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+  }
+
+  .pub-toggle button + button { border-left: 1px solid var(--border); }
+
+  .pub-toggle button.active {
+    background: var(--accent);
+    color: white;
+  }
+
+  .pub-toggle button:hover:not(.active) { color: var(--accent); }
+
+  .pub-list { display: flex; flex-direction: column; gap: 20px; }
+
+  .pub-item {
+    padding: 20px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: box-shadow 0.25s, border-color 0.25s;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .pub-item:hover {
+    box-shadow: 0 3px 16px rgba(0,0,0,0.05);
+    border-color: #D0D0CB;
+  }
+
+  .pub-thumb {
+    width: 96px;
+    height: 70px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: linear-gradient(135deg, var(--accent-light), #dce4ee);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    margin-top: 2px;
+  }
+
+  .pub-content { flex: 1; min-width: 0; }
+
+  .pub-title {
+    font-family: var(--serif);
+    font-size: 16.5px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 5px;
+    color: var(--text);
+  }
+
+  .pub-authors {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+    line-height: 1.55;
+  }
+
+  .pub-authors strong { color: var(--text); font-weight: 600; }
+
+  .pub-venue {
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .pub-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .pub-tags a, .pub-tags span {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .pub-tags a {
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  .pub-tags a:hover { background: #d5e2f3; text-decoration: none; }
+
+  .pub-tags span {
+    background: var(--tag-bg);
+    color: var(--text-secondary);
+  }
+
+  /* ── CV-style entries (Service & Teaching) ── */
+  .cv-section { margin-bottom: 28px; }
+  .cv-section:last-child { margin-bottom: 0; }
+
+  .cv-section h3 {
+    font-size: 12.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+  }
+
+  .cv-entry {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 18px;
+    align-items: flex-start;
+  }
+  .cv-entry:last-child { margin-bottom: 0; }
+
+  .cv-date {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+    width: 110px;
+    padding-top: 3px;
+    letter-spacing: 0.02em;
+  }
+
+  .cv-details h4 {
+    font-family: var(--serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .cv-details .cv-org {
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .cv-details p {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  /* ── Reviewing inline list ── */
+  .review-list {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+  }
+  .review-list .review-row { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .review-list .review-label {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .review-list .review-row + .review-row { margin-top: 6px; }
+
+  /* ── TWO TRUTHS AND A LIE ── */
+  .truths-callout {
+    background: #FAFAF6;
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+  }
+
+  .truths-callout h3 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+
+  .truths-callout p {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+
+  .truths-list {
+    list-style: none;
+    counter-reset: truth;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .truths-list li {
+    counter-increment: truth;
+    padding-left: 32px;
+    position: relative;
+    font-size: 14.5px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .truths-list li::before {
+    content: counter(truth, lower-roman);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 6px;
+    text-transform: lowercase;
+    letter-spacing: 0.05em;
+    min-width: 22px;
+    text-align: center;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 32px 24px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  footer .footer-warn {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    color: #4a4a4a;
+    border-left: 2px solid var(--accent);
+    padding: 2px 0 2px 12px;
+    background: transparent;
+    max-width: 360px;
+    line-height: 1.5;
+    text-transform: none;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-section {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: fadeUp 0.6s ease forwards;
+  }
+  .fade-section:nth-of-type(1) { animation-delay: 0.06s; }
+  .fade-section:nth-of-type(2) { animation-delay: 0.12s; }
+  .fade-section:nth-of-type(3) { animation-delay: 0.18s; }
+  .fade-section:nth-of-type(4) { animation-delay: 0.24s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .hero { flex-direction: column; gap: 24px; padding-top: 48px; }
+    .hero-photo { width: 130px; height: 162px; }
+    .hero-text h1 { font-size: 26px; }
+    .news-item { flex-direction: column; gap: 2px; }
+    .news-item time { width: auto; }
+    .cv-entry { flex-direction: column; gap: 4px; }
+    .cv-date { width: auto; }
+    .pub-item { flex-direction: column; gap: 14px; }
+    .pub-thumb { width: 100%; height: 80px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <img src="imgs/emrecan.jpg" alt="Emre Can Acikgoz" class="hero-photo">
+  <div class="hero-text">
+    <h1>Emre Can Acikgoz</h1>
+    <p class="subtitle">PhD Student · <a href="https://cs.illinois.edu/" target="_blank">UIUC Computer Science</a></p>
+    <p class="bio">
+      PhD student in Computer Science at <a href="https://cs.illinois.edu/" target="_blank">UIUC</a>, advised by <a href="https://scholar.google.com/citations?user=8XSlAp4AAAAJ&hl=en" target="_blank">Gokhan Tur</a> and <a href="https://scholar.google.com/citations?user=GMcL_9kAAAAJ&hl=en" target="_blank">Dilek Hakkani-Tur</a>. My research focuses on <strong>self-evolving LLM agents</strong> and <strong>agentic learning</strong>, with broader interests in reinforcement learning, self-play, and test-time training.
+      I received an MSc in Computer Science from <a href="https://www.ku.edu.tr/en/" target="_blank">Koc University</a>, where I was awarded the <a href="https://ai.ku.edu.tr/" target="_blank">KUIS AI Fellowship</a>, and a BSc in Electrical and Electronics Engineering from the same institution.
+      My work has been published in top-tier venues including NeurIPS, ICLR, ACL, and EMNLP — representative works include <a href="#">ToolRL</a>, <a href="#">TT-SI</a>, and <a href="#">Tool-R0</a>.
+      I am organizing the <a href="#">First Workshop on Lifelong Agents: Learning, Aligning, and Evolving</a> at ICLR 2026, as part of <em>Project Lifelong Agent</em>.
+    </p>
+    <div class="hero-links">
+      <a href="mailto:acikgoz2@illinois.edu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Email
+      </a>
+      <a href="https://scholar.google.com/citations?user=l6h_3H8AAAAJ&hl" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+        Scholar
+      </a>
+      <a href="https://github.com/emrecanacikgoz" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        GitHub
+      </a>
+      <a href="https://x.com/emrecanacikgoz" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+        Twitter
+      </a>
+      <a href="https://www.linkedin.com/in/emrecanacikgoz97" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ── PROJECT LIFELONG AGENT ── -->
+<section id="project" class="fade-section" style="padding-bottom:48px;">
+  <div class="project-callout">
+    <h3>Project <em>Lifelong Agent</em></h3>
+    <div class="project-sublabel">Ongoing Research Effort</div>
+    <p>
+      The mission: building agents that <strong>continually learn, adapt, and generalize</strong> with minimal supervision — the dream of superintelligent systems that don't stop learning after deployment. This is the broader vision shaping my PhD.
+    </p>
+    <p>
+      The project is structured around three pillars. I focus primarily on the <strong>Evolving</strong> side — how agents can self-improve through experience, self-play, and test-time training.
+    </p>
+    <div class="project-pillars">
+      <span class="pillar">Learning</span>
+      <span class="arrow">→</span>
+      <span class="pillar">Aligning</span>
+      <span class="arrow">→</span>
+      <span class="pillar active">Evolving</span>
+    </div>
+    <a class="project-link" href="https://lifelongagent.github.io/Project-Lifelong-Agent/" target="_blank">
+      Visit the project page
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ── NEWS ── -->
+<section id="news" class="fade-section">
+  <div class="section-head">
+    <h2 class="section-title">News</h2>
+  </div>
+  <div class="news-list">
+    <div class="news-item">
+      <time>May 2026</time>
+      <div class="news-text"><span class="news-tag">paper</span>Two papers accepted to <em>ACL 2026</em>: <strong>TT-SI: Self-Improving LLM Agents with Test-Time Training</strong> (Findings) and <strong>Current Agents Fail to Leverage World Model as Tool for Foresight</strong> (Main).</div>
+    </div>
+    <div class="news-item">
+      <time>Apr 2026</time>
+      <div class="news-text"><span class="news-tag">workshop</span>Successfully hosted the <a href="#">First Workshop on Lifelong Agents</a> at ICLR 2026 — thanks to all attendees, speakers, and reviewers! The next edition is already in the works.</div>
+    </div>
+    <div class="news-item">
+      <time>Feb 2026</time>
+      <div class="news-text"><span class="news-tag">service</span>Co-organizing the <a href="#">First Workshop on Lifelong Agents: Learning, Aligning, and Evolving</a> at ICLR 2026.</div>
+    </div>
+    <div class="news-item">
+      <time>Jan 2026</time>
+      <div class="news-text"><span class="news-tag">intern</span>Started a research internship at <strong>[Lab / Company]</strong>.</div>
+    </div>
+    <div class="news-item">
+      <time>Sep 2025</time>
+      <div class="news-text"><span class="news-tag">award</span>Received the Grainger Engineering Graduate Fellowship.</div>
+    </div>
+    <div class="news-item">
+      <time>Aug 2024</time>
+      <div class="news-text">Joined UIUC CS as a PhD student.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PUBLICATIONS ── -->
+<section id="publications" class="fade-section">
+  <div class="section-head">
+    <h2 class="section-title">Publications</h2>
+    <div class="pub-toggle">
+      <button class="active" data-filter="selected">Selected</button>
+      <button data-filter="all">All</button>
+    </div>
+  </div>
+
+  <div class="pub-list" id="pubList">
+
+    <!-- ===== Add data-selected="true" to include in Selected view ===== -->
+
+    <div class="pub-item" data-selected="true">
+      <div class="pub-thumb">Tool-R0</div>
+      <div class="pub-content">
+        <div class="pub-title">Tool-R0: Self-Evolving LLM Agents for Tool-Learning from Zero Data</div>
+        <div class="pub-authors"><strong>Emre Can Acikgoz</strong>, Cheng Qian, Jonas Hübotter, Heng Ji, Dilek Hakkani-Tür, Gokhan Tur</div>
+        <div class="pub-venue">Under Review</div>
+        <div class="pub-tags">
+          <a href="#">PDF</a>
+          <a href="#">arXiv</a>
+          <a href="#">Code</a>
+          <span>Self-Evolving Agents</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">World Model</div>
+      <div class="pub-content">
+        <div class="pub-title">Current Agents Fail to Leverage World Model as Tool for Foresight</div>
+        <div class="pub-authors">Cheng Qian, <strong>Emre Can Acikgoz</strong>, Bingxuan Li, Xiusi Chen, Yuji Zhang, Bingxiang He, Qinyu Luo, Dilek Hakkani-Tür, Gokhan Tur, Yunzhu Li, Heng Ji</div>
+        <div class="pub-venue">ACL 2026 Main</div>
+        <div class="pub-tags">
+          <a href="https://arxiv.org/abs/2601.03905">PDF</a>
+          <a href="https://arxiv.org/abs/2601.03905">arXiv</a>
+          <span>World Model</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item" data-selected="true">
+      <div class="pub-thumb">TT-SI</div>
+      <div class="pub-content">
+        <div class="pub-title">Self-Improving LLM Agents at Test-Time</div>
+        <div class="pub-authors"><strong>Emre Can Acikgoz</strong>, Cheng Qian, Heng Ji, Dilek Hakkani-Tür, Gokhan Tur</div>
+        <div class="pub-venue">ACL 2026 Findings</div>
+        <div class="pub-tags">
+          <a href="https://arxiv.org/abs/2510.07841">PDF</a>
+          <a href="https://arxiv.org/abs/2510.07841">arXiv</a>
+          <span>Test-Time Training</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">Lifelong</div>
+      <div class="pub-content">
+        <div class="pub-title">Lifelong Agents: Learning, Aligning, Evolving</div>
+        <div class="pub-authors">Cheng Qian, <strong>Emre Can Acikgoz</strong>, Zhenfei Yin, Manling Li, Yun-Nung Chen, Mengdi Wang, Caiming Xiong</div>
+        <div class="pub-venue">ICLR 2026 Workshop · Accepted Proposal</div>
+        <div class="pub-tags">
+          <a href="#">Proposal</a>
+          <a href="#">Website</a>
+          <span>Workshop</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">SpeakRL</div>
+      <div class="pub-content">
+        <div class="pub-title">SpeakRL: Learning to Speak Before You Act with LLM Agents</div>
+        <div class="pub-authors"><strong>Emre Can Acikgoz</strong>, Jinoh Oh, Jie Hao, Joo Hyuk Jeon, Heng Ji, Dilek Hakkani-Tür, Gokhan Tur, Xiang Li, Chengyuan Ma, Xing Fan</div>
+        <div class="pub-venue">IWSDS 2026</div>
+        <div class="pub-tags">
+          <a href="#">PDF</a>
+          <span>Dialogue Agents</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">MAC</div>
+      <div class="pub-content">
+        <div class="pub-title">MAC: A Multi-Agent Framework for Interactive User Clarification in Multi-turn Conversations</div>
+        <div class="pub-authors"><strong>Emre Can Acikgoz</strong>, Jinoh Oh, Joo Hyuk Jeon, Jie Hao, Heng Ji, Dilek Hakkani-Tür, Gokhan Tur, Xiang Li, Chengyuan Ma, Xing Fan</div>
+        <div class="pub-venue">NeurIPS 2025 MTI-LLM Workshop · IWSDS 2026 (Oral)</div>
+        <div class="pub-tags">
+          <a href="#">PDF</a>
+          <span>Multi-Agent</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item" data-selected="true">
+      <div class="pub-thumb">ToolRL</div>
+      <div class="pub-content">
+        <div class="pub-title">ToolRL: Reward is All Tool Learning Needs</div>
+        <div class="pub-authors">Cheng Qian*, <strong>Emre Can Acikgoz*</strong>, Qi He, Hongru Wang, Xiusi Chen, Dilek Hakkani-Tür, Gokhan Tur, Heng Ji</div>
+        <div class="pub-venue">NeurIPS 2025</div>
+        <div class="pub-tags">
+          <a href="#">PDF</a>
+          <a href="#">arXiv</a>
+          <a href="#">Code</a>
+          <span>Tool Learning</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">SPM</div>
+      <div class="pub-content">
+        <div class="pub-title">Conversational Agents in the Era of Large Language Models</div>
+        <div class="pub-authors"><strong>Emre Can Acikgoz*</strong>, Dilek Hakkani-Tür, Gokhan Tur</div>
+        <div class="pub-venue">IEEE Signal Processing Magazine 2025</div>
+        <div class="pub-tags">
+          <a href="#">PDF</a>
+          <span>Survey</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item" data-selected="true">
+      <div class="pub-thumb">CoALM</div>
+      <div class="pub-content">
+        <div class="pub-title">Can a Single Model Master Both Multi-turn Conversations and Tool Use? CoALM: A Unified Conversational Agentic Language Model</div>
+        <div class="pub-authors"><strong>Emre Can Acikgoz*</strong>, Jeremiah Greer, Akul Datta, Ze Yang, William Zeng, Oussama Elachqar, Emmanouil Koukoumidis, Dilek Hakkani-Tür, Gokhan Tur</div>
+        <div class="pub-venue">ACL 2025 Main</div>
+        <div class="pub-tags">
+          <a href="#">PDF</a>
+          <a href="#">arXiv</a>
+          <a href="#">Code</a>
+          <span>Conversational Agents</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item" data-selected="true">
+      <div class="pub-thumb">SMART</div>
+      <div class="pub-content">
+        <div class="pub-title">SMART: Self-Aware Agent for Tool Overuse Mitigation</div>
+        <div class="pub-authors">Cheng Qian, <strong>Emre Can Acikgoz*</strong>, Hongru Wang, Xiusi Chen, Avirup Sil, Dilek Hakkani-Tür, Gokhan Tur, Heng Ji</div>
+        <div class="pub-venue">ACL 2025 Findings</div>
+        <div class="pub-tags">
+          <a href="#">PDF</a>
+          <a href="#">arXiv</a>
+          <a href="#">Code</a>
+          <span>Tool Use</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">TD-EVAL</div>
+      <div class="pub-content">
+        <div class="pub-title">TD-EVAL: Revisiting Task-Oriented Dialogue Evaluation by Combining Turn-Level Precision with Dialogue-Level Comparisons</div>
+        <div class="pub-authors"><strong>Emre Can Acikgoz*</strong>, Carl Guo*, Suvodip Dey*, Akul Datta, Takyoung Kim, Gokhan Tur, Dilek Hakkani-Tür</div>
+        <div class="pub-venue">SIGDIAL 2025 (Oral)</div>
+        <div class="pub-tags">
+          <a href="#">PDF</a>
+          <span>Evaluation</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">Desid.</div>
+      <div class="pub-content">
+        <div class="pub-title">A Desideratum for Conversational Agents: Capabilities, Challenges, and Future Directions</div>
+        <div class="pub-authors"><strong>Emre Can Acikgoz*</strong>, Cheng Qian*, Hongru Wang*, Vardhan Dongre, Xiusi Chen, Heng Ji, Dilek Hakkani-Tür, Gokhan Tur</div>
+        <div class="pub-venue">arXiv 2025 · Under Review</div>
+        <div class="pub-tags">
+          <a href="#">arXiv</a>
+          <span>Position</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">PIPA</div>
+      <div class="pub-content">
+        <div class="pub-title">PIPA: A Unified Evaluation Protocol for Diagnosing Interactive Planning Agents</div>
+        <div class="pub-authors">Takyoung Kim, Janvijay Singh, Shuhaib Mehri, <strong>Emre Can Acikgoz</strong>, Sagnik Mukherjee, Nimet Beyza Bozdag, Sumuk Shashidhar, Gokhan Tur, Dilek Hakkani-Tür</div>
+        <div class="pub-venue">Under Review</div>
+        <div class="pub-tags">
+          <a href="#">PDF</a>
+          <span>Planning</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">ReSpAct</div>
+      <div class="pub-content">
+        <div class="pub-title">ReSpAct: Harmonizing Reasoning, Speaking, and Acting Towards Building LLM-Based Conversational AI Agents</div>
+        <div class="pub-authors">Vardhan Dongre, Xiaocheng Yang, <strong>Emre Can Acikgoz</strong>, Suvodip Dey, Gokhan Tur, Dilek Hakkani-Tur</div>
+        <div class="pub-venue">IWSDS 2025</div>
+        <div class="pub-tags">
+          <a href="#">PDF</a>
+          <span>Conversational AI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">Bosphorus</div>
+      <div class="pub-content">
+        <div class="pub-title">Bridging the Bosphorus: Advancing Turkish Large Language Models through Strategies for Low-Resource Language Adaptation and Benchmarking</div>
+        <div class="pub-authors"><strong>Emre Can Acikgoz</strong>, Mete Erdoğan, Deniz Yuret</div>
+        <div class="pub-venue">ACL MRL 2024</div>
+        <div class="pub-tags">
+          <a href="#">PDF</a>
+          <span>Multilingual</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">Hippocr.</div>
+      <div class="pub-content">
+        <div class="pub-title">Hippocrates: An Open-Source Framework for Advancing Large Language Models in Healthcare</div>
+        <div class="pub-authors"><strong>Emre Can Acikgoz</strong>, Osman İnce, Rayene Bech, Ilker Kesen, Aykut Erdem, Erkut Erdem</div>
+        <div class="pub-venue">NeurIPS GenAI4Health 2024 (Oral)</div>
+        <div class="pub-tags">
+          <a href="#">PDF</a>
+          <a href="#">Code</a>
+          <span>Healthcare</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">ViLMA</div>
+      <div class="pub-content">
+        <div class="pub-title">ViLMA: A Zero-Shot Benchmark for Linguistic and Temporal Grounding in Video-Language Models</div>
+        <div class="pub-authors">Ilker Kesen, Andrea Pedrotti, Mustafa Dogan, Michele Cafagna, <strong>Emre Can Acikgoz</strong>, Letitia Parcalabescu, Iacer Calixto, Anette Frank, Albert Gatt, Aykut Erdem, Erkut Erdem</div>
+        <div class="pub-venue">ICLR 2024</div>
+        <div class="pub-tags">
+          <a href="#">PDF</a>
+          <a href="#">arXiv</a>
+          <span>Vision-Language</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-thumb">MRL</div>
+      <div class="pub-content">
+        <div class="pub-title">Transformers on Multilingual Clause-Level Morphology</div>
+        <div class="pub-authors"><strong>Emre Can Acikgoz</strong>, Tilek Chubakov, Müge Kural, Gözde Gül Şahin, Deniz Yuret</div>
+        <div class="pub-venue">EMNLP MRL Shared Task 2022 · Winner (all 3 subtasks)</div>
+        <div class="pub-tags">
+          <a href="#">PDF</a>
+          <span>Morphology</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── SERVICE ── -->
+<section id="service" class="fade-section">
+  <div class="section-head">
+    <h2 class="section-title">Academic Service</h2>
+  </div>
+
+  <div class="cv-section">
+    <h3>Workshops Organized</h3>
+    <div class="cv-entry">
+      <div class="cv-date">Apr 2026</div>
+      <div class="cv-details">
+        <h4>ICLR 2026 Workshop on Lifelong Agents: Learning, Aligning, Evolving</h4>
+        <div class="cv-org">Co-organizer · Rio de Janeiro, Brazil</div>
+        <p>April 26, 2026 · <a href="https://lifelongagent.github.io/" target="_blank">lifelongagent.github.io</a></p>
+      </div>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-date">2026</div>
+      <div class="cv-details">
+        <h4>Midwest Speech and Language Days (MSLD) 2026</h4>
+        <div class="cv-org">Co-organizer · University of Illinois Urbana-Champaign</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cv-section">
+    <h3>Reviewing</h3>
+    <div class="review-list">
+      <div class="review-row">
+        <span class="review-label">ML</span>
+        <span>NeurIPS 2026, 2025, 2024 · ICLR 2026 · COLM 2026, 2025</span>
+      </div>
+      <div class="review-row">
+        <span class="review-label">NLP</span>
+        <span>ACL 2026, 2025 · EMNLP 2025, 2022 · NAACL 2025 · EACL 2026 · AACL 2025</span>
+      </div>
+      <div class="review-row">
+        <span class="review-label">Others</span>
+        <span>SIGDial 2026 · MTI-LLM Workshop @ NeurIPS 2025 · SIGTURK Workshop @ EACL 2026 · ACM CAIS 2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TEACHING ── -->
+<section id="teaching" class="fade-section">
+  <div class="section-head">
+    <h2 class="section-title">Teaching</h2>
+  </div>
+  <div class="cv-entry">
+    <div class="cv-date">Spring 2024</div>
+    <div class="cv-details">
+      <h4>Teaching Assistant</h4>
+      <div class="cv-org"><a href="https://aykuterdem.github.io/classes/comp547.s24/" target="_blank">Comp 547: Deep Unsupervised Learning</a> — Koc University</div>
+    </div>
+  </div>
+  <div class="cv-entry">
+    <div class="cv-date">Fall 2023</div>
+    <div class="cv-details">
+      <h4>Teaching Assistant</h4>
+      <div class="cv-org"><a href="https://aykuterdem.github.io/classes/comp541.f23/" target="_blank">Comp 541: Deep Learning</a> — Koc University</div>
+    </div>
+  </div>
+  <div class="cv-entry">
+    <div class="cv-date">Spring 2023</div>
+    <div class="cv-details">
+      <h4>Teaching Assistant</h4>
+      <div class="cv-org">Comp 542: Natural Language Processing — Koc University</div>
+    </div>
+  </div>
+  <div class="cv-entry">
+    <div class="cv-date">Fall 2022</div>
+    <div class="cv-details">
+      <h4>Teaching Assistant</h4>
+      <div class="cv-org"><a href="https://aykuterdem.github.io/classes/comp541.f22/" target="_blank">Comp 541: Deep Learning</a> — Koc University</div>
+    </div>
+  </div>
+  <div class="cv-entry">
+    <div class="cv-date">Spring 2022</div>
+    <div class="cv-details">
+      <h4>Teaching Assistant</h4>
+      <div class="cv-org"><a href="https://aykuterdem.github.io/classes/comp547.s22/" target="_blank">Comp 547: Deep Unsupervised Learning</a> — Koc University</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TWO TRUTHS AND A LIE ── -->
+<section id="truths" class="fade-section">
+  <div class="truths-callout">
+    <h3>Two Truths and a Lie</h3>
+    <p>Two truths and one fun fact about me — guess which is which:</p>
+    <ol class="truths-list">
+      <li>I won national math olympiads twice.</li>
+      <li>I made my own custom Harley Davidson when I was 16.</li>
+      <li>I used to play college football.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span>© 2026 Emre Can Acikgoz</span>
+  <span class="footer-warn">All rights reserved · Reproduction or redistribution of this site, in whole or in part, is prohibited without prior written consent.</span>
+  <span>Last updated · May 2026</span>
+</footer>
+
+<script>
+  // Publication filter toggle
+  const buttons = document.querySelectorAll('.pub-toggle button');
+  const items = document.querySelectorAll('#pubList .pub-item');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      items.forEach(item => {
+        if (filter === 'all') {
+          item.style.display = '';
+        } else {
+          item.style.display = item.dataset.selected === 'true' ? '' : 'none';
+        }
+      });
+    });
+  });
+
+  // Apply default filter (Selected) on page load so the view matches the active button
+  items.forEach(item => {
+    if (item.dataset.selected !== 'true') item.style.display = 'none';
+  });
+</script>
+</body>
+</html>
