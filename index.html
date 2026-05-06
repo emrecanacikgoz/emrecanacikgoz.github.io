@@ -82,11 +82,27 @@
     font-size: 15px;
     color: var(--text-secondary);
     margin-bottom: 16px;
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
   }
 
   .hero-text .subtitle a {
     color: var(--accent);
     font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .hero-text .subtitle .nlp-logo {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    object-fit: cover;
+    vertical-align: middle;
+    flex-shrink: 0;
   }
 
   .hero-text .bio {
@@ -646,7 +662,7 @@
   <img src="imgs/emrecan.jpg" alt="Emre Can Acikgoz" class="hero-photo">
   <div class="hero-text">
     <h1>Emre Can Acikgoz</h1>
-    <p class="subtitle">PhD Student · <a href="https://nlp.cs.illinois.edu/" target="_blank">UIUC NLP</a></p>
+    <p class="subtitle">PhD Student · <a href="https://nlp.cs.illinois.edu/" target="_blank"><img src="imgs/uiuc-nlp.jpg" alt="" class="nlp-logo">UIUC NLP</a></p>
     <p class="bio">
       I am a second-year PhD student in Computer Science at <a href="https://cs.illinois.edu/" target="_blank">UIUC</a>, advised by <a href="https://scholar.google.com/citations?user=8XSlAp4AAAAJ&hl=en" target="_blank">Gokhan Tur</a> and <a href="https://scholar.google.com/citations?user=GMcL_9kAAAAJ&hl=en" target="_blank">Dilek Hakkani-Tur</a>. 
       My research focuses on <strong>self-evolving LLM agents</strong> and <strong>agentic learning</strong>, with broader interests in reinforcement learning, self-play, and test-time training.
