@@ -48,6 +48,7 @@
     header .who { flex: 1; }
     header h1 { font-size: 1.85rem; font-weight: 500; margin: -0.2rem 0 0.6rem; line-height: 1.15; }
     header p { margin: 0 0 0.5rem; }
+    header .tagline { margin: -0.35rem 0 0.7rem; font-size: 0.85rem; font-style: italic; color: var(--muted); }
     header .roles { margin: 0.2rem 0 0.6rem; }
     header .logo { width: 11px; height: 11px; object-fit: contain; background: none; border-radius: 0; vertical-align: 0; margin-right: 5px; }
     header .roles li { margin-bottom: 0.15rem; }
@@ -108,7 +109,10 @@
     .review li { display: grid; grid-template-columns: 4rem 1fr; gap: 0.5rem; }
     .review .label { color: var(--muted); }
 
-    .truths { padding-left: 1.5rem; list-style: lower-roman; }
+    .quote { margin: 1.2rem 0 0; padding-left: 1rem; font-style: italic; color: var(--muted); }
+    .quote span { display: block; margin-top: 0.4rem; font-style: normal; }
+
+    .misc { padding-left: 1.5rem; list-style: disc; }
 
     footer {
       margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--rule);
@@ -124,6 +128,7 @@
     <img class="photo" src="imgs/emrecan.jpg" alt="Photo of Emre Can Acikgoz" width="150" height="188">
     <div class="who">
       <h1>Emre Can Acikgoz</h1>
+      <p class="tagline">I like scaling agents on interactive environments.</p>
       <p><img class="logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAoCAYAAADt5povAAADSklEQVR42u1YTW9bRRQ99859duzGaQiNjdUGibSUSilFqJsiJJBgyYcQqHvUP8CCFWKHqFix4A+grltVgFKxbzeAUIWwk4UrVEQTqSQpURrXjp/fzL0s/Gw5biGJG7OgGWmkt5l73v2cc4amT711uQ33Qt2zAkYYySIriHIGoSZtw4vTY+HUG0+tAcYjwlNUm1NYayEjmyFqvZlb06unf1B4ZpDtL5gRIKofVF/lbxrTLSEYeRAjYfgQMe8zoBpBLIEHMcFIAIA6YQanewQpRLc4RpS0f17/OaAAgKWxDkboBtSAToj3mrPUFvXlEH12xUAWkSpHqkxt9KqUQFBH0L1BMiuYg8E6GM4IENOIFAYyybuQvdUq8Ke/zQWvDAbMAAhpuFBaktl8g1QdGLaDZwTmgNvNQ/b1yoz3xkwdj0lY7VarwHkXspLjsHSnlZ34Yvl5TX0nx2beR0//2jzs5ud+6hXybrruo99P27V7ZS+S/BWUCAQDyCZEOcd+Se7VD713ZmqDzx1fN9wF/sxm3ctxHL58UL60EsbPw8gzTHauPgOMwkoYl/Eovvbx+N0Pf8lm3TNxHFAGfrwzRZX1SRUsX9mqLAOVSrdngHkDopPvJjJETwoZ2sbJZzdvNo3S6htoC9q2X3tdNP0eZgRYb3p2bA3al4f+oVg0Bix6/AY3FIs2aP//P2kOAA8ADwCfUMDtw3t1lXT399+/UQ3C6irtPLxvXPcMIBqS96dnjAHDjev+YRJ17HzuzNQGn3t28ALWyA8B6Y2QIY0+OXs2/8gL+Eih8e0fSW6uWpvpUYzvU4pRcusKMqfGu+M0pK7kHujPSfnti/WjtXA/pRibHYpxpNBYlC11M7P5+Og7k8uJV3Z9JEovlJYIe8snffXcAl7K3xdvXO4jUWF+41h0u5nZlGZw8cmxul48sUjwBFAaR4J0aeJO3vU4jTJm8w36/PiidGliR8wY1RYO60K9GAvBKDFmTRihT8wMTYSVocERpZFRIzhLkBhvFzNM1hM0j9tn/Ta6tp9AMQOjjvDY56VG4EExIzBFpCqUYL8lN6eSu1O2ZDLhkrHK1iS/v/AKj/BRgatbk5hwyZhkCNW12LW/a5RG/2xCofY3Qj6fb4ByIvgAAAAASUVORK5CYII=" alt="">PhD Student at <a href="https://nlp.cs.illinois.edu/">UIUC NLP</a><br>
       <span class="muted">Advised by Gokhan Tur and Dilek Hakkani-Tür</span></p>
       <p><img class="logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAABbklEQVR42u2YPY6TMRCGn/FPVsl+uQNXoEFI22WhQ+IgtByDlnNwgJCVKKi22CNwB0iyyX72vFSIUAaz8Al5ShevHs+Mx69t29WzdQ52/SBhYJwZkuqQU9yVcjNsbq8BXn14vUnzvBrvx2pY5GxRFHKgFv+YZtFePLjOJ3vMMMyLE1N4GY4uMdHw0RV+p6x/M5OBiUcH7IAdsAN2wA74nwMmSbVRoyKBzE/8nAtVoIo2s5SGnGKLgKRITlCPw4kLGfIiR5xooc0spV0pN00Kwi+NAHb3c80+j/txXw/VMU2+jdos4Z90q49hzdOT9183jTt0u1gGHXZ3X94Mb4WhT7N3LPSUPY7aJkUK8+Wq7eHghDmUgxY/Tgjoikt7jrcPsuT339rHjC2jmbYntd6yo3KgAk1TImEW2xpPYET9WspwAtak36+6DtgBO2AH7IAd8F8DarpfwAgFSxfT/QLOWPByXFucaVKZFCIhitbfAUN9jtrfVCBbAAAAAElFTkSuQmCC" alt="">Research Intern at <a href="https://www.microsoft.com/en-us/research/">Microsoft Research</a><br>
@@ -157,13 +162,18 @@
     He is co-chair of the Student Research Workshop (SRW) at ACL 2027.
   </p>
 
+  <blockquote class="quote">
+    "He begins working calculus problems in his head as soon as he awakens. He did calculus while driving in his car, while sitting in the living room, and while lying in bed at night."
+    <span class="muted">— from the divorce complaint of Richard Feynman's second wife</span>
+  </blockquote>
+
   <h2>Project Lifelong Agent</h2>
   <div class="project">
     <p>
       The broader vision shaping my PhD is agents that can continually learn, quickly adapt, and <strong>generalize</strong>
       with minimal supervision.
       Lifelong Agents project has three pillars: Learning, Aligning, and Evolving. 
-      I focus primarily on <strong>Evolving</strong> concept.
+      I focus primarily on the <strong>Evolving</strong> pillar.
     </p>
     <p><a href="https://lifelongagent.github.io/Project-Lifelong-Agent/">Project page</a></p>
   </div>
@@ -369,12 +379,12 @@
     <li><time>Spring 2022</time><span><a href="https://aykuterdem.github.io/classes/comp547.s22/">COMP 547: Deep Unsupervised Learning</a></span></li>
   </ul>
 
-  <h2>Two truths and a lie :)</h2>
-  <ol class="truths">
-    <li>I won national math olympiads twice.</li>
-    <li>I made my own custom Harley-Davidson when I was 16.</li>
-    <li>I used to play college football.</li>
-  </ol>
+  <h2>Miscellaneous</h2>
+  <ul class="misc">
+    <li>I also like scaling the limits of the human body; these days I'm actively doing CrossFit.</li>
+    <li>I like extreme sports: motocross, snowboarding, and, more recently, kitesurfing.</li>
+    <li>I rode my custom-built Harley-Davidson XL1200x for five years.</li>
+  </ul>
 
   <footer>
     <p>© 2026 Emre Can Acikgoz. Last updated October 2026.</p>
